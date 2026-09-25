@@ -1,0 +1,538 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Contact from '../components/sections/Contact.astro';
+import { site } from '../data/site';
+import mtemptation from '../assets/mtemptation.png';
+
+// Modules de la suite eTemptation (source : présentation Horoquartz / Azéo).
+const modules = [
+  {
+    code: 'HQ Time',
+    icon: 'clock',
+    title: 'Gestion des temps',
+    points: [
+      'Suivi des temps de présence et d’absence',
+      'Calcul automatique des compteurs',
+      'Gestion décentralisée : les managers gagnent en autonomie',
+      'Paramétrée selon vos règles et vos accords',
+    ],
+  },
+  {
+    code: 'HQ Self-Service',
+    icon: 'user',
+    title: 'Self-service collaborateur',
+    points: [
+      'Demandes d’absence en ligne',
+      'Validation directe par les managers',
+      'Consultation des compteurs et des plannings',
+    ],
+  },
+  {
+    code: 'HQ Planning',
+    icon: 'calendar',
+    title: 'Gestion des plannings',
+    points: [
+      'Effectifs alignés sur la charge',
+      'Construction de plannings équitables',
+      'Respect de la législation',
+    ],
+  },
+  {
+    code: 'HQ Optimum',
+    icon: 'optimize',
+    title: 'Planification optimisée',
+    points: [
+      'Moteurs d’optimisation',
+      'Prise en compte des besoins métier et des prévisions d’activité',
+      'Ajustement automatique des horaires',
+    ],
+  },
+  {
+    code: 'HQ Anticipation',
+    icon: 'payroll',
+    title: 'Planification à moyen et long terme',
+    points: [
+      'Planification à l’année',
+      'Gestion des sureffectifs et sous-effectifs',
+      'Optimisation de la masse salariale',
+    ],
+  },
+  {
+    code: 'HQ Activity',
+    icon: 'bars',
+    title: 'Gestion d’activité',
+    points: [
+      'Suivi des activités sur projets, R&D et services',
+      'Suivi de production',
+      'Suivi de la rentabilité',
+    ],
+  },
+  {
+    code: 'HQ Interface',
+    icon: 'plug',
+    title: 'Communication et interfaces',
+    points: [
+      'Échanges avec la paie, le SIRH, l’intérim, les titres-restaurant…',
+      'Interfaçage avec plus de 150 logiciels de paie',
+    ],
+  },
+  {
+    code: 'Contrôle d’accès',
+    icon: 'door',
+    title: 'Contrôle d’accès',
+    points: [
+      'Gestion des accès à vos locaux',
+      'Pilotée depuis la même solution que les temps',
+      'Associée à nos badgeuses et à Badgy',
+    ],
+  },
+] as const;
+
+const advantages = [
+  { title: 'Une base de données unique et cohérente', text: 'Temps, absences, plannings et activités partagent les mêmes données : fini les doubles saisies et les écarts entre outils.' },
+  { title: 'Adaptable à vos règles, et évolutive', text: 'Accords d’entreprise, cycles de travail, conventions : l’outil est paramétré pour vous et suit l’évolution de votre organisation.' },
+  { title: 'Une architecture aux standards du marché', text: 'Une solution web, accessible depuis un simple navigateur, conforme aux standards techniques actuels.' },
+  { title: 'Facile à intégrer à votre système d’information', text: 'Paie, SIRH, annuaire, intérim : eTemptation échange avec les outils que vous utilisez déjà.' },
+  { title: 'Un accompagnement de bout en bout', text: 'Diagnostic, paramétrage, formation et maintenance, assurés par Azéo Conseil, sur place à La Réunion.' },
+];
+
+const mobile = {
+  collaborateurs: [
+    'Consultation du planning en temps réel',
+    'Demandes d’absence ou de modification',
+    'Accès aux compteurs et aux soldes',
+    'Notifications et alertes personnalisées',
+  ],
+  managers: [
+    'Validation des demandes en mobilité',
+    'Vue rapide des présents et des absents',
+    'Alertes sur les anomalies et les besoins de couverture',
+    'Ajustements rapides des plannings',
+  ],
+};
+
+// Schéma des modules en haut de page (décoratif : le détail est dans les cartes).
+const hubLabels = ['Time', 'Self-Service', 'Planning', 'Optimum', 'Anticipation', 'Activity', 'Interface'];
+const hubColors = ['var(--lime)', 'var(--petrol)', 'var(--orange)', 'var(--petrol)', 'var(--orange)', 'var(--lime)', 'var(--petrol)'];
+const C = 260;
+const R = 172;
+const nodes = hubLabels.map((label, i) => {
+  const a = (-90 + (360 / hubLabels.length) * i) * (Math.PI / 180);
+  return { label, color: hubColors[i], x: C + R * Math.cos(a), y: C + R * Math.sin(a) };
+});
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'eTemptation', item: site.url + '/etemptation/' },
+  ],
+};
+---
+<Base
+  title="eTemptation : gestion des temps, plannings et activités à La Réunion"
+  description="eTemptation d’Horoquartz à La Réunion : gestion des temps et des absences, plannings, optimisation, suivi d’activité et application mobile mTemptation. Installation et accompagnement par Azéo Conseil."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <section class="et-hero">
+    <div class="container et-hero__grid">
+      <div class="et-hero__text">
+        <nav class="crumbs" aria-label="Fil d’Ariane">
+          <a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">eTemptation</span>
+        </nav>
+        <p class="eyebrow">Logiciel · Éditeur Horoquartz</p>
+        <h1>eTemptation : le temps, les plannings et les activités sur une seule plateforme.</h1>
+        <p class="lead">
+          La solution de référence d’Horoquartz pour piloter le temps de travail, construire des
+          plannings justes et simplifier vos processus RH. Utilisée chaque jour par des millions de
+          collaborateurs, en entreprise comme en collectivité. Azéo Conseil l’installe, la paramètre
+          selon vos règles et l’accompagne dans la durée, depuis La Réunion.
+        </p>
+        <div class="et-hero__actions">
+          <a href="#contact" class="btn btn--primary">Demander une démo</a>
+          <a href="#mtemptation" class="btn btn--outline">Voir l’application mobile</a>
+        </div>
+      </div>
+
+      <svg class="hub" viewBox="0 0 520 520" role="img" aria-label="Les modules de la suite eTemptation">
+        <circle cx={C} cy={C} r={R} fill="none" stroke="var(--line)" stroke-width="3" />
+        <circle cx={C} cy={C} r="96" fill="var(--petrol-deep)" />
+        <text x={C} y={C - 4} text-anchor="middle" class="hub__title">eTemptation</text>
+        <text x={C} y={C + 26} text-anchor="middle" class="hub__sub">Suite</text>
+        {nodes.map((n) => (
+          <g>
+            <circle cx={n.x} cy={n.y} r="34" fill={n.color} />
+            <circle cx={n.x} cy={n.y} r="9" fill="#fff" />
+            <rect x={n.x - 58} y={n.y + 40} width="116" height="28" rx="14" fill="#fff" stroke="var(--line)" />
+            <text x={n.x} y={n.y + 59} text-anchor="middle" class="hub__label">{n.label}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="modules-titre">
+    <div class="container">
+      <div class="head-2col">
+        <div class="stack">
+          <p class="eyebrow">Une solution complète et modulaire</p>
+          <h2 id="modules-titre">Tous vos processus temps et RH, dématérialisés et fiabilisés.</h2>
+        </div>
+        <p class="lead">
+          Vous démarrez avec les modules dont vous avez besoin, et vous étendez la solution quand
+          votre organisation évolue. Toutes les données restent dans une seule base.
+        </p>
+      </div>
+      <ul class="modules">
+        {modules.map((m) => (
+          <li class="card module">
+            <div class="module__top">
+              <Icon name={m.icon} size={30} color="var(--petrol)" />
+              <span class="module__code">{m.code}</span>
+            </div>
+            <h3>{m.title}</h3>
+            <ul class="ticks">
+              {m.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="avantages-titre">
+    <div class="container adv">
+      <div class="stack adv__intro">
+        <p class="eyebrow">Pourquoi eTemptation</p>
+        <h2 id="avantages-titre">Un outil de décision, pas seulement de pointage.</h2>
+        <p class="lead">
+          eTemptation décentralise la gestion des temps auprès des managers tout en donnant aux RH
+          une vision fiable et consolidée. Adaptée aux entreprises comme aux collectivités.
+        </p>
+      </div>
+      <ol class="adv__list">
+        {advantages.map((a, i) => (
+          <li>
+            <span class="adv__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{a.title}</h3>
+              <p>{a.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="mtemptation" class="section mobile">
+    <div class="container mobile__grid">
+      <div class="mobile__visual">
+        <Image
+          src={mtemptation}
+          alt="Écran d’accueil de l’application mTemptation : planning du jour, déclarations d’activité et compteurs"
+          width={205}
+          loading="lazy"
+        />
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Application mobile</p>
+        <h2>mTemptation : eTemptation dans la poche.</h2>
+        <p class="lead">
+          L’application mobile d’eTemptation apporte simplicité, autonomie et réactivité, au bureau
+          comme sur le terrain.
+        </p>
+        <div class="mobile__cols">
+          <div>
+            <h3>Pour les collaborateurs</h3>
+            <ul class="ticks">
+              {mobile.collaborateurs.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>Pour les managers</h3>
+            <ul class="ticks">
+              {mobile.managers.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="mobile__badgy">
+          Besoin de badger sur tablette ou smartphone ?
+          <a href="/#badgy">Découvrez Badgy, notre badgeuse mobile compatible eTemptation.</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="deploiement-titre">
+    <div class="container">
+      <div class="stack deploy__head">
+        <p class="eyebrow">Déploiement</p>
+        <h2 id="deploiement-titre">Chez vous ou dans notre cloud souverain.</h2>
+      </div>
+      <div class="deploy">
+        <div class="card">
+          <Icon name="sites" size={30} color="var(--petrol)" />
+          <h3>Dans votre système d’information</h3>
+          <p>eTemptation est installée sur vos serveurs et accessible depuis votre intranet. Nous assurons l’installation et les mises à jour.</p>
+        </div>
+        <div class="card deploy__cloud">
+          <Icon name="server" size={30} color="var(--petrol)" />
+          <h3>Dans le cloud privé océan Indien</h3>
+          <p>Hébergement local dans un datacenter certifié HDS, infogéré par Exodata (ISO 27001 et ISO 9001). Vous n’avez rien à gérer.</p>
+          <a href="/#cloud" class="link-arrow">En savoir plus sur l’hébergement <Icon name="arrow" size={18} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</Base>
+
+<style>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .head-2col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  /* Hero */
+  .et-hero {
+    padding-block: clamp(32px, 5vw, 72px) clamp(48px, 6vw, 88px);
+  }
+  .et-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+  .et-hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .et-hero__text h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+  }
+  .et-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .crumbs {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .hub {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    justify-self: center;
+  }
+  .hub__title {
+    fill: #fff;
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .hub__sub {
+    fill: var(--lime);
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .hub__label {
+    fill: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* Modules */
+  .modules {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .module__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .module__code {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--petrol-hover);
+    background: var(--bg-cloud);
+    border-radius: 999px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+  .ticks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ticks li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .ticks li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--lime);
+  }
+
+  /* Avantages */
+  .adv {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(36px, 6vw, 80px);
+    align-items: start;
+  }
+  .adv__intro {
+    position: sticky;
+    top: 112px;
+  }
+  .adv__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .adv__list li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding-block: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .adv__list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .adv__num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--orange-text);
+    line-height: 1.1;
+  }
+  .adv__list h3 {
+    margin-bottom: 6px;
+  }
+  .adv__list p {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  /* mTemptation */
+  .mobile {
+    background: var(--bg-cloud);
+  }
+  .mobile__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(36px, 6vw, 80px);
+    align-items: center;
+  }
+  .mobile__visual {
+    display: flex;
+    justify-content: center;
+  }
+  .mobile__visual :global(img) {
+    border-radius: 28px;
+    box-shadow: 0 30px 60px rgba(11, 59, 62, 0.18);
+  }
+  .mobile__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 8px;
+  }
+  .mobile__cols h3 {
+    margin-bottom: 12px;
+  }
+  .mobile .ticks li {
+    color: var(--text);
+  }
+  .mobile__badgy {
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid #cfe0e0;
+    color: var(--text);
+  }
+
+  /* Déploiement */
+  .deploy__head {
+    margin-bottom: 32px;
+  }
+  .deploy {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .deploy__cloud {
+    background: var(--bg-alt);
+  }
+
+  @media (max-width: 1100px) {
+    .modules {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 960px) {
+    .et-hero__grid,
+    .head-2col,
+    .adv,
+    .mobile__grid {
+      grid-template-columns: 1fr;
+    }
+    .hub {
+      max-width: 420px;
+    }
+    .adv__intro {
+      position: static;
+    }
+  }
+  @media (max-width: 640px) {
+    .modules,
+    .mobile__cols,
+    .deploy {
+      grid-template-columns: 1fr;
+    }
+    .adv__list li {
+      grid-template-columns: 40px 1fr;
+    }
+  }
+</style>

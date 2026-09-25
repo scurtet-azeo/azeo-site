@@ -7,6 +7,14 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+# Les adresses techniques *.pages.dev ne doivent jamais apparaître dans Google.
+# Le vrai site (azeoconseil.com) n'est pas concerné par cette règle.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
 # Fichiers générés par Astro : noms uniques, on peut les garder en cache un an.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

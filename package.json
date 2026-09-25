@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/typo-fr.mjs",
     "preview": "astro preview"
   },
   "engines": {

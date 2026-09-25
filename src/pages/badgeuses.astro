@@ -1,0 +1,407 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Contact from '../components/sections/Contact.astro';
+import { site } from '../data/site';
+import etsmile from '../assets/etsmile.jpg';
+import pulsi from '../assets/pulsi.jpg';
+
+const chooser = [
+  { href: '#etsmile', name: 'eTSmile', for: 'Pointer simplement et en toute sécurité, en intérieur comme en milieu exposé.' },
+  { href: '#pulsi', name: 'Pulsi', for: 'Pointer et donner accès aux services RH aux équipes sans ordinateur.' },
+  { href: '/#badgy', name: 'Badgy', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
+];
+
+const etsmileFeatures = [
+  { icon: 'badge', title: 'Un geste suffit', text: 'Le collaborateur présente sa carte RFID : le pointage est enregistré instantanément.' },
+  { icon: 'user', title: 'Des informations à l’écran', text: 'L’afficheur intégré permet à chacun de consulter ses informations directement sur la badgeuse.' },
+  { icon: 'plug', title: 'Une installation simplifiée', text: 'Alimentée en PoE, la badgeuse fonctionne avec un seul câble réseau, sans alimentation électrique dédiée.' },
+  { icon: 'server', title: 'Une supervision à distance', text: 'Le Reader Manager permet de surveiller l’état de toutes vos badgeuses depuis un poste central.' },
+];
+
+const pulsiServices = [
+  'Consultation des compteurs : congés payés, RTT, récupérations',
+  'Saisie et suivi des demandes d’absence',
+  'Consultation du planning de la semaine',
+  'Pointage quotidien des équipes sur site',
+];
+
+const services = [
+  { icon: 'badge', title: 'Conseil et choix du matériel', text: 'Nous vous aidons à choisir les modèles adaptés à chaque site et à chaque usage : eTSmile, Pulsi ou Badgy.' },
+  { icon: 'calendar', title: 'Paramétrage dans eTemptation', text: 'Motifs de pointage, services RH, droits d’accès : tout est configuré selon vos règles.' },
+  { icon: 'team', title: 'Formation des utilisateurs', text: 'Gestionnaires et collaborateurs prennent en main les badgeuses et les services en libre-service.' },
+  { icon: 'sync', title: 'Supervision et support', text: 'Suivi de vos badgeuses à distance avec le Reader Manager, et un support qui répond sur votre fuseau horaire.' },
+];
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Badgeuses', item: site.url + '/badgeuses/' },
+  ],
+};
+---
+<Base
+  title="Badgeuses et pointeuses Horoquartz à La Réunion : eTSmile, Pulsi"
+  description="Badgeuses Horoquartz eTSmile et Pulsi à La Réunion : pointage RFID, version IP65, services RH en libre-service. Conseil, paramétrage eTemptation et support par Azéo Conseil."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <section class="bd-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Badgeuses</span>
+      </nav>
+      <div class="bd-hero__grid">
+        <div class="stack bd-hero__text">
+          <p class="eyebrow">Matériel · Horoquartz</p>
+          <h1>Une badgeuse adaptée à chaque site et à chaque équipe.</h1>
+          <p class="lead">
+            Des terminaux Horoquartz connectés à eTemptation : nous vous conseillons sur le choix du
+            matériel, puis nous les paramétrons et les suivons depuis La Réunion. Et pour les sites sans badgeuse fixe, notre application
+            Badgy prend le relais.
+          </p>
+        </div>
+        <ul class="chooser" aria-label="Quelle badgeuse choisir ?">
+          {chooser.map((c) => (
+            <li>
+              <a href={c.href}>
+                <strong>{c.name}</strong>
+                <span>{c.for}</span>
+                <Icon name="arrow" size={20} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="etsmile" class="section section--alt">
+    <div class="container product">
+      <div class="product__media product__media--photo">
+        <Image
+          src={etsmile}
+          alt="Badgeuse eTSmile fixée au mur, un collaborateur présente sa carte devant le lecteur"
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 960px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="stack">
+        <p class="eyebrow">La référence polyvalente</p>
+        <h2>eTSmile</h2>
+        <p class="lead">
+          La solution idéale pour les organisations qui veulent un pointage simple et sécurisé, sans
+          complexité d’installation ni d’exploitation.
+        </p>
+        <ul class="features">
+          {etsmileFeatures.map((f) => (
+            <li>
+              <Icon name={f.icon} size={26} color="var(--petrol)" />
+              <div>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div class="callout">
+          <strong>Version IP65</strong>
+          <p>
+            Pour les ateliers, les quais ou l’extérieur : eTSmile existe dans un boîtier étanche aux
+            fortes projections d’eau et à la poussière.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pulsi" class="section">
+    <div class="container product product--reverse">
+      <div class="product__media product__media--pack">
+        <Image
+          src={pulsi}
+          alt="Badgeuse Pulsi à écran tactile affichant « Bonjour ! Présentez votre badge » et des motifs de pointage"
+          widths={[400, 768]}
+          sizes="(max-width: 960px) 100vw, 45vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Pointeuse avec services RH intégrés</p>
+        <h2>Pulsi</h2>
+        <p class="lead">
+          Pulsi est d’abord une badgeuse simple et sécurisée. Elle peut aussi devenir un vrai point
+          de contact RH pour les équipes de terrain qui n’ont ni ordinateur ni téléphone
+          professionnel.
+        </p>
+        <p>
+          Une fois l’espace libre-service activé, vos équipes accèdent à leurs données RH directement
+          depuis la badgeuse, au plus près de leur poste : pas besoin de passer par le service du
+          personnel, ni d’attendre une réponse. Son écran tactile haute définition de 7 pouces et son
+          design soigné en font aussi une vitrine d’une entreprise attentive à ses équipes.
+        </p>
+        <ul class="ticks ticks--lg">
+          {pulsiServices.map((s) => <li>{s}</li>)}
+        </ul>
+        <div class="callout">
+          <strong>Évolutive par licence</strong>
+          <p>
+            Le libre-service s’active par simple licence logicielle, sur n’importe quelle Pulsi
+            déjà installée. Vous commencez par le pointage et ajoutez les services RH quand vous le
+            souhaitez.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container badgy-band">
+      <div class="stack">
+        <span class="badgy-band__new">Nouveau</span>
+        <h2>Pas de badgeuse fixe ? Badgy <span>by Azéo</span>.</h2>
+        <p class="lead">
+          Une tablette Android ou le smartphone d’un chef d’équipe devient une badgeuse, avec les
+          mêmes badges que vos terminaux Horoquartz. Idéal pour les chantiers, les sites éphémères et
+          les zones sans réseau.
+        </p>
+      </div>
+      <a href="/#badgy" class="btn btn--lime">Découvrir Badgy</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-titre">
+    <div class="container">
+      <div class="stack services__head">
+        <p class="eyebrow">Notre service</p>
+        <h2 id="services-titre">Du choix du matériel au support, on vous accompagne.</h2>
+      </div>
+      <ul class="services">
+        {services.map((s) => (
+          <li>
+            <Icon name={s.icon} size={30} color="var(--petrol)" />
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Contact />
+</Base>
+
+<style>
+  .crumbs {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+
+  /* Hero */
+  .bd-hero {
+    padding-block: clamp(32px, 5vw, 72px) clamp(48px, 6vw, 88px);
+  }
+  .bd-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .bd-hero__text {
+    gap: 22px;
+  }
+  .bd-hero__text h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+  }
+  .chooser {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .chooser a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: center;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .chooser a:hover {
+    border-color: var(--petrol);
+    background: var(--bg-cloud);
+  }
+  .chooser strong {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+  }
+  .chooser span {
+    grid-column: 1;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .chooser :global(svg) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    color: var(--petrol);
+  }
+
+  /* Blocs produit */
+  .product {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(36px, 6vw, 80px);
+    align-items: center;
+  }
+  .product--reverse .product__media {
+    order: 2;
+  }
+  .product h2 {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    font-weight: 700;
+  }
+  .product > .stack > p:not(.eyebrow):not(.lead) {
+    color: var(--text);
+  }
+  .product__media :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .product__media--photo :global(img) {
+    border-radius: var(--radius-l);
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .product__media--pack {
+    background: #fff;
+    border-radius: var(--radius-l);
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 28px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .features li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .features h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 4px;
+  }
+  .features p {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .ticks--lg li {
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .callout {
+    margin-top: 8px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--orange);
+    background: var(--bg-sand);
+    border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  }
+  .callout p {
+    margin-top: 4px;
+    font-size: 0.9375rem;
+    color: var(--text);
+  }
+
+  /* Bandeau Badgy */
+  .badgy-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px 64px;
+    flex-wrap: wrap;
+  }
+  .badgy-band .stack {
+    flex: 1 1 520px;
+    max-width: 760px;
+  }
+  .badgy-band h2 span {
+    color: var(--lime);
+  }
+  .badgy-band__new {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--orange);
+    color: var(--ink);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+
+  /* Services */
+  .services__head {
+    margin-bottom: clamp(32px, 5vw, 48px);
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .services li {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+  }
+  .services p {
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 960px) {
+    .bd-hero__grid,
+    .product {
+      grid-template-columns: 1fr;
+    }
+    .product--reverse .product__media {
+      order: 0;
+    }
+    .product__media--pack {
+      max-width: 520px;
+    }
+    .services {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 560px) {
+    .features,
+    .services {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

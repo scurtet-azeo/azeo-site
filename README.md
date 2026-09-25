@@ -28,6 +28,10 @@ npm run preview  # affiche le site généré
 
 Les éléments entre crochets `[…]` sont des contenus à fournir.
 
+## Typographie française
+
+Après chaque build, `scripts/typo-fr.mjs` insère automatiquement une espace insécable avant `? ! : ;` dans les pages générées. Inutile de s'en soucier en rédigeant.
+
 ## Formulaire de contact
 
 Le formulaire envoie les demandes par e-mail via [Resend](https://resend.com), grâce à la fonction `functions/api/contact.ts`.
@@ -50,9 +54,10 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 
 - [ ] Logo en version vectorielle (SVG) pour remplacer `public/images/logo-azeo.png`
 - [ ] Coordonnées (téléphone, e-mail) dans `src/data/site.ts`
-- [ ] Nouvelle gamme de badgeuses : nom, description, photo
-- [ ] Captures eTemptation et Badgy
-- [ ] Pages détaillées : eTemptation, Badgy, gestion des absences
+- [x] Nouvelle gamme de badgeuses : page /badgeuses/ (eTSmile, Pulsi)
+- [ ] Capture d'écran eTemptation (carte de l'accueil) et captures Badgy
+- [x] Page eTemptation
+- [ ] Pages détaillées : Badgy, gestion des temps et des absences
 - [ ] Informations légales (SIRET, RCS, directeur de publication)
 - [ ] Liste complète des anciennes adresses dans `public/_redirects`
 - [ ] Logos clients et témoignages

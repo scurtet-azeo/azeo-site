@@ -293,11 +293,6 @@ const breadcrumb = {
 </Base>
 
 <style>
-  .stack {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
   .head-2col {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -387,32 +382,6 @@ const breadcrumb = {
     padding: 4px 10px;
     white-space: nowrap;
   }
-  .ticks {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .ticks li {
-    position: relative;
-    padding-left: 22px;
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    color: var(--muted);
-  }
-  .ticks li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.5em;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--lime);
-  }
-
   /* Avantages */
   .adv {
     display: grid;

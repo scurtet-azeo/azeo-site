@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
+import etsmile from '../../assets/etsmile.jpg';
 import { site } from '../../data/site';
 ---
 <section id="solutions" class="section">
@@ -7,7 +9,7 @@ import { site } from '../../data/site';
     <div class="sol__head">
       <div class="sol__title">
         <p class="eyebrow">Nos solutions</p>
-        <h2>Le logiciel et le badgeage, installés ensemble.</h2>
+        <h2>Le logiciel et le badgeage, pensés ensemble.</h2>
       </div>
       <div class="sol__intro">
         <p class="lead">
@@ -34,14 +36,21 @@ import { site } from '../../data/site';
       </article>
 
       <article class="card" id="badgeuses">
-        <div class="placeholder sol__media" style="background: var(--bg-sand)">[Photo nouvelle badgeuse]</div>
-        <p class="sol__kind">Matériel</p>
-        <h3 class="sol__name">Badgeuses [nom de la gamme]</h3>
+        <Image
+          src={etsmile}
+          alt="Badgeuse eTSmile : un collaborateur présente sa carte"
+          widths={[400, 700]}
+          sizes="(max-width: 1024px) 640px, 400px"
+          class="sol__media sol__photo"
+          loading="lazy"
+        />
+        <p class="sol__kind">Matériel · Horoquartz</p>
+        <h3 class="sol__name">Badgeuses eTSmile et Pulsi</h3>
         <p>
-          [Description de la nouvelle gamme : modes de badgeage, connectivité, usages.] Installées,
-          raccordées et maintenues par nos soins.
+          eTSmile pour un pointage simple et sécurisé, jusqu’en version étanche IP65. Pulsi et son
+          écran tactile pour donner aux équipes de terrain un accès direct à leurs données RH.
         </p>
-        <a href="#contact" class="link-arrow sol__link">Voir les badgeuses <Icon name="arrow" size={18} /></a>
+        <a href="/badgeuses/" class="link-arrow sol__link">Voir les badgeuses <Icon name="arrow" size={18} /></a>
       </article>
 
       <article class="card sol__badgy">
@@ -87,6 +96,10 @@ import { site } from '../../data/site';
     height: 200px;
     border-radius: 14px;
     margin-bottom: 6px;
+  }
+  .sol__photo {
+    width: 100%;
+    object-fit: cover;
   }
   .card .sol__kind {
     font-size: 0.8125rem;

@@ -55,7 +55,7 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 - [ ] Logo en version vectorielle (SVG) pour remplacer `public/images/logo-azeo.png`
 - [ ] Coordonnées (téléphone, e-mail) dans `src/data/site.ts`
 - [x] Nouvelle gamme de badgeuses : page /badgeuses/ (eTSmile, Pulsi)
-- [ ] Capture d'écran eTemptation (carte de l'accueil) et captures Badgy
+- [x] Visuels eTemptation et Badgy
 - [x] Page eTemptation
 - [ ] Pages détaillées : Badgy, gestion des temps et des absences
 - [ ] Informations légales (SIRET, RCS, directeur de publication)

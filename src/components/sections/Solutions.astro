@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
 import etsmile from '../../assets/etsmile.jpg';
+import etemptationEcran from '../../assets/etemptation-ecran.jpg';
+import badgy from '../../assets/badgy.png';
 import { site } from '../../data/site';
 ---
 <section id="solutions" class="section">
@@ -24,7 +26,13 @@ import { site } from '../../data/site';
 
     <div class="sol__grid">
       <article class="card">
-        <div class="placeholder sol__media" style="background: var(--bg-cloud)">[Capture eTemptation]</div>
+        <Image
+          src={etemptationEcran}
+          alt="eTemptation ouvert sur un ordinateur portable : tableau de bord et plannings"
+          width={500}
+          class="sol__media sol__photo"
+          loading="lazy"
+        />
         <p class="sol__kind">Logiciel · Horoquartz</p>
         <h3 class="sol__name">eTemptation</h3>
         <p>
@@ -54,9 +62,14 @@ import { site } from '../../data/site';
       </article>
 
       <article class="card sol__badgy">
-        <div class="sol__media sol__devices" aria-hidden="true">
-          <span class="dev dev--phone"><Icon name="clock" size={30} color="var(--lime)" /></span>
-          <span class="dev dev--tablet"><Icon name="nfc" size={40} color="var(--lime)" /></span>
+        <div class="sol__media sol__badgy-media">
+          <Image
+            src={badgy}
+            alt="Badgy sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
+            widths={[240, 400]}
+            sizes="240px"
+            loading="lazy"
+          />
         </div>
         <p class="sol__kind">Nouveau · Notre solution</p>
         <h3 class="sol__name">Badgy by Azéo</h3>
@@ -128,28 +141,17 @@ import { site } from '../../data/site';
   .sol__badgy .sol__link {
     color: var(--lime);
   }
-  .sol__devices {
-    background: #24332f;
+  .sol__badgy-media {
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    padding: 12px;
   }
-  .dev {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--lime);
-  }
-  .dev--phone {
-    width: 70px;
-    height: 124px;
-    border-radius: 14px;
-  }
-  .dev--tablet {
-    width: 150px;
-    height: 108px;
-    border-radius: 12px;
+  .sol__badgy-media :global(img) {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
   }
   @media (max-width: 1024px) {
     .sol__head {

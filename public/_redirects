@@ -1,0 +1,12 @@
+# Redirections des adresses de l'ancien site vers le nouveau (301 = définitive).
+# Indispensable pour conserver le référencement acquis.
+# Format : ancienne-adresse  nouvelle-adresse  301
+#
+# À compléter avec la liste complète des pages de l'ancien site
+# (export Google Search Console > Pages, ou plan du site WordPress /sitemap.xml).
+
+/produits/        /#solutions   301
+/produits         /#solutions   301
+/accueil/         /             301
+/contact/         /#contact     301
+/contact          /#contact     301

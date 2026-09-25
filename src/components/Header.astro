@@ -1,0 +1,157 @@
+---
+import Icon from './Icon.astro';
+import { nav } from '../data/site';
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="Azéo Conseil, accueil">
+      <img src="/images/logo-azeo.png" alt="Azéo Conseil" width="160" height="56" />
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-principal"
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="icon-open"><Icon name="menu" size={24} /></span>
+      <span class="icon-close"><Icon name="close" size={24} /></span>
+    </button>
+
+    <nav id="menu-principal" class="site-nav" aria-label="Navigation principale">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a href="/#contact" class="btn btn--primary site-nav__cta">Demander un diagnostic</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.site-header__toggle');
+  const menu = document.getElementById('menu-principal');
+  if (toggle && menu) {
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+    };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 80px;
+  }
+  .site-header__logo img {
+    height: 52px;
+    width: auto;
+  }
+  .site-header__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .icon-close {
+    display: none;
+  }
+  .site-header__toggle[aria-expanded='true'] .icon-open {
+    display: none;
+  }
+  .site-header__toggle[aria-expanded='true'] .icon-close {
+    display: block;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-nav ul a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.975rem;
+  }
+  .site-nav ul a:hover {
+    color: var(--petrol);
+  }
+  .site-nav__cta {
+    min-height: 46px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 1120px) {
+    .site-header__inner {
+      min-height: 64px;
+    }
+    .site-header__logo img {
+      height: 42px;
+    }
+    .site-header__toggle {
+      display: inline-flex;
+    }
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      padding: 16px var(--gutter) 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .site-nav.is-open {
+      display: flex;
+    }
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    .site-nav ul a {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      font-size: 1.0625rem;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+</style>

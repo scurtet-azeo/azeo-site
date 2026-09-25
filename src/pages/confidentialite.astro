@@ -1,0 +1,24 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site';
+---
+<Page title="Politique de confidentialité" description="Comment Azéo Conseil traite les données transmises via ce site.">
+  <p>
+    [Texte à valider.] Ce site ne dépose aucun cookie publicitaire ni de mesure d’audience, et
+    ses polices de caractères sont hébergées sur nos propres serveurs : aucune donnée n’est
+    transmise à des tiers lors de votre visite.
+  </p>
+
+  <h2>Formulaire de contact</h2>
+  <p>
+    Les informations saisies (nom, entreprise, e-mail, téléphone, message) sont utilisées
+    uniquement pour répondre à votre demande. Elles sont conservées [durée] puis supprimées.
+  </p>
+
+  <h2>Vos droits</h2>
+  <p>
+    Conformément au RGPD, vous pouvez accéder à vos données, les faire rectifier ou supprimer
+    en écrivant à {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : '[adresse e-mail]'}.
+    Vous pouvez également adresser une réclamation à la CNIL.
+  </p>
+</Page>

@@ -1,0 +1,145 @@
+---
+import Icon from '../Icon.astro';
+
+const pillars = [
+  { icon: 'clock', title: 'Le même fuseau horaire', text: 'Support, questions de paramétrage, clôture de paie : on vous répond pendant vos heures de travail.' },
+  { icon: 'pin', title: 'Sur site, sans billet d’avion', text: 'Installation, formation, intervention sur une badgeuse : nous venons chez vous, partout sur l’île.' },
+  { icon: 'mountain', title: 'Votre quotidien est le nôtre', text: 'Nous connaissons le tissu économique réunionnais, ses métiers et ses contraintes, parce que nous les partageons.' },
+  { icon: 'server', title: 'Vos données restent ici', text: 'Hébergement dans un cloud privé de l’océan Indien, au plus près de vos équipes.' },
+] as const;
+---
+<section id="proximite" class="section">
+  <div class="container">
+    <div class="prox__top">
+      <div class="prox__intro">
+        <p class="eyebrow">Notre différence</p>
+        <h2 class="prox__title">Ici, à La Réunion.<br />Comme vous.</h2>
+        <p class="lead">
+          Quand un planning coince un lundi à 8 h, vous n’attendez pas que la métropole se réveille.
+          Nous vivons sur la même île, à la même heure, avec les mêmes réalités que vos équipes.
+        </p>
+      </div>
+      <div class="clocks">
+        <p class="clocks__caption">Lundi, 9 h 00 à Saint-Leu</p>
+        <div class="clocks__row">
+          <div><strong>Votre entreprise</strong><span>La Réunion · UTC+4</span></div>
+          <span class="clocks__time">09:00</span>
+        </div>
+        <div class="clocks__row clocks__row--azeo">
+          <div><strong>Azéo Conseil</strong><span>Saint-Leu · UTC+4 · disponible</span></div>
+          <span class="clocks__time">09:00</span>
+        </div>
+        <div class="clocks__row clocks__row--off">
+          <div><strong>Un support en métropole</strong><span>2 à 3 h de décalage · pas encore ouvert</span></div>
+          <span class="clocks__time">06:00</span>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pillars">
+      {pillars.map((p) => (
+        <li>
+          <Icon name={p.icon} size={30} color="var(--petrol)" />
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .prox__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 72px);
+    align-items: center;
+  }
+  .prox__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .prox__title {
+    font-size: clamp(2.125rem, 4.2vw, 3.5rem);
+    line-height: 1.06;
+  }
+  .clocks {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 22px;
+    padding: clamp(22px, 3vw, 36px);
+  }
+  .clocks__caption {
+    font-size: 0.875rem;
+    color: var(--on-dark);
+    padding-bottom: 12px;
+  }
+  .clocks__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-block: 16px;
+    border-top: 1px solid #2e3b38;
+  }
+  .clocks__row div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .clocks__row span:not(.clocks__time) {
+    font-size: 0.875rem;
+    color: var(--on-dark);
+  }
+  .clocks__time {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 500;
+  }
+  .clocks__row--azeo span:not(.clocks__time),
+  .clocks__row--azeo .clocks__time {
+    color: var(--lime);
+  }
+  .clocks__row--off strong {
+    color: var(--on-dark);
+  }
+  .clocks__row--off span:not(.clocks__time) {
+    color: var(--on-dark-muted);
+  }
+  .clocks__row--off .clocks__time {
+    color: #6f7c79;
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin: clamp(48px, 6vw, 64px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pillars li {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+  }
+  .pillars p {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  @media (max-width: 960px) {
+    .prox__top {
+      grid-template-columns: 1fr;
+    }
+    .pillars {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 560px) {
+    .pillars {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

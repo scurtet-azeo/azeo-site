@@ -1,0 +1,93 @@
+---
+const proofs = [
+  { label: 'HDS', text: 'Datacenter certifié Hébergeur de Données de Santé' },
+  { label: 'Local', text: 'Cloud privé souverain, océan Indien' },
+  { label: 'ISO 27001', text: 'Sécurité de l’information, infogérance Exodata' },
+  { label: 'ISO 9001', text: 'Management de la qualité, infogérance Exodata' },
+];
+---
+<section id="cloud" class="section">
+  <div class="container">
+    <div class="cloud">
+      <div class="cloud__text">
+        <p class="eyebrow cloud__eyebrow">Hébergement</p>
+        <h2>Un cloud privé souverain, dans l’océan Indien.</h2>
+        <p class="lead">
+          Votre solution de gestion des temps hébergée localement, dans un datacenter certifié HDS,
+          et infogérée par notre partenaire Exodata. Vos données RH restent dans la région, avec une
+          latence minimale pour vos équipes.
+        </p>
+        <a href="#contact" class="btn btn--ink">Parler de l’hébergement</a>
+      </div>
+      <ul class="cloud__proofs">
+        {proofs.map((p) => (
+          <li>
+            <strong>{p.label}</strong>
+            <span>{p.text}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cloud {
+    background: var(--bg-cloud);
+    border-radius: 28px;
+    padding: clamp(28px, 5vw, 72px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .cloud__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .cloud__eyebrow {
+    color: var(--petrol-hover);
+  }
+  .cloud__text .lead {
+    color: #2f3a37;
+  }
+  .cloud__proofs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cloud__proofs li {
+    background: #fff;
+    border-radius: var(--radius-m);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cloud__proofs strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+    font-weight: 600;
+    color: var(--petrol-hover);
+  }
+  .cloud__proofs span {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  @media (max-width: 960px) {
+    .cloud {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 420px) {
+    .cloud__proofs {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

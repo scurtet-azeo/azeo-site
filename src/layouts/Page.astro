@@ -1,0 +1,40 @@
+---
+// Gabarit des pages de texte (mentions légales, confidentialité…).
+import Base from './Base.astro';
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+const { title, description, noindex } = Astro.props;
+---
+<Base title={title} description={description} noindex={noindex}>
+  <article class="section">
+    <div class="container prose">
+      <h1>{title}</h1>
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .prose {
+    max-width: calc(760px + 2 * var(--gutter));
+  }
+  .prose :global(h1) {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 32px;
+  }
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    margin: 40px 0 12px;
+  }
+  .prose :global(p),
+  .prose :global(li) {
+    color: var(--text);
+    max-width: 70ch;
+  }
+  .prose :global(p + p) {
+    margin-top: 12px;
+  }
+</style>

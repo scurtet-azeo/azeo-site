@@ -1,0 +1,28 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site';
+const a = site.address;
+---
+<Page title="Mentions légales" description="Mentions légales du site azeoconseil.com.">
+  <h2>Éditeur du site</h2>
+  <p>
+    {site.name}, [forme juridique] au capital de [montant] €<br />
+    Siège social : {a.street}, {a.postalCode} {a.city}, {a.region}<br />
+    RCS [ville] [numéro] · SIRET [numéro] · TVA intracommunautaire [numéro]<br />
+    Directeur de la publication : [Prénom Nom]<br />
+    {site.email && <>Contact : <a href={`mailto:${site.email}`}>{site.email}</a></>}
+  </p>
+
+  <h2>Hébergement</h2>
+  <p>
+    Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis ·
+    <a href="https://www.cloudflare.com" rel="noopener">cloudflare.com</a>
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    L’ensemble des contenus de ce site (textes, visuels, logos) est la propriété d’{site.name}
+    ou de ses partenaires. eTemptation est une marque d’Horoquartz. Toute reproduction sans
+    autorisation est interdite.
+  </p>
+</Page>

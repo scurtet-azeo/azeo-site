@@ -1,0 +1,224 @@
+---
+import Icon from '../Icon.astro';
+
+// Illustration de planning : purement décorative.
+const rows = [
+  { label: 'Accueil', bars: [[4, 44, 'poste'], [56, 36, 'partiel']] },
+  { label: 'Production', bars: [[10, 60, 'poste']] },
+  { label: 'Logistique', bars: [[0, 30, 'partiel'], [40, 24, 'conge'], [70, 26, 'poste']] },
+  { label: 'Entretien', bars: [[20, 50, 'partiel']] },
+  { label: 'Encadrement', bars: [[6, 86, 'poste']] },
+] as const;
+---
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">Gestion des temps et planification · Saint-Leu, La Réunion</p>
+      <h1>Votre gestion des temps, pilotée d’ici.</h1>
+      <p class="lead">
+        Des plannings justes et une paie sans ressaisie, avec une équipe réunionnaise qui travaille
+        sur votre fuseau horaire, se déplace chez vous et connaît votre quotidien. Du choix de la
+        solution à la maintenance, hébergement local compris.
+      </p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">Prendre rendez-vous</a>
+        <a href="#solutions" class="btn btn--outline">Découvrir nos solutions</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="planning">
+        <div class="planning__head">
+          <strong>Planning de la semaine</strong>
+          <span>Lun · Mar · Mer · Jeu · Ven</span>
+        </div>
+        <div class="planning__rows">
+          {rows.map((row) => (
+            <div class="planning__row">
+              <span>{row.label}</span>
+              <div class="planning__track">
+                {row.bars.map(([left, width, kind]) => (
+                  <i class={`bar bar--${kind}`} style={`left:${left}%;width:${width}%`} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="planning__legend">
+          <span><i class="bar--poste" />Poste</span>
+          <span><i class="bar--partiel" />Temps partiel</span>
+          <span><i class="bar--conge" />Absence validée</span>
+        </div>
+      </div>
+      <div class="chip chip--dark">
+        <Icon name="check" color="var(--lime)" />
+        <div>
+          <strong>Variables de paie exportées</strong>
+          <p>Heures, absences et primes transmises au logiciel de paie en un clic.</p>
+        </div>
+      </div>
+      <div class="chip chip--light">
+        <Icon name="phone" size={26} />
+        <strong>Badgeage sur tablette ou mobile avec Badgy</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 56px);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 64px);
+    align-items: center;
+  }
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .hero__visual {
+    position: relative;
+    padding-bottom: 112px;
+  }
+  .planning {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 26px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 24px 60px rgba(22, 33, 31, 0.1);
+  }
+  .planning__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .planning__head strong {
+    font-size: 1.0625rem;
+    color: var(--ink);
+  }
+  .planning__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .planning__row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .planning__track {
+    position: relative;
+    height: 32px;
+    background: var(--bg-alt);
+    border-radius: 8px;
+  }
+  .bar {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    border-radius: 6px;
+  }
+  .bar--poste {
+    background: var(--petrol);
+  }
+  .bar--partiel {
+    background: var(--lime);
+  }
+  .bar--conge {
+    background: var(--orange);
+  }
+  .planning__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .planning__legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .planning__legend i {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  .chip {
+    position: absolute;
+    border-radius: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .chip--dark {
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    padding: 20px;
+    background: var(--ink);
+    color: #fff;
+  }
+  .chip--dark p {
+    margin-top: 4px;
+    font-size: 0.875rem;
+    color: var(--on-dark);
+  }
+  .chip--light {
+    left: 24px;
+    bottom: 16px;
+    width: 260px;
+    padding: 16px 18px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-size: 0.9375rem;
+  }
+  .chip--light strong {
+    font-weight: 500;
+  }
+
+  @media (max-width: 960px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__actions .btn {
+      flex: 1 1 220px;
+    }
+  }
+  @media (max-width: 560px) {
+    .hero__visual {
+      padding-bottom: 0;
+    }
+    .planning {
+      margin-right: 0;
+      padding: 18px;
+    }
+    .planning__row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .chip {
+      display: none;
+    }
+  }
+</style>

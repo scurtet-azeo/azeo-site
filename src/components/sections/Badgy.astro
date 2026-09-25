@@ -1,0 +1,236 @@
+---
+import Icon from '../Icon.astro';
+
+const features = [
+  { icon: 'badge', title: 'Une vraie badgeuse', text: 'Vos collaborateurs utilisent exactement les mêmes badges que sur vos terminaux Horoquartz. Zéro changement d’habitude.' },
+  { icon: 'tablet', title: 'Déployée à moindre coût', text: 'Une simple tablette Android suffit. Plus besoin d’investir dans un terminal dédié pour chaque site.' },
+  { icon: 'sites', title: 'Tous vos sites, même éphémères', text: 'Sites multiples, foires, expositions, chantiers : la badgeuse vient là où sont vos équipes.' },
+  { icon: 'sync', title: 'Même sans réseau', text: 'Les pointages sont sauvegardés et remontés automatiquement dès le retour de la connexion.' },
+  { icon: 'lead', title: 'Sur le smartphone des chefs d’équipe', text: 'Idéal pour les équipes mobiles et les chantiers : le badgeage se fait directement sur le terrain.' },
+  { icon: 'pin', title: 'Géolocalisation et NFC', text: 'Chaque pointage est géolocalisé, et le lieu lui-même peut être identifié par un badge NFC.' },
+] as const;
+---
+<section id="badgy" class="section section--dark" aria-labelledby="badgy-titre">
+  <div class="container">
+    <div class="badgy__top">
+      <div class="badgy__intro">
+        <span class="badgy__new">Nouveau</span>
+        <h2 id="badgy-titre" class="badgy__title">Badgy <span>by Azéo</span></h2>
+        <p class="badgy__tagline">La badgeuse connectée qui s’adapte à tous vos sites.</p>
+        <p class="lead">
+          Notre application de badgeage sur tablette et smartphone, 100 % compatible avec
+          eTemptation d’Horoquartz. Une simple tablette Android devient une badgeuse
+          professionnelle.
+        </p>
+        <div class="badgy__cta">
+          <a href="#contact" class="btn btn--lime">Demander une démo</a>
+          <p>Vous utilisez déjà eTemptation ?<br />Parlons-en.</p>
+        </div>
+      </div>
+
+      <div class="badgy__devices" aria-hidden="true">
+        <div class="tablet">
+          <span class="tablet__site">Site : chantier</span>
+          <span class="tablet__ring"><Icon name="nfc" size={44} color="var(--lime)" /></span>
+          <strong>Présentez votre badge</strong>
+          <span class="tablet__hint">Mêmes badges que vos terminaux Horoquartz</span>
+        </div>
+        <div class="phone">
+          <strong class="phone__brand">Badgy</strong>
+          <span class="phone__item"><Icon name="pin" size={20} color="var(--petrol)" />Lieu géolocalisé</span>
+          <span class="phone__item"><Icon name="nfc" size={20} color="var(--petrol)" />Lieu identifié par NFC</span>
+          <span class="phone__item phone__item--warn"><Icon name="sync" size={20} color="var(--orange-text)" />Hors réseau : synchro au retour</span>
+          <span class="phone__btn">Badger l’équipe</span>
+        </div>
+      </div>
+    </div>
+
+    <ul class="badgy__features">
+      {features.map((f) => (
+        <li>
+          <Icon name={f.icon} size={28} color="var(--lime)" />
+          <h3>{f.title}</h3>
+          <p>{f.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .badgy__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 72px);
+    align-items: center;
+  }
+  .badgy__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .badgy__new {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--orange);
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  .badgy__title {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .badgy__title span {
+    color: var(--lime);
+  }
+  .badgy__tagline {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .badgy__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding-top: 4px;
+  }
+  .badgy__cta p {
+    font-size: 0.9375rem;
+    color: var(--on-dark);
+  }
+  .badgy__devices {
+    position: relative;
+    min-height: 440px;
+  }
+  .tablet {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: min(440px, 88%);
+    height: 320px;
+    background: var(--ink);
+    border: 10px solid #24332f;
+    border-radius: 26px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+  }
+  .tablet strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .tablet__site,
+  .tablet__hint {
+    font-size: 0.875rem;
+    color: var(--on-dark-muted);
+  }
+  .tablet__ring {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 3px solid var(--lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone {
+    position: absolute;
+    right: 10px;
+    top: 110px;
+    width: 180px;
+    height: 320px;
+    background: #fff;
+    color: var(--ink);
+    border: 8px solid #24332f;
+    border-radius: 30px;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .phone__brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  .phone__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+    background: var(--bg-alt);
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+  .phone__item--warn {
+    background: var(--bg-sand);
+  }
+  .phone__btn {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 999px;
+    background: var(--petrol);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  .badgy__features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: clamp(48px, 6vw, 64px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .badgy__features li {
+    background: var(--petrol-card);
+    border-radius: var(--radius-m);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .badgy__features h3 {
+    font-size: 1.1875rem;
+  }
+  .badgy__features p {
+    font-size: 0.9375rem;
+    color: var(--on-dark);
+  }
+  @media (max-width: 1024px) {
+    .badgy__top {
+      grid-template-columns: 1fr;
+    }
+    .badgy__features {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 600px) {
+    .badgy__devices {
+      display: none;
+    }
+    .badgy__features {
+      grid-template-columns: 1fr;
+    }
+    .badgy__features li {
+      padding: 20px;
+    }
+  }
+</style>

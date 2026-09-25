@@ -1,0 +1,51 @@
+---
+import { clients } from '../../data/clients';
+---
+{clients.length > 0 && (
+  <section class="clients" aria-labelledby="clients-titre">
+    <div class="container clients__inner">
+      <h2 id="clients-titre" class="clients__title">Ils nous font confiance</h2>
+      <ul class="clients__list">
+        {clients.map((c) => (
+          <li><img src={c.logo} alt={c.name} loading="lazy" /></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .clients {
+    border-block: 1px solid var(--line);
+    padding-block: 32px;
+  }
+  .clients__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px 48px;
+  }
+  .clients__title {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .clients__list {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .clients__list img {
+    height: 44px;
+    width: auto;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+</style>

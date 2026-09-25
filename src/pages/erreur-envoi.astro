@@ -1,0 +1,12 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site';
+---
+<Page title="Message non envoyé" noindex>
+  <p>
+    Votre message n’a pas pu être envoyé. Vérifiez que les champs obligatoires sont remplis et
+    que l’adresse e-mail est valide, puis réessayez.
+  </p>
+  {site.phone && <p>Vous pouvez aussi nous appeler au <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>.</p>}
+  <p><a href="/#contact">Revenir au formulaire</a></p>
+</Page>

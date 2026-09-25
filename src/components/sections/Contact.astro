@@ -1,0 +1,163 @@
+---
+import { site } from '../../data/site';
+const a = site.address;
+---
+<section id="contact" class="contact">
+  <div class="container contact__grid">
+    <div class="contact__text">
+      <h2>Parlons de votre organisation.</h2>
+      <p class="contact__lead">
+        Un premier échange, chez vous ou à Saint-Leu, pour comprendre vos contraintes de planning
+        et de paie et voir si une solution de gestion des temps a du sens pour vous.
+      </p>
+      <address>
+        {a.street}, {a.city}, {a.region}
+        {site.phone && <><br /><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></>}
+        {site.email && <><br /><a href={`mailto:${site.email}`}>{site.email}</a></>}
+      </address>
+    </div>
+
+    <form class="contact__form" method="post" action="/api/contact">
+      <div class="field-row">
+        <div class="field">
+          <label for="nom">Nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="entreprise">Entreprise</label>
+          <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="telephone">Téléphone <span class="optional">(facultatif)</span></label>
+          <input id="telephone" name="telephone" type="tel" autocomplete="tel" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="effectif">Effectif</label>
+        <select id="effectif" name="effectif">
+          <option>Moins de 50 salariés</option>
+          <option>50 à 250 salariés</option>
+          <option>Plus de 250 salariés</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Votre besoin</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <!-- Piège à robots : champ invisible pour les humains -->
+      <div class="visually-hidden" aria-hidden="true">
+        <label for="site_web">Ne pas remplir</label>
+        <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <p class="contact__legal">
+        Vos informations servent uniquement à vous recontacter.
+        <a href="/confidentialite/">En savoir plus</a>
+      </p>
+      <button type="submit" class="btn btn--ink">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--petrol);
+    color: #fff;
+    padding-block: var(--section-y);
+  }
+  .contact__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(36px, 6vw, 72px);
+    align-items: start;
+  }
+  .contact__text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .contact__lead {
+    font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+    color: #e4f0ee;
+    max-width: 52ch;
+  }
+  address {
+    font-style: normal;
+    line-height: 1.8;
+  }
+  address a {
+    color: #fff;
+  }
+  .contact__form {
+    background: #fff;
+    color: var(--ink);
+    border-radius: 20px;
+    padding: clamp(22px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .optional {
+    font-weight: 400;
+    color: var(--muted);
+  }
+  input,
+  select,
+  textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 1rem;
+  }
+  textarea {
+    resize: vertical;
+  }
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--petrol);
+    outline-offset: 1px;
+    border-color: var(--petrol);
+  }
+  .contact__legal {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .contact__form .btn {
+    min-height: 56px;
+  }
+  @media (max-width: 900px) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

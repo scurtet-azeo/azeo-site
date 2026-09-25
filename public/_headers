@@ -1,0 +1,12 @@
+# En-têtes HTTP appliqués par Cloudflare Pages.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Fichiers générés par Astro : noms uniques, on peut les garder en cache un an.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

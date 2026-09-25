@@ -1,0 +1,64 @@
+---
+import Icon from '../Icon.astro';
+
+// Contenu provisoire : à enrichir (notamment la gestion des absences).
+const items = [
+  { icon: 'calendar', title: 'Un seul outil pour vos managers', text: 'Tous les plannings au même endroit, à jour, partagés entre les équipes.' },
+  { icon: 'absence', title: 'Des absences sans papier', text: 'Demandes, validations et compteurs en ligne, avec des règles uniformes pour tous les services.' },
+  { icon: 'payroll', title: 'Des variables de paie calculées', text: 'Calcul automatique des éléments variables et import en paie en un clic.' },
+  { icon: 'shield', title: 'Équité et conformité', text: 'Les mêmes règles pour chacun et le respect du cadre légal, sans calcul à la main.' },
+  { icon: 'team', title: 'Des collaborateurs autonomes', text: 'Chacun consulte son planning et ses soldes sans passer par les RH.' },
+  { icon: 'clock', title: 'Une paie fiabilisée', text: 'Les données de temps alimentent directement la paie : moins d’erreurs, moins de corrections.' },
+] as const;
+---
+<section class="section section--alt" aria-labelledby="benefices-titre">
+  <div class="container">
+    <div class="ben__head">
+      <h2 id="benefices-titre">Une solution de gestion des temps… pour quoi faire ?</h2>
+      <p class="lead">
+        Moins de papier, moins de ressaisie, des règles appliquées de la même façon pour tout le
+        monde. Voici ce que nos clients gagnent au quotidien.
+      </p>
+    </div>
+    <ul class="ben__grid">
+      {items.map((it) => (
+        <li class="card">
+          <Icon name={it.icon} size={32} color="var(--petrol)" />
+          <h3>{it.title}</h3>
+          <p>{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .ben__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+  .ben__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (max-width: 960px) {
+    .ben__head {
+      grid-template-columns: 1fr;
+    }
+    .ben__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 600px) {
+    .ben__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

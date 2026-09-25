@@ -1,0 +1,150 @@
+---
+import Icon from '../Icon.astro';
+import { site } from '../../data/site';
+---
+<section id="solutions" class="section">
+  <div class="container">
+    <div class="sol__head">
+      <div class="sol__title">
+        <p class="eyebrow">Nos solutions</p>
+        <h2>Le logiciel et le badgeage, installés ensemble.</h2>
+      </div>
+      <div class="sol__intro">
+        <p class="lead">
+          Nous intégrons les solutions d’Horoquartz, éditeur français spécialiste de la gestion des
+          temps, et les complétons avec nos propres outils de badgeage.
+        </p>
+        <a href={site.partners.horoquartz} class="link-arrow" rel="noopener">
+          Découvrir l’éditeur Horoquartz <Icon name="external" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <div class="sol__grid">
+      <article class="card">
+        <div class="placeholder sol__media" style="background: var(--bg-cloud)">[Capture eTemptation]</div>
+        <p class="sol__kind">Logiciel · Horoquartz</p>
+        <h3 class="sol__name">eTemptation</h3>
+        <p>
+          Temps, absences, plannings et activités dans une solution modulaire. Planification sous
+          contraintes (compétences, besoins, règles de travail) et interfaçage avec plus de 150
+          logiciels de paie.
+        </p>
+        <a href="#contact" class="link-arrow sol__link">En savoir plus <Icon name="arrow" size={18} /></a>
+      </article>
+
+      <article class="card" id="badgeuses">
+        <div class="placeholder sol__media" style="background: var(--bg-sand)">[Photo nouvelle badgeuse]</div>
+        <p class="sol__kind">Matériel</p>
+        <h3 class="sol__name">Badgeuses [nom de la gamme]</h3>
+        <p>
+          [Description de la nouvelle gamme : modes de badgeage, connectivité, usages.] Installées,
+          raccordées et maintenues par nos soins.
+        </p>
+        <a href="#contact" class="link-arrow sol__link">Voir les badgeuses <Icon name="arrow" size={18} /></a>
+      </article>
+
+      <article class="card sol__badgy">
+        <div class="sol__media sol__devices" aria-hidden="true">
+          <span class="dev dev--phone"><Icon name="clock" size={30} color="var(--lime)" /></span>
+          <span class="dev dev--tablet"><Icon name="nfc" size={40} color="var(--lime)" /></span>
+        </div>
+        <p class="sol__kind">Nouveau · Notre solution</p>
+        <h3 class="sol__name">Badgy by Azéo</h3>
+        <p>
+          L’application de badgeage sur tablette et smartphone, 100 % compatible eTemptation. Les
+          mêmes badges que vos terminaux Horoquartz, sans matériel dédié.
+        </p>
+        <a href="#badgy" class="link-arrow sol__link">Découvrir Badgy <Icon name="arrow" size={18} /></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sol__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 48px);
+  }
+  .sol__title,
+  .sol__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sol__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .sol__grid .card {
+    gap: 14px;
+  }
+  .sol__media {
+    height: 200px;
+    border-radius: 14px;
+    margin-bottom: 6px;
+  }
+  .card .sol__kind {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .sol__name {
+    font-size: 1.75rem;
+  }
+  .sol__link {
+    margin-top: auto;
+  }
+  .sol__badgy {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+  .sol__badgy p {
+    color: var(--on-dark);
+  }
+  .card.sol__badgy .sol__kind {
+    color: var(--orange);
+  }
+  .sol__badgy .sol__link {
+    color: var(--lime);
+  }
+  .sol__devices {
+    background: #24332f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  .dev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--lime);
+  }
+  .dev--phone {
+    width: 70px;
+    height: 124px;
+    border-radius: 14px;
+  }
+  .dev--tablet {
+    width: 150px;
+    height: 108px;
+    border-radius: 12px;
+  }
+  @media (max-width: 1024px) {
+    .sol__head {
+      grid-template-columns: 1fr;
+    }
+    .sol__grid {
+      grid-template-columns: 1fr;
+      max-width: 640px;
+    }
+  }
+</style>

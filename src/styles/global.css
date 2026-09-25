@@ -1,0 +1,289 @@
+/* ==========================================================================
+   Azéo Conseil — styles globaux
+   Couleurs issues du logo : pétrole, vert anis, orange.
+   ========================================================================== */
+
+:root {
+  /* Couleurs de marque */
+  --petrol: #046a6f;
+  --petrol-hover: #03565a;
+  --petrol-deep: #0b3b3e;
+  --petrol-card: #0f4a4e;
+  --lime: #a6d903;
+  --orange: #ec8d21;
+  --orange-text: #a85708; /* orange lisible sur fond clair */
+
+  /* Neutres */
+  --ink: #16211f;
+  --text: #3e4946;
+  --muted: #4a5552;
+  --line: #e1e6dc;
+  --line-strong: #b9c2b5;
+  --bg: #ffffff;
+  --bg-alt: #f3f6ee;
+  --bg-cloud: #eaf3f3;
+  --bg-sand: #fdf1e3;
+  --on-dark: #c9d8d8;
+  --on-dark-muted: #a9b4b1;
+
+  /* Typographie */
+  --font-display: 'Outfit', 'Trebuchet MS', sans-serif;
+  --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Mise en page */
+  --container: 1280px;
+  --gutter: clamp(20px, 5vw, 80px);
+  --section-y: clamp(56px, 8vw, 112px);
+  --radius-s: 12px;
+  --radius-m: 18px;
+  --radius-l: 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.875rem, 3.4vw, 3rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--petrol);
+}
+
+a:hover {
+  color: var(--petrol-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Utilitaires ------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section--dark {
+  background: var(--petrol-deep);
+  color: #fff;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange-text);
+}
+
+.section--dark .eyebrow {
+  color: var(--orange);
+}
+
+.lead {
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 62ch;
+}
+
+.section--dark .lead {
+  color: var(--on-dark);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+  color: #fff;
+}
+
+/* --- Boutons ---------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  font: 600 1rem/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--petrol);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--petrol-hover);
+  color: #fff;
+}
+
+.btn--outline {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn--outline:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn--lime {
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.btn--lime:hover {
+  background: #b9e828;
+  color: var(--ink);
+}
+
+.btn--ink {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn--ink:hover {
+  background: #000;
+  color: #fff;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+/* --- Cartes ----------------------------------------------------------- */
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: clamp(22px, 2.4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-s);
+  color: #5e6a5b;
+  font-size: 0.9375rem;
+  text-align: center;
+  padding: 12px;
+}

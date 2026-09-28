@@ -17,6 +17,14 @@ export const clients: Client[] = [
   { name: 'E.Leclerc', logo: '/images/clients/e-leclerc.png', height: 36 },
   { name: 'Cirest', logo: '/images/clients/cirest.png', height: 58 },
   { name: 'Carrefour', logo: '/images/clients/carrefour.png', height: 34 },
+  { name: 'CRC – Caisses Réunionnaises Complémentaires', logo: '/images/clients/crc.png', height: 58 },
+  { name: 'Ville de Saint-Denis', logo: '/images/clients/ville-saint-denis.png', height: 60 },
+  { name: 'Sorelait', logo: '/images/clients/sorelait.png', height: 42 },
+  { name: 'Territoire de l’Ouest', logo: '/images/clients/territoire-ouest.png', height: 44 },
+  { name: 'SIDR', logo: '/images/clients/sidr.png', height: 54 },
+  { name: 'Run Market', logo: '/images/clients/run-market.png', height: 34 },
+  { name: 'Master’s Pneu', logo: '/images/clients/masters-pneu.png', height: 50 },
+  { name: 'Vindemia', logo: '/images/clients/vindemia.png', height: 34 },
 ];
 
 // Chiffres clés affichés de part et d'autre du bandeau.

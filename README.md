@@ -34,14 +34,24 @@ Après chaque build, `scripts/typo-fr.mjs` insère automatiquement une espace in
 
 ## Formulaire de contact
 
-Le formulaire envoie les demandes par e-mail via [Resend](https://resend.com), grâce à la fonction `functions/api/contact.ts`.
-Variables à créer dans Cloudflare Pages (Paramètres > Variables et secrets) :
+Le formulaire envoie les demandes par e-mail grâce à la fonction `functions/api/contact.ts`,
+via **votre serveur SMTP** (ou, à défaut, via Resend).
 
-- `RESEND_API_KEY` : clé API Resend (en secret)
-- `CONTACT_TO` : adresse qui reçoit les demandes, soit `contact@azeoconseil.fr`
-- `CONTACT_FROM` : expéditeur vérifié chez Resend, par exemple `Site Azéo <site@azeoconseil.fr>`
+Variables à créer dans Cloudflare Pages (Paramètres > Variables et secrets), en **Production et Aperçu**,
+puis relancer un déploiement :
 
-Tant que ces variables ne sont pas définies, l'envoi renvoie vers la page « Message non envoyé ».
+| Variable | Exemple | Type |
+|---|---|---|
+| `SMTP_HOST` | `mail.gandi.net` | Texte |
+| `SMTP_PORT` | `465` (ou `587`) — le port 25 est bloqué par Cloudflare | Texte |
+| `SMTP_USER` | `site@azeoconseil.fr` | Texte |
+| `SMTP_PASSWORD` | mot de passe de cette boîte | **Secret** |
+| `CONTACT_TO` | `contact@azeoconseil.fr` | Texte |
+| `CONTACT_FROM` | facultatif, par défaut `SMTP_USER` | Texte |
+
+Sans `SMTP_HOST`, la fonction utilise Resend (`RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM`).
+En cas d'échec, le visiteur arrive sur « Message non envoyé » et la cause est écrite dans le
+flux de journaux du déploiement (onglet Fonctions).
 
 ## Déploiement
 

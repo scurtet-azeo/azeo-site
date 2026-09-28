@@ -17,7 +17,7 @@ interface Props {
 }
 
 const { title, description = site.description, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · Gestion des temps et planification à La Réunion`;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · Gestion des temps et planification à La Réunion et Mayotte`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/images/logo-azeo.png', Astro.site);
 
@@ -37,7 +37,10 @@ const jsonLd = {
     addressRegion: site.address.region,
     addressCountry: site.address.country,
   },
-  areaServed: { '@type': 'Place', name: 'La Réunion' },
+  areaServed: [
+    { '@type': 'Place', name: 'La Réunion' },
+    { '@type': 'Place', name: 'Mayotte' },
+  ],
   ...(site.phone && { telephone: site.phone }),
   ...(site.email && { email: site.email }),
   ...(site.linkedin && { sameAs: [site.linkedin] }),

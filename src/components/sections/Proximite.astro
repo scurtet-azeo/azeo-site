@@ -2,9 +2,9 @@
 import Icon from '../Icon.astro';
 
 const pillars = [
-  { icon: 'clock', title: 'Le même fuseau horaire', text: 'Support, questions de paramétrage, clôture de paie : on vous répond pendant vos heures de travail.' },
-  { icon: 'pin', title: 'Sur site, sans billet d’avion', text: 'Paramétrage, formation, accompagnement au démarrage : nous venons chez vous, partout sur l’île.' },
-  { icon: 'mountain', title: 'Votre quotidien est le nôtre', text: 'Nous connaissons le tissu économique réunionnais, ses métiers et ses contraintes, parce que nous les partageons.' },
+  { icon: 'clock', title: 'Votre fuseau horaire, ou presque', text: 'Même heure à La Réunion, une heure d’écart avec Mayotte : support, paramétrage, clôture de paie, on vous répond pendant vos heures de travail.' },
+  { icon: 'pin', title: 'Sur site, quand il le faut', text: 'Paramétrage, formation, accompagnement au démarrage : nous venons chez vous, à La Réunion comme à Mayotte.' },
+  { icon: 'mountain', title: 'Votre quotidien est le nôtre', text: 'Nous connaissons le tissu économique de l’océan Indien, ses métiers et ses contraintes, parce que nous les partageons.' },
   { icon: 'server', title: 'Vos données restent ici', text: 'Hébergement dans un cloud privé sur l’île de La Réunion, au plus près de vos équipes.' },
 ] as const;
 ---
@@ -15,16 +15,21 @@ const pillars = [
         <p class="eyebrow">Notre différence</p>
         <h2 class="prox__title">Ici, à La Réunion,<br />comme vous</h2>
         <p class="lead">
-          Notre service support, 100% réunionnais est basé localement, dans nos bureaux de Saint Leu.
-		  Quand un planning coince un lundi à 8 h, vous n’attendez pas que la France hexagonale se réveille.
-          Nous vivons sur la même île, à la même heure, avec les mêmes réalités que vos équipes.
+          Notre service support, 100 % réunionnais, est basé localement, dans nos bureaux de
+          Saint-Leu. Quand un planning coince un lundi à 8 h, vous n’attendez pas que la France
+          hexagonale se réveille. Nous vivons à la même heure, ou presque, avec les mêmes réalités
+          que vos équipes, à La Réunion comme à Mayotte.
         </p>
       </div>
       <div class="clocks">
         <p class="clocks__caption">Lundi, 9 h 00 à Saint-Leu</p>
         <div class="clocks__row">
-          <div><strong>Votre entreprise</strong><span>La Réunion · UTC+4</span></div>
+          <div><strong>Votre entreprise à La Réunion</strong><span>UTC+4</span></div>
           <span class="clocks__time">09:00</span>
+        </div>
+        <div class="clocks__row">
+          <div><strong>Votre entreprise à Mayotte</strong><span>UTC+3</span></div>
+          <span class="clocks__time">08:00</span>
         </div>
         <div class="clocks__row clocks__row--azeo">
           <div><strong>Azéo Conseil</strong><span>Saint-Leu · UTC+4 · disponible</span></div>

@@ -33,6 +33,22 @@ export const clients: Client[] = [
   { name: 'CCAS de Saint-Pierre', logo: '/images/clients/ccas-saint-pierre.png', height: 50 },
   { name: 'CIAS – Centre intercommunal d’action sociale', logo: '/images/clients/cias.png', height: 50 },
   { name: 'ARAR Soins à domicile', logo: '/images/clients/arar.png', height: 58 },
+  { name: 'Keepway', logo: '/images/clients/keepway.png', height: 44 },
+  { name: 'Intermark', logo: '/images/clients/intermark.png', height: 42 },
+  { name: 'Arma Sud Réunion', logo: '/images/clients/arma-sud.png', height: 48 },
+  { name: 'Soretole', logo: '/images/clients/soretole.png', height: 52 },
+  { name: 'Bamyrex', logo: '/images/clients/bamyrex.png', height: 40 },
+  { name: 'Brioche Dorée', logo: '/images/clients/brioche-doree.png', height: 46 },
+  { name: 'La Plaine-des-Palmistes', logo: '/images/clients/plaine-des-palmistes.png', height: 62 },
+  { name: 'Mango', logo: '/images/clients/mango.png', height: 26 },
+  { name: 'Kiabi', logo: '/images/clients/kiabi.png', height: 40 },
+  { name: 'Promod', logo: '/images/clients/promod.png', height: 22 },
+  { name: 'Pimkie', logo: '/images/clients/pimkie.png', height: 32 },
+  { name: 'Morgan', logo: '/images/clients/morgan.png', height: 40 },
+  { name: 'Cap Méchant', logo: '/images/clients/cap-mechant.png', height: 38 },
+  { name: 'ASDR', logo: '/images/clients/asdr.png', height: 40 },
+  { name: 'Estival', logo: '/images/clients/estival.png', height: 54 },
+  { name: 'Carrefour Market Kanopée', logo: '/images/clients/carrefour-market-kanopee.png', height: 56 },
 ];
 
 // Chiffres clés affichés de part et d'autre du bandeau.

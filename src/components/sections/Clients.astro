@@ -7,7 +7,7 @@ const duration = Math.max(clients.length * 5, 30);
 {clients.length > 0 && (
   <section class="clients" aria-labelledby="clients-titre">
     <div class="container clients__inner">
-      <h2 id="clients-titre" class="clients__title">Ils nous font confiance</h2>
+      <h2 id="clients-titre" class="clients__title"><strong>+&nbsp;de&nbsp;40&nbsp;clients</strong> accompagnés au quotidien</h2>
       <div class="marquee" style={`--duration: ${duration}s`}>
         <div class="marquee__track">
           {[0, 1].map((copy) => (
@@ -64,11 +64,20 @@ const duration = Math.max(clients.length * 5, 30);
   }
   .clients__title {
     flex: none;
+    max-width: 230px;
+    line-height: 1.35;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--muted);
     letter-spacing: 0;
+  }
+  .clients__title strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--petrol);
   }
   .marquee {
     flex: 1;
@@ -151,6 +160,9 @@ const duration = Math.max(clients.length * 5, 30);
     .clients__inner {
       flex-direction: column;
       align-items: flex-start;
+    }
+    .clients__title {
+      max-width: none;
     }
     .marquee {
       width: 100%;

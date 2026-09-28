@@ -1,5 +1,5 @@
 ---
-import { clients } from '../../data/clients';
+import { clients, chiffres } from '../../data/clients';
 
 // Vitesse : environ 5 secondes par logo, pour un défilement lent et lisible.
 const duration = Math.max(clients.length * 5, 30);
@@ -7,7 +7,8 @@ const duration = Math.max(clients.length * 5, 30);
 {clients.length > 0 && (
   <section class="clients" aria-labelledby="clients-titre">
     <div class="container clients__inner">
-      <h2 id="clients-titre" class="clients__title"><strong>+&nbsp;de&nbsp;40&nbsp;clients</strong> accompagnés au quotidien</h2>
+      <h2 id="clients-titre" class="visually-hidden">Nos clients</h2>
+      <p class="stat stat--left"><strong>{chiffres.gauche.valeur}</strong> {chiffres.gauche.texte}</p>
       <div class="marquee" style={`--duration: ${duration}s`}>
         <div class="marquee__track">
           {[0, 1].map((copy) => (
@@ -15,7 +16,7 @@ const duration = Math.max(clients.length * 5, 30);
               {clients.map((c) => (
                 <li>
                   {c.logo ? (
-                    <img src={c.logo} alt={copy === 0 ? c.name : ''} loading="lazy" />
+                    <img src={c.logo} alt={copy === 0 ? c.name : ''} loading="lazy" style={`height:${c.height ?? 40}px`} />
                   ) : (
                     <span class="placeholder-logo">{c.name}</span>
                   )}
@@ -25,6 +26,7 @@ const duration = Math.max(clients.length * 5, 30);
           ))}
         </div>
       </div>
+      <p class="stat stat--right"><strong>{chiffres.droite.valeur}</strong> {chiffres.droite.texte}</p>
     </div>
   </section>
 )}
@@ -58,21 +60,22 @@ const duration = Math.max(clients.length * 5, 30);
     padding-block: 28px;
   }
   .clients__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: 20px 48px;
+    gap: 20px 40px;
   }
-  .clients__title {
-    flex: none;
-    max-width: 230px;
-    line-height: 1.35;
-    font-family: var(--font-body);
+  .stat {
+    max-width: 260px;
     font-size: 0.9375rem;
     font-weight: 600;
+    line-height: 1.35;
     color: var(--muted);
-    letter-spacing: 0;
   }
-  .clients__title strong {
+  .stat--right {
+    text-align: right;
+  }
+  .stat strong {
     display: block;
     font-family: var(--font-display);
     font-size: 1.375rem;
@@ -108,15 +111,15 @@ const duration = Math.max(clients.length * 5, 30);
     flex: none;
     display: flex;
     align-items: center;
-    height: 56px;
+    height: 64px;
   }
   .marquee__list img {
-    height: 44px;
     width: auto;
-    max-width: 160px;
+    max-width: 170px;
     object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.75;
+    /* gris foncé uniforme : les logos clairs restent lisibles */
+    filter: grayscale(1) brightness(0.75) contrast(1.4);
+    opacity: 0.8;
     transition: filter 0.2s ease, opacity 0.2s ease;
   }
   .marquee__list li:hover img {
@@ -156,16 +159,24 @@ const duration = Math.max(clients.length * 5, 30);
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     .clients__inner {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .clients__title {
-      max-width: none;
+      grid-template-columns: 1fr 1fr;
     }
     .marquee {
-      width: 100%;
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+    .stat {
+      max-width: none;
+    }
+    .stat strong {
+      font-size: 1.125rem;
+    }
+  }
+  @media (max-width: 560px) {
+    .stat--right {
+      text-align: left;
     }
   }
 </style>

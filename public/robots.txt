@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://azeoconseil.com/sitemap-index.xml
+Sitemap: https://azeoconseil.fr/sitemap-index.xml

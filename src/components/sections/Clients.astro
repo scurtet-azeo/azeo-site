@@ -5,7 +5,7 @@ import { clients, chiffres } from '../../data/clients';
 const duration = Math.max(clients.length * 5, 30);
 ---
 {clients.length > 0 && (
-  <section class="clients" aria-labelledby="clients-titre">
+  <section id="clients" class="clients" aria-labelledby="clients-titre">
     <div class="container clients__inner">
       <h2 id="clients-titre" class="visually-hidden">Nos clients</h2>
       <p class="stat stat--left"><strong>{chiffres.gauche.valeur}</strong> {chiffres.gauche.texte}</p>

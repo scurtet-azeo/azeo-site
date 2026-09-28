@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // Adresse définitive du site : utilisée pour les balises canoniques et le sitemap.
-  site: 'https://azeoconseil.com',
+  site: 'https://azeoconseil.fr',
   trailingSlash: 'always',
   // Conserve les espaces entre un texte et un lien (sinon « de la CNIL » devient « de laCNIL »).
   compressHTML: false,

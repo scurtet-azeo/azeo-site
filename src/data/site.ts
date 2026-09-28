@@ -2,7 +2,7 @@
 // Les champs vides sont à compléter : ils sont masqués tant qu'ils sont vides.
 export const site = {
   name: 'Azéo Conseil',
-  url: 'https://azeoconseil.com',
+  url: 'https://azeoconseil.fr',
   description:
     "Intégrateur Horoquartz à La Réunion : gestion des temps, planification, badgeuses et Badgy. Accompagnement de proximité et cloud privé à La Réunion.",
   address: {

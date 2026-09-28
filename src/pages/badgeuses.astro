@@ -9,12 +9,12 @@ import pulsi from '../assets/pulsi.jpg';
 
 const chooser = [
   { href: '#badgy', name: 'Badgy', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
-  { href: '#etsmile', name: 'eTSmile', for: 'Pointer simplement et en toute sécurité, en intérieur comme en milieu exposé.' },
-  { href: '#pulsi', name: 'Pulsi', for: 'Pointer et donner accès aux services RH aux équipes sans ordinateur.' },
+  { href: '#etsmile', name: 'eTSmile', for: 'Badger simplement et en toute sécurité, en intérieur comme en milieu exposé.' },
+  { href: '#pulsi', name: 'Pulsi', for: 'Badger et donner accès aux services RH aux équipes sans ordinateur.' },
 ];
 
 const etsmileFeatures = [
-  { icon: 'badge', title: 'Un geste suffit', text: 'Le collaborateur présente sa carte RFID : le pointage est enregistré instantanément.' },
+  { icon: 'badge', title: 'Un geste suffit', text: 'Le collaborateur présente sa carte RFID : le badgeage est enregistré instantanément.' },
   { icon: 'user', title: 'Des informations à l’écran', text: 'L’afficheur intégré permet à chacun de consulter ses informations directement sur la badgeuse.' },
   { icon: 'plug', title: 'Une installation simplifiée', text: 'Alimentée en PoE, la badgeuse fonctionne avec un seul câble réseau, sans alimentation électrique dédiée.' },
   { icon: 'server', title: 'Une supervision à distance', text: 'Le Reader Manager permet de surveiller l’état de toutes vos badgeuses depuis un poste central.' },
@@ -24,12 +24,12 @@ const pulsiServices = [
   'Consultation des compteurs : congés payés, RTT, récupérations',
   'Saisie et suivi des demandes d’absence',
   'Consultation du planning de la semaine',
-  'Pointage quotidien des équipes sur site',
+  'Badgeage quotidien des équipes sur site',
 ];
 
 const services = [
   { icon: 'badge', title: 'Conseil et choix du matériel', text: 'Nous vous aidons à choisir les modèles adaptés à chaque site et à chaque usage : eTSmile, Pulsi ou Badgy.' },
-  { icon: 'calendar', title: 'Paramétrage dans eTemptation', text: 'Motifs de pointage, services RH, droits d’accès : tout est configuré selon vos règles.' },
+  { icon: 'calendar', title: 'Paramétrage dans eTemptation', text: 'Motifs de badgeage, services RH, droits d’accès : tout est configuré selon vos règles.' },
   { icon: 'team', title: 'Formation des utilisateurs', text: 'Gestionnaires et collaborateurs prennent en main les badgeuses et les services en libre-service.' },
   { icon: 'sync', title: 'Supervision et support', text: 'Suivi de vos badgeuses à distance avec le Reader Manager, et un support qui répond sur votre fuseau horaire.' },
 ];
@@ -45,7 +45,7 @@ const breadcrumb = {
 ---
 <Base
   title="Badgeuses et pointeuses Horoquartz à La Réunion : eTSmile, Pulsi"
-  description="Badgeuses Horoquartz eTSmile et Pulsi à La Réunion : pointage RFID, version IP65, services RH en libre-service. Conseil, paramétrage eTemptation et support par Azéo Conseil."
+  description="Badgeuses Horoquartz eTSmile et Pulsi à La Réunion : badgeage RFID, version IP65, services RH en libre-service. Conseil, paramétrage eTemptation et support par Azéo Conseil."
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
 
@@ -59,7 +59,7 @@ const breadcrumb = {
           <p class="eyebrow">Matériel</p>
           <h1>Une badgeuse adaptée à chaque site et à chaque équipe</h1>
           <p class="lead">
-            Badgy transforme tablettes et smartphones en badgeuses, et les terminaux eTSmile et Pulsi
+            Badgy transforme tablettes et smartphones en badgeuses, et les badgeuses eTSmile et Pulsi
             équipent vos sites fixes. Tous sont connectés à eTemptation : nous vous conseillons sur le
             choix du matériel, puis nous le paramétrons et le suivons depuis La Réunion.
           </p>
@@ -86,7 +86,7 @@ const breadcrumb = {
         <h2>Badgy <span>by Azéo</span> : la badgeuse sur tablette et smartphone</h2>
         <p class="lead">
           Une tablette Android ou le smartphone d’un chef d’équipe devient une badgeuse, avec les
-          mêmes badges que vos terminaux Horoquartz. Idéal pour les chantiers, les sites éphémères et
+          mêmes badges que vos badgeuses Horoquartz. Idéal pour les chantiers, les sites éphémères et
           les zones sans réseau.
         </p>
       </div>
@@ -109,7 +109,7 @@ const breadcrumb = {
         <p class="eyebrow">La référence polyvalente</p>
         <h2>eTSmile</h2>
         <p class="lead">
-          La solution idéale pour les organisations qui veulent un pointage simple et sécurisé, sans
+          La solution idéale pour les organisations qui veulent un badgeage simple et sécurisé, sans
           complexité d’installation ni d’exploitation.
         </p>
         <ul class="features">
@@ -139,14 +139,14 @@ const breadcrumb = {
       <div class="product__media product__media--pack">
         <Image
           src={pulsi}
-          alt="Badgeuse Pulsi à écran tactile affichant « Bonjour ! Présentez votre badge » et des motifs de pointage"
+          alt="Badgeuse Pulsi à écran tactile affichant « Bonjour ! Présentez votre badge » et des motifs de badgeage"
           widths={[400, 768]}
           sizes="(max-width: 960px) 100vw, 45vw"
           loading="lazy"
         />
       </div>
       <div class="stack">
-        <p class="eyebrow">Pointeuse avec services RH intégrés</p>
+        <p class="eyebrow">Badgeuse avec services RH intégrés</p>
         <h2>Pulsi</h2>
         <p class="lead">
           Pulsi est d’abord une badgeuse simple et sécurisée. Elle peut aussi devenir un vrai point
@@ -166,7 +166,7 @@ const breadcrumb = {
           <strong>Évolutive par licence</strong>
           <p>
             Le libre-service s’active par simple licence logicielle, sur n’importe quelle Pulsi
-            déjà installée. Vous commencez par le pointage et ajoutez les services RH quand vous le
+            déjà installée. Vous commencez par le badgeage et ajoutez les services RH quand vous le
             souhaitez.
           </p>
         </div>

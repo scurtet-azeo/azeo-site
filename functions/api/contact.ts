@@ -5,7 +5,7 @@
  * Variables à définir dans Cloudflare (Paramètres > Variables et secrets) :
  *   RESEND_API_KEY  clé API Resend (secret)
  *   CONTACT_TO      adresse qui reçoit les demandes, ex. contact@azeoconseil.com
- *   CONTACT_FROM    expéditeur vérifié chez Resend, ex. "Site Azéo <site@azeoconseil.com>"
+ *   CONTACT_FROM    expéditeur vérifié chez Resend, ex. "Site Azéo <site@azeoconseil.fr>"
  *
  * Sans JavaScript côté navigateur : le formulaire poste ici, puis on redirige
  * vers /merci/ (succès) ou /erreur-envoi/ (échec).

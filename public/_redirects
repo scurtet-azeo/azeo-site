@@ -1,12 +1,27 @@
-# Redirections des adresses de l'ancien site vers le nouveau (301 = définitive).
-# Indispensable pour conserver le référencement acquis.
-# Format : ancienne-adresse  nouvelle-adresse  301
+# Redirections des adresses de l'ancien site (azeoconseil.com, WordPress 2017)
+# vers les pages du nouveau site. 301 = redirection définitive (conserve le référencement).
+# Chaque adresse est listée avec et sans « / » final.
 #
-# À compléter avec la liste complète des pages de l'ancien site
-# (export Google Search Console > Pages, ou plan du site WordPress /sitemap.xml).
+# Le jour de la mise en ligne, azeoconseil.com redirige vers azeoconseil.fr en gardant
+# le chemin (ex. azeoconseil.com/produits/ -> azeoconseil.fr/produits/), puis ces règles
+# prennent le relais. L'accueil et /mentions-legales/ existent à l'identique : rien à faire.
 
-/produits/        /etemptation/   301
-/produits         /etemptation/   301
-/accueil/         /             301
-/contact/         /#contact     301
-/contact          /#contact     301
+/produits/                  /etemptation/       301
+/produits                   /etemptation/       301
+/references/                /#clients           301
+/references                 /#clients           301
+/prestations-et-services/   /#accompagnement    301
+/prestations-et-services    /#accompagnement    301
+/actu-presse/               /                   301
+/actu-presse                /                   301
+/contact/                   /#contact           301
+/contact                    /#contact           301
+
+# Plaquette PDF eTemptation indexée par Google
+/wp-content/uploads/2017/11/eTemptation_suite.pdf   /etemptation/   301
+
+# Autres fichiers et adresses techniques de l'ancien WordPress
+/wp-content/*               /                   301
+/wp-admin/*                 /                   301
+/wp-login.php               /                   301
+/feed/                      /                   301

@@ -39,13 +39,13 @@ Variables à créer dans Cloudflare Pages (Paramètres > Variables et secrets) :
 
 - `RESEND_API_KEY` : clé API Resend (en secret)
 - `CONTACT_TO` : adresse qui reçoit les demandes, soit `contact@azeoconseil.fr`
-- `CONTACT_FROM` : expéditeur vérifié chez Resend, par exemple `Site Azéo <site@azeoconseil.com>`
+- `CONTACT_FROM` : expéditeur vérifié chez Resend, par exemple `Site Azéo <site@azeoconseil.fr>`
 
 Tant que ces variables ne sont pas définies, l'envoi renvoie vers la page « Message non envoyé ».
 
 ## Déploiement
 
-- Branche `main` : site de production (azeoconseil.com).
+- Branche `main` : site de production (azeoconseil.fr, adresse principale ; .com et .re redirigent vers elle).
 - Toute autre branche : site de test automatique sur une adresse `*.pages.dev`, protégé par Cloudflare Access.
 
 Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sortie `dist`, variable `NODE_VERSION` = `22`.
@@ -59,5 +59,5 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 - [x] Page eTemptation
 - [ ] Pages détaillées : Badgy, gestion des temps et des absences
 - [x] Mentions légales et politique de confidentialité
-- [ ] Liste complète des anciennes adresses dans `public/_redirects`
+- [x] Redirections des anciennes adresses du .com dans `public/_redirects`
 - [ ] Logos clients (remplacer les emplacements « Client 1… » dans `src/data/clients.ts`) et témoignages

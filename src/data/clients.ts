@@ -25,6 +25,14 @@ export const clients: Client[] = [
   { name: 'Run Market', logo: '/images/clients/run-market.png', height: 34 },
   { name: 'Master’s Pneu', logo: '/images/clients/masters-pneu.png', height: 50 },
   { name: 'Vindemia', logo: '/images/clients/vindemia.png', height: 34 },
+  { name: 'Decathlon', logo: '/images/clients/decathlon.png', height: 30 },
+  { name: 'Yves Rocher', logo: '/images/clients/yves-rocher.png', height: 40 },
+  { name: 'CDG 976 – Centre de gestion de la fonction publique territoriale de Mayotte', logo: '/images/clients/cdg976.png', height: 62 },
+  { name: 'T.Tram', logo: '/images/clients/ttram.png', height: 40 },
+  { name: 'Centre d’accueil permanent Jacques Tessier', logo: '/images/clients/cap-jacques-tessier.png', height: 62 },
+  { name: 'CCAS de Saint-Pierre', logo: '/images/clients/ccas-saint-pierre.png', height: 50 },
+  { name: 'CIAS – Centre intercommunal d’action sociale', logo: '/images/clients/cias.png', height: 50 },
+  { name: 'ARAR Soins à domicile', logo: '/images/clients/arar.png', height: 58 },
 ];
 
 // Chiffres clés affichés de part et d'autre du bandeau.

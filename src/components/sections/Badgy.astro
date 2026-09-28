@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
-import badgy from '../../assets/badgy.png';
+import badgy from '../../assets/badgy-scene.jpg';
 
 const features = [
   { icon: 'badge', title: 'Une vraie badgeuse', text: 'Vos collaborateurs utilisent exactement les mêmes badges que sur vos terminaux Horoquartz. Zéro changement d’habitude.' },
@@ -34,8 +34,8 @@ const features = [
         <Image
           src={badgy}
           alt="L’application Badgy sur une tablette et un smartphone équipés d’un lecteur de badge, avec une carte collaborateur Azéo"
-          widths={[320, 532]}
-          sizes="(max-width: 1024px) 80vw, 420px"
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 1024px) 90vw, 560px"
           loading="lazy"
         />
       </div>
@@ -105,14 +105,13 @@ const features = [
   }
   .badgy__visual {
     justify-self: center;
-    width: min(100%, 460px);
-    background: #fff;
-    border-radius: 28px;
-    padding: clamp(20px, 3vw, 36px);
+    width: min(100%, 580px);
   }
   .badgy__visual :global(img) {
     width: 100%;
     height: auto;
+    border-radius: 28px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   }
   .badgy__features {
     display: grid;

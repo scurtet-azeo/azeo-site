@@ -1,51 +1,159 @@
 ---
 import { clients } from '../../data/clients';
+
+// Vitesse : environ 5 secondes par logo, pour un défilement lent et lisible.
+const duration = Math.max(clients.length * 5, 30);
 ---
 {clients.length > 0 && (
   <section class="clients" aria-labelledby="clients-titre">
     <div class="container clients__inner">
       <h2 id="clients-titre" class="clients__title">Ils nous font confiance</h2>
-      <ul class="clients__list">
-        {clients.map((c) => (
-          <li><img src={c.logo} alt={c.name} loading="lazy" /></li>
-        ))}
-      </ul>
+      <div class="marquee" style={`--duration: ${duration}s`}>
+        <div class="marquee__track">
+          {[0, 1].map((copy) => (
+            <ul class="marquee__list" aria-hidden={copy === 1 ? 'true' : undefined}>
+              {clients.map((c) => (
+                <li>
+                  {c.logo ? (
+                    <img src={c.logo} alt={copy === 0 ? c.name : ''} loading="lazy" />
+                  ) : (
+                    <span class="placeholder-logo">{c.name}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 )}
 
+<script>
+  // Ordre aléatoire à chaque visite : on mélange la première liste,
+  // puis on recopie le même ordre dans la seconde pour que la boucle reste continue.
+  document.querySelectorAll<HTMLElement>('.marquee').forEach((marquee) => {
+    const [first, second] = marquee.querySelectorAll<HTMLUListElement>('.marquee__list');
+    if (!first || !second) return;
+    const items = Array.from(first.children);
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    items.forEach((li) => first.appendChild(li));
+    second.replaceChildren(
+      ...items.map((li) => {
+        const clone = li.cloneNode(true) as HTMLElement;
+        clone.querySelectorAll('img').forEach((img) => (img.alt = ''));
+        return clone;
+      }),
+    );
+    marquee.classList.add('is-ready');
+  });
+</script>
+
 <style>
   .clients {
     border-block: 1px solid var(--line);
-    padding-block: 32px;
+    padding-block: 28px;
   }
   .clients__inner {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 24px 48px;
+    gap: 20px 48px;
   }
   .clients__title {
+    flex: none;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--muted);
     letter-spacing: 0;
   }
-  .clients__list {
+  .marquee {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    /* fondu sur les bords */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee__track {
     display: flex;
-    flex-wrap: wrap;
+    width: max-content;
+    animation: defilement var(--duration) linear infinite;
+  }
+  .marquee:hover .marquee__track,
+  .marquee:focus-within .marquee__track {
+    animation-play-state: paused;
+  }
+  .marquee__list {
+    display: flex;
     align-items: center;
-    gap: 24px 40px;
+    gap: 56px;
     margin: 0;
-    padding: 0;
+    padding: 0 28px;
     list-style: none;
   }
-  .clients__list img {
+  .marquee__list li {
+    flex: none;
+    display: flex;
+    align-items: center;
+    height: 56px;
+  }
+  .marquee__list img {
     height: 44px;
     width: auto;
+    max-width: 160px;
+    object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.8;
+    opacity: 0.75;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+  .marquee__list li:hover img {
+    filter: none;
+    opacity: 1;
+  }
+  .placeholder-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 48px;
+    border: 1.5px dashed var(--line-strong);
+    border-radius: 10px;
+    font-size: 0.8125rem;
+    color: #5e6a5b;
+  }
+  @keyframes defilement {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Visiteurs qui ont désactivé les animations : liste fixe, défilable à la main */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+    }
+    .marquee__track {
+      animation: none;
+    }
+    .marquee__list[aria-hidden='true'] {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .clients__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .marquee {
+      width: 100%;
+    }
   }
 </style>

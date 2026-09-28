@@ -19,7 +19,7 @@ npm run preview  # affiche le site généré
 |---|---|
 | Téléphone, e-mail, adresse, LinkedIn | `src/data/site.ts` |
 | Menu principal | `src/data/site.ts` (liste `nav`) |
-| Logos clients (bandeau masqué tant que vide) | `src/data/clients.ts` + images dans `public/images/clients/` |
+| Logos clients (bandeau défilant, ordre aléatoire) | `src/data/clients.ts` + images dans `public/images/clients/` |
 | Témoignages (section masquée tant que vide) | `src/data/temoignages.ts` |
 | Textes de la page d'accueil | `src/components/sections/*.astro` (un fichier par section) |
 | Couleurs, typographie, espacements | `src/styles/global.css` (variables en haut du fichier) |
@@ -60,4 +60,4 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 - [ ] Pages détaillées : Badgy, gestion des temps et des absences
 - [ ] Informations légales (SIRET, RCS, directeur de publication)
 - [ ] Liste complète des anciennes adresses dans `public/_redirects`
-- [ ] Logos clients et témoignages
+- [ ] Logos clients (remplacer les emplacements « Client 1… » dans `src/data/clients.ts`) et témoignages

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
 import etsmile from '../../assets/etsmile.jpg';
 import etemptationEcran from '../../assets/etemptation-ecran.jpg';
-import badgy from '../../assets/badgy.png';
+import badgy from '../../assets/badgy-scene.jpg';
 import { site } from '../../data/site';
 ---
 <section id="solutions" class="section">
@@ -44,15 +44,14 @@ import { site } from '../../data/site';
       </article>
 
       <article class="card sol__badgy">
-        <div class="sol__media sol__badgy-media">
-          <Image
-            src={badgy}
-            alt="Badgy sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
-            widths={[240, 400]}
-            sizes="240px"
-            loading="lazy"
-          />
-        </div>
+        <Image
+          src={badgy}
+          alt="Badgy sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
+          widths={[400, 700]}
+          sizes="(max-width: 1024px) 640px, 400px"
+          class="sol__media sol__photo"
+          loading="lazy"
+        />
         <p class="sol__kind">Nouveau</p>
         <h3 class="sol__name">Badgy by Azéo</h3>
         <p>
@@ -142,18 +141,6 @@ import { site } from '../../data/site';
   }
   .sol__badgy .sol__link {
     color: var(--lime);
-  }
-  .sol__badgy-media {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-  }
-  .sol__badgy-media :global(img) {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
   }
   @media (max-width: 1024px) {
     .sol__head {

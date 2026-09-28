@@ -11,7 +11,7 @@ import { site } from '../../data/site';
     <div class="sol__head">
       <div class="sol__title">
         <p class="eyebrow">Nos solutions</p>
-        <h2>Le logiciel et le badgeage, pensés ensemble.</h2>
+        <h2>Le logiciel et le badgeage, pensés ensemble</h2>
       </div>
       <div class="sol__intro">
         <p class="lead">
@@ -19,7 +19,7 @@ import { site } from '../../data/site';
           temps, et les complétons avec nos propres outils de badgeage.
         </p>
         <a href={site.partners.horoquartz} class="link-arrow" rel="noopener">
-          Découvrir l’éditeur Horoquartz <Icon name="external" size={18} />
+          www.horoquartz.com <Icon name="external" size={18} />
         </a>
       </div>
     </div>
@@ -33,7 +33,7 @@ import { site } from '../../data/site';
           class="sol__media sol__photo"
           loading="lazy"
         />
-        <p class="sol__kind">Logiciel · Horoquartz</p>
+        <p class="sol__kind">Logiciel</p>
         <h3 class="sol__name">eTemptation</h3>
         <p>
           Temps, absences, plannings et activités dans une solution modulaire. Planification sous
@@ -41,24 +41,6 @@ import { site } from '../../data/site';
           logiciels de paie.
         </p>
         <a href="/etemptation/" class="link-arrow sol__link">Découvrir eTemptation <Icon name="arrow" size={18} /></a>
-      </article>
-
-      <article class="card" id="badgeuses">
-        <Image
-          src={etsmile}
-          alt="Badgeuse eTSmile : un collaborateur présente sa carte"
-          widths={[400, 700]}
-          sizes="(max-width: 1024px) 640px, 400px"
-          class="sol__media sol__photo"
-          loading="lazy"
-        />
-        <p class="sol__kind">Matériel · Horoquartz</p>
-        <h3 class="sol__name">Badgeuses eTSmile et Pulsi</h3>
-        <p>
-          eTSmile pour un pointage simple et sécurisé, jusqu’en version étanche IP65. Pulsi et son
-          écran tactile pour donner aux équipes de terrain un accès direct à leurs données RH.
-        </p>
-        <a href="/badgeuses/" class="link-arrow sol__link">Voir les badgeuses <Icon name="arrow" size={18} /></a>
       </article>
 
       <article class="card sol__badgy">
@@ -71,7 +53,7 @@ import { site } from '../../data/site';
             loading="lazy"
           />
         </div>
-        <p class="sol__kind">Nouveau · Notre solution</p>
+        <p class="sol__kind">Nouveau</p>
         <h3 class="sol__name">Badgy by Azéo</h3>
         <p>
           L’application de badgeage sur tablette et smartphone, 100 % compatible eTemptation. Les
@@ -79,6 +61,26 @@ import { site } from '../../data/site';
         </p>
         <a href="#badgy" class="link-arrow sol__link">Découvrir Badgy <Icon name="arrow" size={18} /></a>
       </article>
+
+      <article class="card" id="badgeuses">
+        <Image
+          src={etsmile}
+          alt="Badgeuse eTSmile : un collaborateur présente sa carte"
+          widths={[400, 700]}
+          sizes="(max-width: 1024px) 640px, 400px"
+          class="sol__media sol__photo"
+          loading="lazy"
+        />
+        <p class="sol__kind">Matériel</p>
+        <h3 class="sol__name">Badgeuses eTSmile et Pulsi</h3>
+        <p>
+          eTSmile pour un pointage simple et sécurisé, jusqu’en version étanche IP65. Pulsi et son
+          écran tactile pour donner aux équipes de terrain un accès direct à leurs données RH.
+        </p>
+        <a href="/badgeuses/" class="link-arrow sol__link">Voir les badgeuses <Icon name="arrow" size={18} /></a>
+      </article>
+
+      
     </div>
   </div>
 </section>

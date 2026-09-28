@@ -114,7 +114,7 @@ const mobile = {
 };
 
 // Schéma des modules en haut de page (décoratif : le détail est dans les cartes).
-const hubLabels = ['Time', 'Self-Service', 'Planning', 'Optimum', 'Anticipation', 'Activity', 'Interface'];
+const hubLabels = ['Temps', 'Self-service', 'Plannings', 'Optimisation', 'Anticipation', 'Activité', 'Interfaces'];
 const hubColors = ['var(--lime)', 'var(--petrol)', 'var(--orange)', 'var(--petrol)', 'var(--orange)', 'var(--lime)', 'var(--petrol)'];
 const C = 260;
 const R = 172;
@@ -144,8 +144,7 @@ const breadcrumb = {
         <nav class="crumbs" aria-label="Fil d’Ariane">
           <a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">eTemptation</span>
         </nav>
-        <p class="eyebrow">Logiciel · Éditeur Horoquartz</p>
-        <h1>eTemptation : le temps, les plannings et les activités sur une seule plateforme.</h1>
+        <h1>eTemptation : le temps, les plannings et les activités sur une seule plateforme</h1>
         <p class="lead">
           La solution de référence d’Horoquartz pour piloter le temps de travail, construire des
           plannings justes et simplifier vos processus RH. Utilisée chaque jour par des millions de
@@ -180,7 +179,7 @@ const breadcrumb = {
       <div class="head-2col">
         <div class="stack">
           <p class="eyebrow">Une solution complète et modulaire</p>
-          <h2 id="modules-titre">Tous vos processus temps et RH, dématérialisés et fiabilisés.</h2>
+          <h2 id="modules-titre">Tous vos processus temps et RH, dématérialisés et fiabilisés</h2>
         </div>
         <p class="lead">
           Vous démarrez avec les modules dont vous avez besoin, et vous étendez la solution quand
@@ -192,7 +191,6 @@ const breadcrumb = {
           <li class="card module">
             <div class="module__top">
               <Icon name={m.icon} size={30} color="var(--petrol)" />
-              <span class="module__code">{m.code}</span>
             </div>
             <h3>{m.title}</h3>
             <ul class="ticks">
@@ -208,7 +206,7 @@ const breadcrumb = {
     <div class="container adv">
       <div class="stack adv__intro">
         <p class="eyebrow">Pourquoi eTemptation</p>
-        <h2 id="avantages-titre">Un outil de décision, pas seulement de pointage.</h2>
+        <h2 id="avantages-titre">Un outil de décision, pas seulement de pointage</h2>
         <p class="lead">
           eTemptation décentralise la gestion des temps auprès des managers tout en donnant aux RH
           une vision fiable et consolidée. Adaptée aux entreprises comme aux collectivités.
@@ -240,7 +238,7 @@ const breadcrumb = {
       </div>
       <div class="stack">
         <p class="eyebrow">Application mobile</p>
-        <h2>mTemptation : eTemptation dans la poche.</h2>
+        <h2>mTemptation : eTemptation dans la poche</h2>
         <p class="lead">
           L’application mobile d’eTemptation apporte simplicité, autonomie et réactivité, au bureau
           comme sur le terrain.
@@ -271,7 +269,7 @@ const breadcrumb = {
     <div class="container">
       <div class="stack deploy__head">
         <p class="eyebrow">Déploiement</p>
-        <h2 id="deploiement-titre">Chez vous ou dans notre cloud souverain.</h2>
+        <h2 id="deploiement-titre">Chez vous ou dans notre cloud souverain</h2>
       </div>
       <div class="deploy">
         <div class="card">
@@ -281,7 +279,7 @@ const breadcrumb = {
         </div>
         <div class="card deploy__cloud">
           <Icon name="server" size={30} color="var(--petrol)" />
-          <h3>Dans le cloud privé océan Indien</h3>
+          <h3>Dans notre cloud privé à La Réunion</h3>
           <p>Hébergement local dans un datacenter certifié HDS, infogéré par Exodata (ISO 27001 et ISO 9001). Vous n’avez rien à gérer.</p>
           <a href="/#cloud" class="link-arrow">En savoir plus sur l’hébergement <Icon name="arrow" size={18} /></a>
         </div>
@@ -366,21 +364,7 @@ const breadcrumb = {
     list-style: none;
   }
   .module__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
     margin-bottom: 4px;
-  }
-  .module__code {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--petrol-hover);
-    background: var(--bg-cloud);
-    border-radius: 999px;
-    padding: 4px 10px;
-    white-space: nowrap;
   }
   /* Avantages */
   .adv {

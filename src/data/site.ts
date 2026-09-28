@@ -4,7 +4,7 @@ export const site = {
   name: 'Azéo Conseil',
   url: 'https://azeoconseil.com',
   description:
-    "Intégrateur Horoquartz à La Réunion : gestion des temps, planification, badgeuses et Badgy. Accompagnement de proximité et cloud privé souverain océan Indien.",
+    "Intégrateur Horoquartz à La Réunion : gestion des temps, planification, badgeuses et Badgy. Accompagnement de proximité et cloud privé souverain à La Réunion.",
   address: {
     street: '69 chemin Dubuisson',
     postalCode: '97436',
@@ -16,7 +16,7 @@ export const site = {
   email: '', // ex. 'contact@azeoconseil.com'
   linkedin: '', // URL de la page LinkedIn
   partners: {
-    horoquartz: 'https://www.horoquartz.fr',
+    horoquartz: 'https://www.horoquartz.com',
   },
 };
 

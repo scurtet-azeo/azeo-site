@@ -8,9 +8,9 @@ import etsmile from '../assets/etsmile.jpg';
 import pulsi from '../assets/pulsi.jpg';
 
 const chooser = [
+  { href: '#badgy', name: 'Badgy', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
   { href: '#etsmile', name: 'eTSmile', for: 'Pointer simplement et en toute sécurité, en intérieur comme en milieu exposé.' },
   { href: '#pulsi', name: 'Pulsi', for: 'Pointer et donner accès aux services RH aux équipes sans ordinateur.' },
-  { href: '/#badgy', name: 'Badgy', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
 ];
 
 const etsmileFeatures = [
@@ -56,12 +56,12 @@ const breadcrumb = {
       </nav>
       <div class="bd-hero__grid">
         <div class="stack bd-hero__text">
-          <p class="eyebrow">Matériel · Horoquartz</p>
-          <h1>Une badgeuse adaptée à chaque site et à chaque équipe.</h1>
+          <p class="eyebrow">Matériel</p>
+          <h1>Une badgeuse adaptée à chaque site et à chaque équipe</h1>
           <p class="lead">
-            Des terminaux Horoquartz connectés à eTemptation : nous vous conseillons sur le choix du
-            matériel, puis nous les paramétrons et les suivons depuis La Réunion. Et pour les sites sans badgeuse fixe, notre application
-            Badgy prend le relais.
+            Badgy transforme tablettes et smartphones en badgeuses, et les terminaux eTSmile et Pulsi
+            équipent vos sites fixes. Tous sont connectés à eTemptation : nous vous conseillons sur le
+            choix du matériel, puis nous le paramétrons et le suivons depuis La Réunion.
           </p>
         </div>
         <ul class="chooser" aria-label="Quelle badgeuse choisir ?">
@@ -76,6 +76,21 @@ const breadcrumb = {
           ))}
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section id="badgy" class="section section--dark">
+    <div class="container badgy-band">
+      <div class="stack">
+        <span class="badgy-band__new">Nouveau</span>
+        <h2>Badgy <span>by Azéo</span> : la badgeuse sur tablette et smartphone</h2>
+        <p class="lead">
+          Une tablette Android ou le smartphone d’un chef d’équipe devient une badgeuse, avec les
+          mêmes badges que vos terminaux Horoquartz. Idéal pour les chantiers, les sites éphémères et
+          les zones sans réseau.
+        </p>
+      </div>
+      <a href="/#badgy" class="btn btn--lime">Découvrir Badgy</a>
     </div>
   </section>
 
@@ -159,26 +174,13 @@ const breadcrumb = {
     </div>
   </section>
 
-  <section class="section section--dark">
-    <div class="container badgy-band">
-      <div class="stack">
-        <span class="badgy-band__new">Nouveau</span>
-        <h2>Pas de badgeuse fixe ? Badgy <span>by Azéo</span>.</h2>
-        <p class="lead">
-          Une tablette Android ou le smartphone d’un chef d’équipe devient une badgeuse, avec les
-          mêmes badges que vos terminaux Horoquartz. Idéal pour les chantiers, les sites éphémères et
-          les zones sans réseau.
-        </p>
-      </div>
-      <a href="/#badgy" class="btn btn--lime">Découvrir Badgy</a>
-    </div>
-  </section>
 
-  <section class="section" aria-labelledby="services-titre">
+
+  <section class="section section--alt" aria-labelledby="services-titre">
     <div class="container">
       <div class="stack services__head">
         <p class="eyebrow">Notre service</p>
-        <h2 id="services-titre">Du choix du matériel au support, on vous accompagne.</h2>
+        <h2 id="services-titre">Du choix du matériel au support, on vous accompagne</h2>
       </div>
       <ul class="services">
         {services.map((s) => (

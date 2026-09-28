@@ -38,7 +38,7 @@ Le formulaire envoie les demandes par e-mail via [Resend](https://resend.com), g
 Variables à créer dans Cloudflare Pages (Paramètres > Variables et secrets) :
 
 - `RESEND_API_KEY` : clé API Resend (en secret)
-- `CONTACT_TO` : adresse qui reçoit les demandes
+- `CONTACT_TO` : adresse qui reçoit les demandes, soit `contact@azeoconseil.fr`
 - `CONTACT_FROM` : expéditeur vérifié chez Resend, par exemple `Site Azéo <site@azeoconseil.com>`
 
 Tant que ces variables ne sont pas définies, l'envoi renvoie vers la page « Message non envoyé ».
@@ -53,11 +53,11 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 ## Reste à faire
 
 - [ ] Logo en version vectorielle (SVG) pour remplacer `public/images/logo-azeo.png`
-- [ ] Coordonnées (téléphone, e-mail) dans `src/data/site.ts`
+- [ ] Téléphone dans `src/data/site.ts` (e-mail renseigné)
 - [x] Nouvelle gamme de badgeuses : page /badgeuses/ (eTSmile, Pulsi)
 - [x] Visuels eTemptation et Badgy
 - [x] Page eTemptation
 - [ ] Pages détaillées : Badgy, gestion des temps et des absences
-- [ ] Informations légales (SIRET, RCS, directeur de publication)
+- [x] Mentions légales et politique de confidentialité
 - [ ] Liste complète des anciennes adresses dans `public/_redirects`
 - [ ] Logos clients (remplacer les emplacements « Client 1… » dans `src/data/clients.ts`) et témoignages

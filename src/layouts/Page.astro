@@ -37,4 +37,30 @@ const { title, description, noindex } = Astro.props;
   .prose :global(p + p) {
     margin-top: 12px;
   }
+  .prose :global(h2 + p) {
+    margin-top: 0;
+  }
+  .prose :global(table) {
+    width: 100%;
+    max-width: 70ch;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.9375rem;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .prose :global(th) {
+    background: var(--bg-alt);
+    color: var(--ink);
+  }
+  .prose :global(address) {
+    font-style: normal;
+    color: var(--text);
+  }
 </style>

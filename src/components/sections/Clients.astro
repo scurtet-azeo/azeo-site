@@ -117,14 +117,6 @@ const duration = Math.max(clients.length * 5, 30);
     width: auto;
     max-width: 170px;
     object-fit: contain;
-    /* gris foncé uniforme : les logos clairs restent lisibles */
-    filter: grayscale(1) brightness(0.75) contrast(1.4);
-    opacity: 0.8;
-    transition: filter 0.2s ease, opacity 0.2s ease;
-  }
-  .marquee__list li:hover img {
-    filter: none;
-    opacity: 1;
   }
   .placeholder-logo {
     display: flex;

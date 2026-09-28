@@ -1,28 +1,87 @@
 ---
 import Page from '../layouts/Page.astro';
-import { site } from '../data/site';
-const a = site.address;
 ---
-<Page title="Mentions légales" description="Mentions légales du site azeoconseil.com.">
-  <h2>Éditeur du site</h2>
+<Page title="Mentions légales" description="Mentions légales du site d’Azéo Conseil.">
   <p>
-    {site.name}, [forme juridique] au capital de [montant] €<br />
-    Siège social : {a.street}, {a.postalCode} {a.city}, {a.region}<br />
-    RCS [ville] [numéro] · SIRET [numéro] · TVA intracommunautaire [numéro]<br />
-    Directeur de la publication : [Prénom Nom]<br />
-    {site.email && <>Contact : <a href={`mailto:${site.email}`}>{site.email}</a></>}
+    Le site institutionnel Azéo Conseil, accessible à l’adresse www.azeoconseil.fr (ainsi que
+    www.azeoconseil.com et www.azeoconseil.re), ci-après « le Site », est destiné à l’information
+    personnelle des internautes qui l’utilisent.
+  </p>
+  <p>
+    L’accès et l’utilisation du Site sont soumis aux présentes « Mentions légales » détaillées
+    ci-après ainsi qu’aux lois et/ou règlements applicables.
+  </p>
+  <p>
+    La connexion et l’accès à ce Site impliquent l’acceptation intégrale et sans réserve de
+    l’internaute de toutes les dispositions des présentes Mentions légales.
   </p>
 
-  <h2>Hébergement</h2>
+  <h2>Informations légales</h2>
+  <p>
+    En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans
+    l’économie numérique, il est précisé dans cet article l’identité des différents intervenants
+    dans le cadre de sa réalisation et de son suivi.
+  </p>
+  <p>Le Site est édité par :</p>
+  <p>
+    <strong>Azéo Conseil / Anne Laure Balizon</strong>, entreprise individuelle<br />
+    Siège social : 69 chemin Dubuisson, 97436 Saint-Leu, La Réunion<br />
+    RCS de Saint-Denis de La Réunion · SIRET 512 648 429 00045 · TVA intracommunautaire :
+    FR17512648429<br />
+    E-mail : <a href="mailto:contact@azeoconseil.fr">contact@azeoconseil.fr</a><br />
+    ci-après dénommée « Azéo Conseil ».
+  </p>
+  <p>
+    Le directeur de la publication est Stéphane Curtet.<br />
+    Adresse e-mail de contact : <a href="mailto:contact@azeoconseil.fr">contact@azeoconseil.fr</a><br />
+    ci-après « le Directeur de publication ».
+  </p>
+  <p>Le Site est hébergé par :</p>
   <p>
     Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis ·
-    <a href="https://www.cloudflare.com" rel="noopener">cloudflare.com</a>
+    <a href="https://www.cloudflare.com/" rel="noopener">cloudflare.com</a><br />
+    ci-après « l’Hébergeur ».
+  </p>
+  <p>
+    Sont considérés comme utilisateurs tous les internautes qui naviguent, lisent, visionnent et
+    utilisent le Site, ci-après les « Utilisateurs ».
   </p>
 
   <h2>Propriété intellectuelle</h2>
   <p>
-    L’ensemble des contenus de ce site (textes, visuels, logos) est la propriété d’{site.name}
-    ou de ses partenaires. eTemptation est une marque d’Horoquartz. Toute reproduction sans
-    autorisation est interdite.
+    Le Site et son contenu (propre ou celui de ses partenaires) sont protégés par le droit des
+    marques et/ou le droit d’auteur et autres droits. L’ensemble de ces éléments demeure la
+    propriété exclusive d’Azéo Conseil ou de ses partenaires.
+  </p>
+  <p>
+    En application des dispositions du Code de la propriété intellectuelle, des dispositions
+    législatives et réglementaires de tous pays et des conventions internationales, toute
+    représentation et/ou reproduction, ou encore utilisation, exploitation, intégrale ou partielle,
+    de l’un quelconque des éléments mentionnés ci-dessus, faite sans le consentement préalable et
+    écrit d’Azéo Conseil ou de ses partenaires, est interdite.
+  </p>
+  <p>
+    Les informations sur les services et leurs caractéristiques correspondent à une définition au
+    moment de la mise en ligne ou des mises à jour des différentes pages du Site ; elles ne sont
+    données qu’à titre indicatif et ne peuvent être considérées comme contractuelles.
+  </p>
+  <p>
+    Azéo Conseil se réserve le droit de modifier sans préavis les informations présentées, sans
+    être tenu de mettre à jour ce document. Si, malgré le soin apporté à la réalisation de ce Site,
+    vous pensez qu’il comporte une erreur, n’hésitez pas à nous contacter.
+  </p>
+
+  <h2>Droit applicable</h2>
+  <p>
+    Le Site et ses mentions légales sont soumis au droit français, le texte rédigé en français
+    faisant foi.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Pour tout signalement de contenu ou d’activités illicites, l’Utilisateur peut contacter Azéo
+    Conseil à l’adresse suivante : <a href="mailto:contact@azeoconseil.fr">contact@azeoconseil.fr</a>,
+    ou par courrier recommandé avec accusé de réception adressé à Azéo Conseil aux coordonnées
+    précisées en haut de page.
   </p>
 </Page>

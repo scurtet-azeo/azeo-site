@@ -1,24 +1,76 @@
 ---
 import Page from '../layouts/Page.astro';
-import { site } from '../data/site';
 ---
-<Page title="Politique de confidentialité" description="Comment Azéo Conseil traite les données transmises via ce site.">
+<Page title="Politique de confidentialité" description="Comment Azéo Conseil traite les données transmises via son site.">
   <p>
-    [Texte à valider.] Ce site ne dépose aucun cookie publicitaire ni de mesure d’audience, et
-    ses polices de caractères sont hébergées sur nos propres serveurs : aucune donnée n’est
-    transmise à des tiers lors de votre visite.
+    Azéo Conseil s’engage à respecter l’ensemble de ses obligations vis-à-vis du Règlement général
+    sur la protection des données (RGPD), en tant que responsable de traitement ou sous-traitant.
+    Les traitements mis en œuvre sur le site www.azeoconseil.fr (ainsi que www.azeoconseil.com et
+    www.azeoconseil.re) ont la finalité suivante : communication d’informations sur nos services
+    via un formulaire de contact.
+  </p>
+  <p>
+    Ce site ne dépose aucun cookie publicitaire ni de mesure d’audience, et ses polices de
+    caractères sont hébergées sur nos propres serveurs : aucune donnée n’est transmise à des tiers
+    lors de votre visite.
   </p>
 
-  <h2>Formulaire de contact</h2>
+  <h2>Identité et coordonnées du responsable du traitement</h2>
+  <address>
+    Azéo Conseil<br />
+    69 chemin Dubuisson<br />
+    97436 Saint-Leu, La Réunion
+  </address>
+
+  <h2>Base juridique des traitements</h2>
   <p>
-    Les informations saisies (nom, entreprise, e-mail, téléphone, message) sont utilisées
-    uniquement pour répondre à votre demande. Elles sont conservées [durée] puis supprimées.
+    Les traitements de données à caractère personnel mis en œuvre par Azéo Conseil ont pour base
+    légale les intérêts légitimes poursuivis par le responsable du traitement : traitement de vos
+    données pour répondre à votre demande d’informations.
   </p>
 
-  <h2>Vos droits</h2>
+  <h2>Durée de conservation</h2>
+  <div style="overflow-x: auto">
+    <table>
+      <thead>
+        <tr><th scope="col">Traitement</th><th scope="col">Durée de conservation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Échange d’informations via le formulaire de contact</td>
+          <td>Le temps nécessaire à la communication des informations demandées</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Modalités d’exercice de vos droits</h2>
   <p>
-    Conformément au RGPD, vous pouvez accéder à vos données, les faire rectifier ou supprimer
-    en écrivant à {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : '[adresse e-mail]'}.
-    Vous pouvez également adresser une réclamation à la CNIL.
+    Conformément aux dispositions du RGPD, vous disposez d’un droit d’accès aux données vous
+    concernant ou de la possibilité de demander leur suppression.
+  </p>
+  <p>
+    Vous disposez également d’un droit de rectification et d’opposition, ainsi que d’un droit à la
+    portabilité de vos données et d’un droit à la limitation du traitement de vos données.
+  </p>
+  <p>
+    Pour exercer l’un de ces droits, vous pouvez adresser votre demande à :
+    <a href="mailto:contact@azeoconseil.fr">contact@azeoconseil.fr</a>.
+  </p>
+  <p>
+    Si vous estimez que vos droits en matière de protection des données à caractère personnel ne
+    sont pas respectés, vous pouvez adresser une réclamation auprès de la
+    <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
+  </p>
+
+  <h2>Destinataires de vos données</h2>
+  <p>
+    Les destinataires de vos données sont les personnels habilités de l’équipe commerciale et la
+    dirigeante d’Azéo Conseil.
+  </p>
+  <p>
+    Pour l’acheminement des messages envoyés via le formulaire de contact, Azéo Conseil fait appel
+    à des prestataires techniques agissant pour son compte : Cloudflare (hébergement du site) et
+    Resend (envoi des e-mails).
   </p>
 </Page>

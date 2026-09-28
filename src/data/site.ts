@@ -13,7 +13,7 @@ export const site = {
     country: 'RE',
   },
   phone: '', // ex. '+262 262 00 00 00'
-  email: '', // ex. 'contact@azeoconseil.com'
+  email: 'contact@azeoconseil.fr',
   linkedin: '', // URL de la page LinkedIn
   partners: {
     horoquartz: 'https://www.horoquartz.com',

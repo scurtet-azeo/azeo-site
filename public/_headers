@@ -1,11 +1,13 @@
 # En-têtes HTTP appliqués par Cloudflare Pages.
+# HSTS sans « includeSubDomains » : les sous-domaines clients (xxx.azeoconseil.fr)
+# gardent leur propre configuration HTTPS, indépendante du site.
 
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Strict-Transport-Security: max-age=31536000
 
 # Les adresses techniques *.pages.dev ne doivent jamais apparaître dans Google.
 # Le vrai site (azeoconseil.fr) n'est pas concerné par cette règle.

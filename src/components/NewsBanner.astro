@@ -5,13 +5,13 @@
 // Le visiteur peut le fermer (mémorisé pour cette actualité).
 import { getActualites } from '../lib/actualites';
 
-const DUREE_JOURS = 15;
+const DUREE_JOURS = 30;
 const [derniere] = await getActualites();
 ---
 {derniere && (
   <div class="flash" hidden data-date={derniere.data.date.toISOString()} data-id={derniere.id} data-jours={DUREE_JOURS}>
     <div class="container flash__inner">
-      <span class="flash__label"><span class="flash__dot" aria-hidden="true"></span>Nouveau</span>
+      <span class="flash__label"><span class="flash__dot" aria-hidden="true"></span>News</span>
       <a class="flash__link" href={`/actualites/${derniere.id}/`}>
         <span class="flash__track">
           <span class="flash__text">{derniere.data.titre}</span>

@@ -15,6 +15,7 @@ export const site = {
   phone: '02 62 70 54 85', // affichage
   phoneIntl: '+262 262 70 54 85', // format international (liens d’appel, Google)
   email: 'contact@azeoconseil.fr',
+  recrutementEmail: 'recrutement@azeoconseil.re', // adresse qui reçoit les candidatures
   linkedin: '', // URL de la page LinkedIn
   partners: {
     horoquartz: 'https://www.horoquartz.com',
@@ -27,4 +28,5 @@ export const nav = [
   { href: '/#badgy', label: 'Badgy' },
   { href: '/#cloud', label: 'Cloud privé' },
   { href: '/#accompagnement', label: 'Accompagnement' },
+  { href: '/nous-rejoindre/', label: 'Nous rejoindre' },
 ];

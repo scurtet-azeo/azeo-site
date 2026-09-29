@@ -1,0 +1,222 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../data/site';
+import { offresOuvertes, type Offre } from '../../data/offres';
+
+// Une page par offre ouverte. Une offre fermée n'a plus de page.
+export function getStaticPaths() {
+  return offresOuvertes.map((offre) => ({ params: { slug: offre.slug }, props: { offre } }));
+}
+
+const { offre } = Astro.props as { offre: Offre };
+
+const url = new URL(`/nous-rejoindre/${offre.slug}/`, Astro.site).href;
+const postuler = `mailto:${site.recrutementEmail}?subject=${encodeURIComponent(`Candidature : ${offre.titre}`)}`;
+const transferer = `mailto:?subject=${encodeURIComponent(`Offre d’emploi chez Azéo Conseil : ${offre.titre}`)}&body=${encodeURIComponent(
+  `Cette offre pourrait t’intéresser :\n${url}`,
+)}`;
+const date = new Date(offre.publiee).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const meta = [offre.contrat, offre.lieu].filter(Boolean).join(' · ');
+
+const typeContrat: Record<NonNullable<Offre['contrat']>, string> = {
+  CDI: 'FULL_TIME',
+  CDD: 'TEMPORARY',
+  Alternance: 'INTERN',
+  Stage: 'INTERN',
+  Freelance: 'CONTRACTOR',
+};
+
+// Données structurées « JobPosting » : permettent à l'offre d'apparaître dans Google pour l'emploi.
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const description = [
+  ...(offre.intro ?? []).map((p) => `<p>${esc(p)}</p>`),
+  ...offre.sections.map(
+    (s) =>
+      `<p><strong>${esc(s.titre)}</strong></p>` +
+      (s.texte ? `<p>${esc(s.texte)}</p>` : '') +
+      (s.liste ? `<ul>${s.liste.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>` : ''),
+  ),
+  offre.conclusion ? `<p>${esc(offre.conclusion)}</p>` : '',
+].join('');
+const jobPosting = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: offre.titre,
+  description,
+  datePosted: offre.publiee,
+  ...(offre.contrat && { employmentType: typeContrat[offre.contrat] }),
+  hiringOrganization: { '@type': 'Organization', name: site.name, sameAs: site.url, logo: `${site.url}/images/logo-azeo.png` },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      postalCode: site.address.postalCode,
+      addressLocality: site.address.city,
+      addressRegion: site.address.region,
+      addressCountry: site.address.country,
+    },
+  },
+};
+---
+<Base
+  title={`${offre.titre} : offre d’emploi à Saint-Leu`}
+  description={`${offre.titre}${offre.contrat ? ` (${offre.contrat})` : ''} à ${offre.lieu}. ${offre.resume}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jobPosting)} />
+
+  <article class="section">
+    <div class="container offre">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href="/">Accueil</a> <span aria-hidden="true">/</span>
+        <a href="/nous-rejoindre/">Nous rejoindre</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">{offre.titre}</span>
+      </nav>
+
+      <header class="stack offre__head">
+        <p class="eyebrow">{meta}</p>
+        <h1>{offre.titre}</h1>
+        <p class="offre__date">Publiée le {date}</p>
+      </header>
+
+      <div class="offre__body">
+        {offre.intro && (
+          <div class="stack offre__intro">
+            {offre.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+          </div>
+        )}
+        {offre.sections.map((s) => (
+          <section>
+            <h2>{s.titre}</h2>
+            {s.texte && <p class="offre__texte">{s.texte}</p>}
+            {s.liste && <ul class="ticks ticks--lg">{s.liste.map((i) => <li>{i}</li>)}</ul>}
+          </section>
+        ))}
+        {offre.conclusion && (
+          <p class="offre__lieu"><Icon name="pin" size={22} color="var(--petrol)" /> {offre.conclusion}</p>
+        )}
+      </div>
+
+      <div class="postuler">
+        <div class="stack">
+          <h2>Ça te parle ?</h2>
+          <p>
+            Envoie-nous ton CV et quelques mots à
+            <a href={postuler}>{site.recrutementEmail}</a>, ou transfère l’offre à quelqu’un que ça
+            pourrait intéresser !
+          </p>
+        </div>
+        <div class="postuler__actions">
+          <a href={postuler} class="btn btn--lime">Postuler par e-mail</a>
+          <a href={transferer} class="btn btn--outline-light">Transférer l’offre</a>
+          {offre.linkedin && (
+            <a href={offre.linkedin} class="btn btn--outline-light" rel="noopener">Voir sur LinkedIn</a>
+          )}
+        </div>
+      </div>
+
+      <a href="/nous-rejoindre/" class="link-arrow retour">
+        <span class="retour__icon"><Icon name="arrow" size={18} /></span> Toutes nos offres
+      </a>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .offre {
+    max-width: calc(860px + 2 * var(--gutter));
+  }
+  .crumbs {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .offre__head {
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .offre__head h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .offre__date {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .offre__body {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .offre__intro p:not(.lead) {
+    color: var(--text);
+  }
+  .offre__body h2 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+  }
+  .offre__texte {
+    color: var(--text);
+    max-width: 70ch;
+  }
+  .ticks--lg li {
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .offre__lieu {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 18px 20px;
+    background: var(--bg-cloud);
+    border-radius: var(--radius-s);
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .offre__lieu :global(svg) {
+    flex: none;
+  }
+  .postuler {
+    margin-top: 48px;
+    background: var(--petrol-deep);
+    color: #fff;
+    border-radius: var(--radius-l);
+    padding: clamp(24px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .postuler h2 {
+    font-size: 1.75rem;
+  }
+  .postuler p {
+    color: var(--on-dark);
+    max-width: 60ch;
+  }
+  .postuler p a {
+    color: var(--lime);
+  }
+  .postuler__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn--outline-light {
+    border-color: #fff;
+    color: #fff;
+  }
+  .btn--outline-light:hover {
+    background: #fff;
+    color: var(--ink);
+  }
+  .retour {
+    margin-top: 28px;
+  }
+  .retour__icon {
+    display: inline-flex;
+    transform: rotate(180deg);
+  }
+</style>

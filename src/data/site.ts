@@ -28,5 +28,6 @@ export const nav = [
   { href: '/#badgy', label: 'Badgy' },
   { href: '/#cloud', label: 'Cloud privé' },
   { href: '/#accompagnement', label: 'Accompagnement' },
+  { href: '/actualites/', label: 'Actualités' },
   { href: '/nous-rejoindre/', label: 'Nous rejoindre' },
 ];

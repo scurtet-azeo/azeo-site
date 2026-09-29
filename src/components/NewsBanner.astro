@@ -1,0 +1,177 @@
+---
+// Bandeau « Nouveau » façon flash info, sous le menu, sur toutes les pages.
+// Affiché uniquement si la dernière actualité a moins de 15 jours : le calcul est fait
+// dans le navigateur du visiteur, donc le bandeau disparaît tout seul, sans republier le site.
+// Le visiteur peut le fermer (mémorisé pour cette actualité).
+import { getActualites } from '../lib/actualites';
+
+const DUREE_JOURS = 15;
+const [derniere] = await getActualites();
+---
+{derniere && (
+  <div class="flash" hidden data-date={derniere.data.date.toISOString()} data-id={derniere.id} data-jours={DUREE_JOURS}>
+    <div class="container flash__inner">
+      <span class="flash__label"><span class="flash__dot" aria-hidden="true"></span>Nouveau</span>
+      <a class="flash__link" href={`/actualites/${derniere.id}/`}>
+        <span class="flash__track">
+          <span class="flash__text">{derniere.data.titre}</span>
+          <span class="flash__cta">Lire l’actu →</span>
+        </span>
+      </a>
+      <button class="flash__close" type="button" aria-label="Masquer cette actualité">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+  </div>
+)}
+
+<script>
+  const flash = document.querySelector<HTMLElement>('.flash');
+  if (flash) {
+    const { date, id, jours } = flash.dataset;
+    const age = (Date.now() - new Date(date!).getTime()) / 86_400_000;
+    let ferme = false;
+    try {
+      ferme = localStorage.getItem('flash-ferme') === id;
+    } catch {}
+    if (age >= 0 && age < Number(jours) && !ferme) {
+      flash.hidden = false;
+      // Si le titre est trop long pour la largeur, il défile comme un bandeau d'info.
+      const link = flash.querySelector<HTMLElement>('.flash__link');
+      const track = flash.querySelector<HTMLElement>('.flash__track');
+      const check = () => {
+        if (!link || !track) return;
+        flash.classList.remove('is-scrolling');
+        if (track.scrollWidth > link.clientWidth + 2) flash.classList.add('is-scrolling');
+      };
+      check();
+      addEventListener('resize', check);
+    }
+    flash.querySelector('.flash__close')?.addEventListener('click', () => {
+      flash.hidden = true;
+      try {
+        localStorage.setItem('flash-ferme', id!);
+      } catch {}
+    });
+  }
+</script>
+
+<style>
+  .flash {
+    background: var(--petrol-deep);
+    color: #fff;
+    font-size: 0.9375rem;
+  }
+  .flash[hidden] {
+    display: none;
+  }
+  .flash__inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 46px;
+  }
+  .flash__label {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
+    background: var(--orange);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .flash__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ink);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.25;
+    }
+  }
+  .flash__link {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .flash__link:hover {
+    color: #fff;
+  }
+  .flash__link:hover .flash__text {
+    text-decoration: underline;
+  }
+  .flash__track {
+    display: inline-flex;
+    gap: 14px;
+  }
+  .flash__text {
+    font-weight: 600;
+  }
+  .flash__cta {
+    color: var(--lime);
+    font-weight: 600;
+  }
+  .is-scrolling .flash__link {
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+    mask-image: linear-gradient(to right, #000 88%, transparent);
+  }
+  .is-scrolling .flash__track {
+    padding-left: 100%;
+    animation: ticker 16s linear infinite;
+  }
+  .is-scrolling .flash__link:hover .flash__track,
+  .is-scrolling .flash__link:focus .flash__track {
+    animation-play-state: paused;
+  }
+  @keyframes ticker {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .flash__close {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--on-dark);
+    cursor: pointer;
+  }
+  .flash__close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flash__dot {
+      animation: none;
+    }
+    .is-scrolling .flash__track {
+      animation: none;
+      padding-left: 0;
+    }
+    .flash__link {
+      text-overflow: ellipsis;
+    }
+  }
+  @media (max-width: 560px) {
+    .flash__cta {
+      display: none;
+    }
+  }
+</style>

@@ -66,6 +66,9 @@ import { nav } from '../data/site';
     gap: 24px;
     min-height: 80px;
   }
+  .site-header__logo {
+    flex: none;
+  }
   .site-header__logo img {
     height: 52px;
     width: auto;
@@ -93,17 +96,18 @@ import { nav } from '../data/site';
   .site-nav {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
   }
   .site-nav ul {
     display: flex;
-    gap: 28px;
+    gap: 22px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
   .site-nav ul a {
     color: var(--ink);
+    white-space: nowrap;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.975rem;
@@ -112,11 +116,12 @@ import { nav } from '../data/site';
     color: var(--petrol);
   }
   .site-nav__cta {
+    white-space: nowrap;
     min-height: 46px;
     padding: 0 20px;
   }
 
-  @media (max-width: 1120px) {
+  @media (max-width: 1320px) {
     .site-header__inner {
       min-height: 64px;
     }

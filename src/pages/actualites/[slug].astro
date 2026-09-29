@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../data/site';
+import { getActualites, formatDate } from '../../lib/actualites';
+
+export async function getStaticPaths() {
+  const actualites = await getActualites();
+  return actualites.map((a) => ({ params: { slug: a.id }, props: { actu: a } }));
+}
+
+const { actu } = Astro.props;
+const { Content } = await render(actu);
+const { titre, date, resume, image, imageAlt, linkedin } = actu.data;
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: titre,
+  description: resume,
+  datePublished: date.toISOString(),
+  author: { '@type': 'Organization', name: site.name, url: site.url },
+  publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: `${site.url}/images/logo-azeo.png` } },
+  mainEntityOfPage: new URL(`/actualites/${actu.id}/`, Astro.site).href,
+};
+---
+<Base title={titre} description={resume}>
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  <article class="section">
+    <div class="container article">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href="/">Accueil</a> <span aria-hidden="true">/</span>
+        <a href="/actualites/">Actualités</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">{titre}</span>
+      </nav>
+
+      <header class="stack article__head">
+        <p class="eyebrow"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
+        <h1>{titre}</h1>
+        <p class="lead">{resume}</p>
+      </header>
+
+      {image && (
+        <Image src={image} alt={imageAlt ?? ''} widths={[600, 1000, 1400]} sizes="(max-width: 900px) 100vw, 860px" class="article__img" />
+      )}
+
+      <div class="article__body">
+        <Content />
+      </div>
+
+      {linkedin && (
+        <a href={linkedin} class="btn btn--outline article__linkedin" rel="noopener">Voir la publication sur LinkedIn</a>
+      )}
+
+      <a href="/actualites/" class="link-arrow retour">
+        <span class="retour__icon"><Icon name="arrow" size={18} /></span> Toutes les actualités
+      </a>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .article {
+    max-width: calc(860px + 2 * var(--gutter));
+  }
+  .crumbs {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .article__head {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .article__head h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .article__img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-l);
+    margin-bottom: 32px;
+  }
+  .article__body {
+    color: var(--text);
+    max-width: 70ch;
+  }
+  .article__body :global(p + p),
+  .article__body :global(ul),
+  .article__body :global(ol) {
+    margin-top: 16px;
+  }
+  .article__body :global(h2) {
+    font-size: 1.5rem;
+    margin: 36px 0 12px;
+    color: var(--ink);
+  }
+  .article__body :global(li + li) {
+    margin-top: 6px;
+  }
+  .article__body :global(img) {
+    border-radius: var(--radius-m);
+    margin-block: 24px;
+  }
+  .article__linkedin {
+    margin-top: 36px;
+  }
+  .retour {
+    display: flex;
+    margin-top: 24px;
+  }
+  .retour__icon {
+    display: inline-flex;
+    transform: rotate(180deg);
+  }
+</style>

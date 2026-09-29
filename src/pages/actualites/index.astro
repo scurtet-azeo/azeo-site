@@ -1,0 +1,179 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../data/site';
+import { getActualites, formatDate } from '../../lib/actualites';
+
+const actualites = await getActualites();
+---
+<Base
+  title="Actualités"
+  description="Les actualités d’Azéo Conseil : projets, nouveautés eTemptation et Badgy, événements et vie de l’équipe à La Réunion et Mayotte."
+>
+  <section class="act-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href="/">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Actualités</span>
+      </nav>
+      <div class="stack act-hero__text">
+        <p class="eyebrow">Actualités</p>
+        <h1>Les dernières nouvelles d’Azéo Conseil</h1>
+        <p class="lead">Projets, nouveautés produits, événements et vie de l’équipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      {actualites.length > 0 ? (
+        <ul class="news">
+          {actualites.map((a, i) => (
+            <li class={`card news__item ${i === 0 ? 'news__item--une' : ''}`}>
+              {a.data.image ? (
+                <Image src={a.data.image} alt={a.data.imageAlt ?? ''} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" class="news__img" />
+              ) : (
+                <div class="news__img news__img--vide" aria-hidden="true"><Icon name="clock" size={40} color="var(--lime)" /></div>
+              )}
+              <div class="news__body">
+                <p class="news__date"><time datetime={a.data.date.toISOString()}>{formatDate(a.data.date)}</time></p>
+                <h2 class="news__title"><a href={`/actualites/${a.id}/`}>{a.data.titre}</a></h2>
+                <p>{a.data.resume}</p>
+                <span class="link-arrow news__more" aria-hidden="true">Lire l’actu <Icon name="arrow" size={18} /></span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="vide">
+          <Icon name="clock" size={48} color="var(--petrol)" />
+          <h2>Nos premières actualités arrivent très bientôt</h2>
+          <p>
+            Revenez nous voir prochainement{site.linkedin ? <>, ou suivez-nous en attendant sur <a href={site.linkedin} rel="noopener">LinkedIn</a>.</> : '.'}
+          </p>
+          <a href="/" class="btn btn--primary">Retour à l’accueil</a>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .crumbs {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .act-hero {
+    padding-block: clamp(32px, 5vw, 72px) clamp(40px, 5vw, 64px);
+  }
+  .act-hero__text {
+    gap: 20px;
+    max-width: 760px;
+  }
+  .act-hero__text h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+  }
+  .news {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .news__item {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    gap: 0;
+  }
+  .news__item:hover {
+    border-color: var(--petrol);
+  }
+  .news__img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .news__img--vide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--petrol-deep);
+  }
+  .news__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 24px 24px;
+    flex: 1;
+  }
+  .news__date {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--orange-text);
+  }
+  .news__title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  .news__title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* toute la carte est cliquable */
+  .news__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .news__more {
+    margin-top: auto;
+    color: var(--petrol);
+  }
+  @media (min-width: 900px) {
+    .news__item--une {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .news__item--une .news__img {
+      height: 100%;
+      aspect-ratio: auto;
+      min-height: 280px;
+    }
+    .news__item--une .news__body {
+      padding: 36px;
+      justify-content: center;
+    }
+    .news__item--une .news__title {
+      font-size: 1.75rem;
+    }
+    .news__item--une .news__more {
+      margin-top: 12px;
+    }
+  }
+  .vide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: clamp(32px, 6vw, 72px) 24px;
+  }
+  .vide h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+  }
+  .vide p {
+    color: var(--text);
+  }
+</style>

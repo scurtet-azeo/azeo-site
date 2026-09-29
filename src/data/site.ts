@@ -12,7 +12,8 @@ export const site = {
     region: 'La Réunion',
     country: 'RE',
   },
-  phone: '', // ex. '+262 262 00 00 00'
+  phone: '02 62 70 54 85', // affichage
+  phoneIntl: '+262 262 70 54 85', // format international (liens d’appel, Google)
   email: 'contact@azeoconseil.fr',
   linkedin: '', // URL de la page LinkedIn
   partners: {

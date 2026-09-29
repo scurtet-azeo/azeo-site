@@ -19,7 +19,8 @@ interface Props {
 const { title, description = site.description, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · Gestion des temps et planification à La Réunion et Mayotte`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/images/logo-azeo.png', Astro.site);
+const ogImage = new URL('/images/partage.jpg', Astro.site);
+const logoUrl = new URL('/images/logo-azeo.png', Astro.site);
 
 // Données structurées : aide Google à comprendre qui vous êtes et où vous êtes.
 const jsonLd = {
@@ -27,7 +28,7 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: site.name,
   url: site.url,
-  logo: ogImage.href,
+  logo: logoUrl.href,
   description: site.description,
   address: {
     '@type': 'PostalAddress',
@@ -41,7 +42,7 @@ const jsonLd = {
     { '@type': 'Place', name: 'La Réunion' },
     { '@type': 'Place', name: 'Mayotte' },
   ],
-  ...(site.phone && { telephone: site.phone }),
+  ...(site.phoneIntl && { telephone: site.phoneIntl }),
   ...(site.email && { email: site.email }),
   ...(site.linkedin && { sameAs: [site.linkedin] }),
 };
@@ -55,7 +56,8 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#046a6f" />
 
@@ -66,6 +68,10 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Azéo Conseil, gestion des temps et planification à La Réunion et Mayotte" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>

@@ -7,6 +7,6 @@ import { site } from '../data/site';
     Votre message n’a pas pu être envoyé. Vérifiez que les champs obligatoires sont remplis et
     que l’adresse e-mail est valide, puis réessayez.
   </p>
-  {site.phone && <p>Vous pouvez aussi nous appeler au <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>.</p>}
+  {site.phone && <p>Vous pouvez aussi nous appeler au <a href={`tel:${site.phoneIntl.replace(/\s/g, '')}`}>{site.phone}</a>.</p>}
   <p><a href="/#contact">Revenir au formulaire</a></p>
 </Page>

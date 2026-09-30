@@ -3,7 +3,7 @@
 titre: "Nouveau client : Carrefour Market Kanopée, une ouverture de magasin pilotée avec eTemptation et Badgy"
 date: 2026-09-29
 resume: "Au cœur de ville de La Possession, le nouveau Carrefour Market Kanopée gère les plannings et les temps de ses équipes avec eTemptation, l’application mobile et Badgy, notre badgeuse sur tablette."
-image: ./carrefour-market-kanopee.jpg
+image: ./carrefour-market-kanopee.png
 imageAlt: "Nouveau client, carrefour Kanopee"
 ---
 

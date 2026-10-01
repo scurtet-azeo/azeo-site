@@ -18,7 +18,7 @@ export const site = {
   recrutementEmail: 'recrutement@azeoconseil.re', // adresse qui reçoit les candidatures
   // Anti-spam du formulaire (Cloudflare Turnstile) : « clé du site », publique.
   // Vide = vérification désactivée. La clé secrète, elle, va dans les variables Cloudflare.
-  turnstileSiteKey: '',
+  turnstileSiteKey: '0x4AAAAAAFKw3iXSSiQXJc7R',
   linkedin: '', // URL de la page LinkedIn
   partners: {
     horoquartz: 'https://www.horoquartz.com',

@@ -18,6 +18,10 @@
  *                     Avec SMTP, gardez la même adresse que SMTP_USER : la plupart des serveurs
  *                     refusent d'envoyer au nom d'une autre adresse.
  *
+ *   Anti-spam (facultatif, recommandé) :
+ *     TURNSTILE_SECRET_KEY   clé secrète du widget Cloudflare Turnstile (type Secret).
+ *                            La clé publique correspondante va dans src/data/site.ts (turnstileSiteKey).
+ *
  *   Envoi par Resend (seulement si SMTP_HOST n'est pas défini) :
  *     RESEND_API_KEY, CONTACT_TO, CONTACT_FROM
  *
@@ -33,6 +37,7 @@ interface Env {
   SMTP_USER?: string;
   SMTP_PASSWORD?: string;
   RESEND_API_KEY?: string;
+  TURNSTILE_SECRET_KEY?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
 }
@@ -63,6 +68,23 @@ const parseAddress = (value: string) => {
   const m = value.match(/^\s*(.*?)\s*<([^>]+)>\s*$/);
   return m ? { name: m[1] || undefined, email: m[2] } : { email: value.trim() };
 };
+
+async function verifierTurnstile(secret: string, token: string, ip: string | null) {
+  if (!token) return false;
+  const body = new FormData();
+  body.append('secret', secret);
+  body.append('response', token);
+  if (ip) body.append('remoteip', ip);
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+    const data = (await res.json()) as { success?: boolean; 'error-codes'?: string[] };
+    if (!data.success) console.warn('Turnstile :', data['error-codes']?.join(', '));
+    return Boolean(data.success);
+  } catch (err) {
+    console.error('Turnstile : vérification impossible.', err);
+    return false;
+  }
+}
 
 async function sendViaSmtp(env: Env, msg: Message) {
   const port = Number(env.SMTP_PORT || 465);
@@ -111,6 +133,19 @@ export const onRequestPost = async ({ request, env }: Context): Promise<Response
     form = await request.formData();
   } catch {
     return redirect(request, '/erreur-envoi/');
+  }
+
+  // Anti-spam Cloudflare Turnstile : actif dès que TURNSTILE_SECRET_KEY est défini.
+  if (env.TURNSTILE_SECRET_KEY) {
+    const ok = await verifierTurnstile(
+      env.TURNSTILE_SECRET_KEY,
+      clean(form.get('cf-turnstile-response'), 4096),
+      request.headers.get('CF-Connecting-IP'),
+    );
+    if (!ok) {
+      console.warn('Formulaire de contact : vérification anti-robot échouée, message refusé.');
+      return redirect(request, '/erreur-envoi/?raison=verification');
+    }
   }
 
   // Piège à robots : un humain ne remplit jamais ce champ.

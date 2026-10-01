@@ -59,6 +59,12 @@ const a = site.address;
         Vos informations servent uniquement à vous recontacter.
         <a href="/confidentialite/">En savoir plus</a>
       </p>
+      {site.turnstileSiteKey && (
+        <>
+          <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey} data-language="fr" data-theme="light" data-size="flexible"></div>
+          <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        </>
+      )}
       <button type="submit" class="btn btn--ink">Envoyer ma demande</button>
     </form>
   </div>

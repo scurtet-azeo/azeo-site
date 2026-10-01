@@ -71,6 +71,8 @@ import Page from '../layouts/Page.astro';
   <p>
     Pour l’acheminement des messages envoyés via le formulaire de contact, Azéo Conseil fait appel
     à des prestataires techniques agissant pour son compte : Cloudflare (hébergement du site) et
-    son prestataire de messagerie (envoi des e-mails).
+    son prestataire de messagerie (envoi des e-mails). Pour protéger le formulaire contre les
+    envois automatisés, une vérification anti-robot Cloudflare Turnstile est utilisée : elle ne
+    dépose pas de cookie publicitaire ni de suivi.
   </p>
 </Page>

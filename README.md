@@ -22,6 +22,9 @@ npm run preview  # affiche le site généré
 | Logos clients (bandeau défilant, ordre aléatoire) | `src/data/clients.ts` + images dans `public/images/clients/` |
 | Témoignages (section masquée tant que vide) | `src/data/temoignages.ts` |
 | Textes de la page d'accueil | `src/components/sections/*.astro` (un fichier par section) |
+| Actualités : publier une news (bandeau « Nouveau » 15 jours) | nouveau fichier dans `src/content/actualites/` (copier `_modele.md`) |
+| Offres d'emploi (page « Nous rejoindre ») : publier / fermer | `src/data/offres.ts` (`ouverte: true` / `false`) |
+| Adresse qui reçoit les candidatures | `src/data/site.ts` (`recrutementEmail`) |
 | Couleurs, typographie, espacements | `src/styles/global.css` (variables en haut du fichier) |
 | Mentions légales, confidentialité | `src/pages/mentions-legales.astro`, `src/pages/confidentialite.astro` |
 | Redirections de l'ancien site | `public/_redirects` |
@@ -49,6 +52,10 @@ puis relancer un déploiement :
 | `CONTACT_TO` | `contact@azeoconseil.fr` | Texte |
 | `CONTACT_FROM` | facultatif, par défaut `SMTP_USER` | Texte |
 
+**Anti-spam (Cloudflare Turnstile)** : créez un widget dans Cloudflare (menu Turnstile) pour les domaines
+`azeoconseil.fr` et `azeo-site.pages.dev`. Mettez la **clé du site** dans `src/data/site.ts` (`turnstileSiteKey`)
+et la **clé secrète** dans la variable `TURNSTILE_SECRET_KEY` (type Secret). Les deux sont nécessaires.
+
 Sans `SMTP_HOST`, la fonction utilise Resend (`RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM`).
 En cas d'échec, le visiteur arrive sur « Message non envoyé » et la cause est écrite dans le
 flux de journaux du déploiement (onglet Fonctions).
@@ -62,8 +69,8 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 
 ## Reste à faire
 
-- [ ] Logo en version vectorielle (SVG) pour remplacer `public/images/logo-azeo.png`
-- [ ] Téléphone dans `src/data/site.ts` (e-mail renseigné)
+- [x] Logo haute définition, favicon et image de partage (`public/images/partage.jpg`)
+- [x] Téléphone et e-mail dans `src/data/site.ts`
 - [x] Nouvelle gamme de badgeuses : page /badgeuses/ (eTSmile, Pulsi)
 - [x] Visuels eTemptation et Badgy
 - [x] Page eTemptation

@@ -16,6 +16,9 @@ export const site = {
   phoneIntl: '+262 262 70 54 85', // format international (liens d’appel, Google)
   email: 'contact@azeoconseil.fr',
   recrutementEmail: 'recrutement@azeoconseil.re', // adresse qui reçoit les candidatures
+  // Anti-spam du formulaire (Cloudflare Turnstile) : « clé du site », publique.
+  // Vide = vérification désactivée. La clé secrète, elle, va dans les variables Cloudflare.
+  turnstileSiteKey: '',
   linkedin: '', // URL de la page LinkedIn
   partners: {
     horoquartz: 'https://www.horoquartz.com',

@@ -19,7 +19,7 @@ export const site = {
   // Anti-spam du formulaire (Cloudflare Turnstile) : « clé du site », publique.
   // Vide = vérification désactivée. La clé secrète, elle, va dans les variables Cloudflare.
   turnstileSiteKey: '0x4AAAAAAFKw3iXSSiQXJc7R',
-  linkedin: '', // URL de la page LinkedIn
+  linkedin: 'https://www.linkedin.com/company/azeo-conseil/',
   partners: {
     horoquartz: 'https://www.horoquartz.com',
   },

@@ -28,12 +28,12 @@ const actualites = await getActualites();
     <div class="container">
       {actualites.length > 0 ? (
         <ul class="news">
-          {actualites.map((a, i) => (
-            <li class={`card news__item ${i === 0 ? 'news__item--une' : ''}`}>
+          {actualites.map((a) => (
+            <li class="card news__item">
               {a.data.image ? (
-                <Image src={a.data.image} alt={a.data.imageAlt ?? ''} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" class="news__img" />
+                <Image src={a.data.image} alt={a.data.imageAlt ?? ''} widths={[160, 320]} sizes="(max-width: 560px) 96px, 160px" class="news__img" />
               ) : (
-                <div class="news__img news__img--vide" aria-hidden="true"><Icon name="clock" size={40} color="var(--lime)" /></div>
+                <div class="news__img news__img--vide" aria-hidden="true"><Icon name="clock" size={32} color="var(--lime)" /></div>
               )}
               <div class="news__body">
                 <p class="news__date"><time datetime={a.data.date.toISOString()}>{formatDate(a.data.date)}</time></p>
@@ -77,9 +77,11 @@ const actualites = await getActualites();
   .act-hero__text h1 {
     font-size: clamp(2.25rem, 4.4vw, 3.5rem);
   }
+  /* Grille de cartes identiques : toutes les lignes ont la hauteur de la plus haute carte. */
   .news {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+    grid-auto-rows: 1fr;
     gap: 20px;
     margin: 0;
     padding: 0;
@@ -87,16 +89,22 @@ const actualites = await getActualites();
   }
   .news__item {
     position: relative;
-    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
     overflow: hidden;
-    gap: 0;
   }
   .news__item:hover {
     border-color: var(--petrol);
   }
+  /* Petite vignette carrée à gauche du texte. */
   .news__img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    flex: none;
+    width: 160px;
+    height: 160px;
+    border-radius: var(--radius-s);
     object-fit: cover;
   }
   .news__img--vide {
@@ -108,9 +116,26 @@ const actualites = await getActualites();
   .news__body {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 22px 24px 24px;
+    gap: 8px;
     flex: 1;
+    min-width: 0;
+    align-self: stretch;
+  }
+  /* Titres et résumés coupés à la même longueur, pour garder des cartes régulières. */
+  .news__title,
+  .news__body > p:not(.news__date) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news__title {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .news__body > p:not(.news__date) {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: 0.9375rem;
   }
   .news__date {
     font-size: 0.8125rem;
@@ -120,7 +145,7 @@ const actualites = await getActualites();
     color: var(--orange-text);
   }
   .news__title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.3;
   }
   .news__title a {
@@ -137,26 +162,14 @@ const actualites = await getActualites();
     margin-top: auto;
     color: var(--petrol);
   }
-  @media (min-width: 900px) {
-    .news__item--une {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
+  @media (max-width: 560px) {
+    .news__item {
+      gap: 14px;
+      padding: 16px;
     }
-    .news__item--une .news__img {
-      height: 100%;
-      aspect-ratio: auto;
-      min-height: 280px;
-    }
-    .news__item--une .news__body {
-      padding: 36px;
-      justify-content: center;
-    }
-    .news__item--une .news__title {
-      font-size: 1.75rem;
-    }
-    .news__item--une .news__more {
-      margin-top: 12px;
+    .news__img {
+      width: 96px;
+      height: 96px;
     }
   }
   .vide {

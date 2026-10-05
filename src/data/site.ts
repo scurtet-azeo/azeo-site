@@ -15,7 +15,7 @@ export const site = {
   phone: '02 62 70 54 85', // affichage
   phoneIntl: '+262 262 70 54 85', // format international (liens d’appel, Google)
   email: 'contact@azeoconseil.fr',
-  recrutementEmail: 'recrutement@azeoconseil.re', // adresse qui reçoit les candidatures
+  recrutementEmail: 'recrutement@azeoconseil.fr', // adresse qui reçoit les candidatures
   // Anti-spam du formulaire (Cloudflare Turnstile) : « clé du site », publique.
   // Vide = vérification désactivée. La clé secrète, elle, va dans les variables Cloudflare.
   turnstileSiteKey: '0x4AAAAAAFKw3iXSSiQXJc7R',

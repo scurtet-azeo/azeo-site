@@ -18,7 +18,7 @@
 - **Coordonnées** :
   - téléphone **02 62 70 54 85** (format international +262 262 70 54 85) ;
   - contact@azeoconseil.fr ;
-  - candidatures : **recrutement@azeoconseil.re** ;
+  - candidatures : **recrutement@azeoconseil.fr** (depuis octobre 2026 ; auparavant recrutement@azeoconseil.re) ;
   - LinkedIn : https://www.linkedin.com/company/azeo-conseil/
 - **Interlocuteur** : Stéphane Curtet (scurtet@azeoconseil.fr), qui fait lui-même les manipulations Git, Cloudflare, Gandi et Google.
 
@@ -236,7 +236,7 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 
 - [ ] **Gandi** : supprimer les redirections web restantes (.fr vers .com, les deux « Caché » du .com, celle du .re).
 - [ ] **o2switch** : récupérer une sauvegarde de l'ancien site, puis résilier l'hébergement.
-- [ ] **.re** : vérifier si les adresses en .re sont utilisées (recrutement@azeoconseil.re l'est). Si le reste n'est pas utilisé, il ne faut **pas** appliquer la protection anti-usurpation tant que recrutement@ y est hébergé.
+- [ ] **.re** : vérifier si les adresses en .re sont utilisées. Le site n'utilise plus recrutement@azeoconseil.re (remplacée par recrutement@azeoconseil.fr en octobre 2026), mais elle peut encore recevoir des candidatures envoyées à l'ancienne adresse : ne **pas** appliquer la protection anti-usurpation tant qu'elle reste active.
 - [ ] Mettre à jour l'adresse du site dans les signatures d'e-mail et les documents commerciaux.
 
 ### Contenu et site

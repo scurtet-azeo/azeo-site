@@ -4,8 +4,8 @@
 #   2026-10-15-lancement-badgy.md  ->  azeoconseil.fr/actualites/2026-10-15-lancement-badgy/
 # Les fichiers qui commencent par « _ » ne sont jamais publiés.
 #
-# Pendant 15 jours après sa date, la news la plus récente s'affiche dans le bandeau
-# « Nouveau » sous le menu, sur toutes les pages. Ensuite, le bandeau disparaît tout seul.
+# Les 4 news les plus récentes tournent dans le bandeau « News » sous le menu, sur toutes
+# les pages (ordre aléatoire, 15 secondes chacune).
 
 titre: "Titre de l'actualité"
 date: 2026-10-15

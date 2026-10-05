@@ -98,11 +98,11 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
   - **39 logos en couleur**, dans un ordre aléatoire à chaque visite ;
   - défilement lent, pause au survol ;
   - chiffres de part et d'autre : « + de 40 clients accompagnés au quotidien » et « + 15 000 collaborateurs et agents gérés ».
-- **Bandeau « Nouveau », façon flash info**, sous le menu :
-  - il affiche la dernière actualité pendant **15 jours** ;
-  - le calcul se fait dans le navigateur du visiteur, donc le bandeau disparaît sans republier le site ;
-  - le titre défile s'il est trop long ;
-  - le visiteur peut le fermer, et ce choix est mémorisé pour cette actualité.
+- **Bandeau « News », façon flash info**, sous le menu, sur toutes les pages :
+  - il fait tourner les **4 dernières actualités**, sans limite de date, dans un ordre aléatoire à chaque page vue ;
+  - chaque news reste **15 secondes**, avec une barre de progression ; la rotation se met en pause au survol et au clavier ;
+  - un titre trop long défile jusqu'à sa fin pendant ses 15 secondes ;
+  - le visiteur peut le fermer, et ce choix est mémorisé jusqu'à la publication d'une nouvelle actualité.
 - **Offres d'emploi** pilotées par `src/data/offres.ts` :
   - `ouverte: true` ou `false` ;
   - données structurées « JobPosting » pour Google pour l'emploi ;
@@ -153,7 +153,7 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 | **Turnstile et champ piège** | Du spam reçu via le formulaire ; solution gratuite, sans cookie publicitaire | reCAPTCHA (Google, cookies) |
 | **Polices hébergées sur le site, pas de mesure d'audience** | RGPD : pas de bandeau cookies nécessaire | Google Fonts, Google Analytics |
 | **Actualités en fichiers Markdown, saisies à la main** | Simple, éditable depuis GitHub, contenu choisi | L'API LinkedIn (réservée aux partenaires) et les publications LinkedIn intégrées (cookies de suivi) |
-| **Fenêtre de 15 jours calculée dans le navigateur** | Site statique : un calcul au moment du build ne s'actualiserait pas | Une reconstruction quotidienne programmée |
+| **Rotation des 4 dernières news dans le navigateur, sans limite de date** (octobre 2026) | Choix du client : le bandeau reste vivant même sans actualité récente | La fenêtre de 15 jours (puis 30) calculée dans le navigateur |
 | **Mise en avant des news par un bandeau sous le menu** | Choix du client | Une carte dans le haut de page, une section « Actualités » sur l'accueil |
 | **Schéma des modules recréé en code** | Texte lisible sur mobile et par Google | L'image PowerPoint telle quelle |
 | **Textes des éditeurs reformulés** | Éviter le contenu dupliqué (référencement) et rester dans les clous du droit d'auteur | Copier les textes d'Horoquartz |

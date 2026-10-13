@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import Icon from '../Icon.astro';
+import exodataLogo from '../../assets/exodata.png';
+
+const exodataUrl = 'https://www.exodata.fr/cloud';
 const proofs = [
   { label: 'HDS', text: 'Datacenter certifié Hébergeur de Données de Santé' },
-  { label: 'Local', text: 'Cloud privé, sur l’île de La Réunion' },
-  { label: 'ISO 27001', text: 'Sécurité de l’information, infogérance Exodata' },
-  { label: 'ISO 9001', text: 'Management de la qualité, infogérance Exodata' },
+  { label: 'Hébergement local', text: 'Cloud privé hébergé à La Réunion' },
+  { label: 'ISO 27001', text: 'Sécurité de l’information certifiée, infogérance Exodata' },
+  { label: 'ISO 9001', text: 'Management de la qualité certifié, infogérance Exodata' },
 ];
 ---
 <section id="cloud" class="section">
@@ -11,13 +16,25 @@ const proofs = [
     <div class="cloud">
       <div class="cloud__text">
         <p class="eyebrow cloud__eyebrow">Hébergement</p>
-        <h2>Un cloud privé, sur l’île de La Réunion</h2>
+        <h2>Un cloud privé, hébergé à La Réunion</h2>
         <p class="lead">
-          Votre solution de gestion des temps hébergée localement, dans un datacenter certifié HDS,
-          et infogérée par notre partenaire Exodata. Vos données RH restent sur l’île, avec une
-          latence minimale pour vos équipes.
+          Vos solutions Azéo Conseil sont hébergées localement, au sein de l’infrastructure cloud
+          privée d’Exodata.
         </p>
-        <a href="#contact" class="btn btn--ink">Parler de l’hébergement</a>
+        <p class="lead">
+          Vos données restent hébergées à La Réunion, dans un environnement sécurisé et opéré
+          localement, pour conjuguer proximité, performance et maîtrise de vos données.
+        </p>
+        <div class="cloud__partner">
+          <span>Infrastructure opérée par</span>
+          <Image src={exodataLogo} alt="Exodata" height={44} densities={[1, 2]} class="cloud__partner-logo" />
+        </div>
+        <div class="cloud__actions">
+          <a href="#contact" class="btn btn--ink">Parler de l’hébergement</a>
+          <a href={exodataUrl} class="btn btn--outline" rel="noopener">
+            En savoir plus sur Exodata <Icon name="external" size={18} />
+          </a>
+        </div>
       </div>
       <ul class="cloud__proofs">
         {proofs.map((p) => (
@@ -53,6 +70,27 @@ const proofs = [
   .cloud__text .lead {
     color: #2f3a37;
   }
+  /* Logo du partenaire, sur fond blanc pour garder le contraste de la sphère grise. */
+  .cloud__partner {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: var(--radius-m);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .cloud__partner-logo {
+    height: 44px;
+    width: auto;
+  }
+  .cloud__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
   .cloud__proofs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -73,6 +111,7 @@ const proofs = [
     font-family: var(--font-display);
     font-size: clamp(1.375rem, 2.2vw, 1.875rem);
     font-weight: 600;
+    line-height: 1.15;
     color: var(--petrol-hover);
   }
   .cloud__proofs span {

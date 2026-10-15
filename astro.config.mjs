@@ -6,7 +6,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 
 // Date de dernière modification de chaque page, pour le plan du site (<lastmod>).
 // Actualités : la date « maj » (ou « date ») de leur fichier. Autres pages : la date du
-// dernier commit Git qui a touché leurs fichiers sources. Sans Git, pas de date.
+// dernier commit Git qui a touché leurs fichiers sources. Sans historique Git complet,
+// pas de date (plutôt qu'une date fausse).
 const SOURCES = {
   '/': ['src/pages/index.astro', 'src/components/sections', 'src/data/clients.ts'],
   '/etemptation/': ['src/pages/etemptation.astro'],
@@ -17,10 +18,27 @@ const SOURCES = {
   '/confidentialite/': ['src/pages/confidentialite.astro'],
 };
 
-function dateGit(chemins) {
+const git = (...args) => execFileSync('git', args, { encoding: 'utf8', timeout: 60_000 }).trim();
+
+// Cloudflare Pages ne récupère que le dernier commit : toutes les pages auraient alors
+// la même date. On tente de récupérer l'historique complet ; en cas d'échec, pas de date.
+function historiqueComplet() {
   try {
-    const d = execFileSync('git', ['log', '-1', '--format=%cI', '--', ...chemins], { encoding: 'utf8' }).trim();
-    return d || undefined;
+    if (git('rev-parse', '--is-shallow-repository') === 'false') return true;
+    git('fetch', '--unshallow', '--quiet');
+    return git('rev-parse', '--is-shallow-repository') === 'false';
+  } catch {
+    return false;
+  }
+}
+
+const gitFiable = historiqueComplet();
+console.log(`[plan du site] historique Git complet : ${gitFiable ? 'oui, dates des pages activées' : 'non, dates des pages désactivées'}`);
+
+function dateGit(chemins) {
+  if (!gitFiable) return undefined;
+  try {
+    return git('log', '-1', '--format=%cI', '--', ...chemins) || undefined;
   } catch {
     return undefined;
   }

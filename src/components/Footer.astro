@@ -6,6 +6,10 @@ const year = new Date().getFullYear();
   <div class="container site-footer__inner">
     <div class="site-footer__brand">
       <img src="/images/logo-azeo.png" alt="Azéo Conseil" width="110" height="44" loading="lazy" />
+      <address class="site-footer__address">
+        {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.region.replace(/ /g, ' ')}
+        {site.phone && <><br /><a href={`tel:${site.phoneIntl.replace(/\s/g, '')}`}>{site.phone}</a></>}
+      </address>
     </div>
     <ul class="site-footer__links">
       <li><a href="/actualites/">Actualités</a></li>
@@ -40,6 +44,13 @@ const year = new Date().getFullYear();
     align-self: flex-start;
     height: 44px;
     width: auto;
+  }
+  .site-footer__address {
+    font-style: normal;
+    line-height: 1.5;
+  }
+  .site-footer__address a {
+    color: var(--muted);
   }
   .site-footer__links {
     display: flex;

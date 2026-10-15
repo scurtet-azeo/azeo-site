@@ -12,6 +12,7 @@ const actualites = defineCollection({
     z.object({
       titre: z.string(),
       date: z.coerce.date(),
+      maj: z.coerce.date().optional(), // date de mise à jour, si la news est corrigée après publication
       resume: z.string(),
       image: image().optional(),
       imageAlt: z.string().optional(),

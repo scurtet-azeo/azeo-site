@@ -10,23 +10,33 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import NewsBanner from '../components/NewsBanner.astro';
 import { site } from '../data/site';
+import { organisationId } from '../lib/seo';
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  // Pour une actualité : type « article », dates et image de partage propres.
+  article?: { publie: Date; modifie: Date };
+  image?: { url: string; width: number; height: number; alt: string };
 }
 
-const { title, description = site.description, noindex = false } = Astro.props;
+const { title, description = site.description, noindex = false, article, image } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · Gestion des temps et planification à La Réunion et Mayotte`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/images/partage.jpg', Astro.site);
+const og = image ?? {
+  url: new URL('/images/partage.jpg', Astro.site).href,
+  width: 1200,
+  height: 630,
+  alt: 'Azéo Conseil, gestion des temps et planification à La Réunion et Mayotte',
+};
 const logoUrl = new URL('/images/logo-azeo.png', Astro.site);
 
 // Données structurées : aide Google à comprendre qui vous êtes et où vous êtes.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': organisationId,
   name: site.name,
   url: site.url,
   logo: logoUrl.href,
@@ -55,23 +65,25 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {/* Pas de canonique sur les pages exclues de Google (la 404 est servie à toutes les adresses inconnues). */}
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#046a6f" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Azéo Conseil, gestion des temps et planification à La Réunion et Mayotte" />
+    <meta property="og:image" content={og.url} />
+    <meta property="og:image:width" content={String(og.width)} />
+    <meta property="og:image:height" content={String(og.height)} />
+    <meta property="og:image:alt" content={og.alt} />
+    {article && <meta property="article:published_time" content={article.publie.toISOString()} />}
+    {article && <meta property="article:modified_time" content={article.modifie.toISOString()} />}
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

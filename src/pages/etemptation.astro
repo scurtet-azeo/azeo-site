@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Contact from '../components/sections/Contact.astro';
 import { site } from '../data/site';
+import { filAriane, service } from '../lib/seo';
 import mtemptation from '../assets/mtemptation.png';
 
 // Modules de la suite eTemptation (source : présentation Horoquartz / Azéo).
@@ -123,20 +124,29 @@ const nodes = hubLabels.map((label, i) => {
   return { label, color: hubColors[i], x: C + R * Math.cos(a), y: C + R * Math.sin(a) };
 });
 
-const breadcrumb = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: site.url + '/' },
-    { '@type': 'ListItem', position: 2, name: 'eTemptation', item: site.url + '/etemptation/' },
-  ],
-};
+const donnees = [
+  filAriane([['Accueil', '/'], ['eTemptation', '/etemptation/']]),
+  service({
+    nom: 'Intégration du logiciel eTemptation',
+    type: 'Logiciel de gestion des temps et des plannings',
+    description:
+      'Installation, paramétrage, formation et support du logiciel eTemptation : gestion des temps, absences, optimisation des plannings et suivi d’activité, chez vous ou dans un cloud privé hébergé à La Réunion.',
+    chemin: '/etemptation/',
+  }),
+  service({
+    nom: 'Application mobile mTemptation',
+    type: 'Application mobile de gestion des temps',
+    description:
+      'Déploiement de mTemptation, l’application mobile d’eTemptation : consultation du planning, demandes d’absence et validations pour les collaborateurs et les managers.',
+    chemin: '/etemptation/#mtemptation',
+  }),
+];
 ---
 <Base
   title="Logiciel de gestion des temps à La Réunion (974) et Mayotte : eTemptation"
   description="Logiciel de gestion des temps et des plannings à La Réunion (974) et Mayotte (976) : eTemptation d’Horoquartz, absences, optimisation des plannings, suivi d’activité et application mobile. Installation et accompagnement par Azéo Conseil."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  {donnees.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
 
   <section class="et-hero">
     <div class="container et-hero__grid">

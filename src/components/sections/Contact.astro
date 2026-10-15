@@ -11,7 +11,7 @@ const a = site.address;
         et de paie et voir si une solution de gestion des temps a du sens pour vous.
       </p>
       <address>
-        {a.street}, {a.city}, {a.region}
+        {a.street}, {a.postalCode} {a.city}, {a.region}
         {site.phone && <><br /><a href={`tel:${site.phoneIntl.replace(/\s/g, '')}`}>{site.phone}</a></>}
         {site.email && <><br /><a href={`mailto:${site.email}`}>{site.email}</a></>}
       </address>

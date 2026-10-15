@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../data/site';
 import { offresOuvertes, type Offre } from '../../data/offres';
+import { filAriane } from '../../lib/seo';
 
 // Une page par offre ouverte. Une offre fermée n'a plus de page.
 export function getStaticPaths() {
@@ -65,6 +66,10 @@ const jobPosting = {
   description={`${offre.titre}${offre.contrat ? ` (${offre.contrat})` : ''} à ${offre.lieu}. ${offre.resume}`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jobPosting)} />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(filAriane([['Accueil', '/'], ['Nous rejoindre', '/nous-rejoindre/'], [offre.titre, `/nous-rejoindre/${offre.slug}/`]]))}
+  />
 
   <article class="section">
     <div class="container offre">

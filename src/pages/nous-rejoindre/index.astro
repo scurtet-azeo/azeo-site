@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../data/site';
 import { offresOuvertes } from '../../data/offres';
+import { filAriane } from '../../lib/seo';
 
 const candidatureSpontanee = `mailto:${site.recrutementEmail}?subject=${encodeURIComponent(
   'Candidature spontanée',
@@ -23,6 +24,7 @@ const raisons = [
   title="Nous rejoindre : offres d’emploi à La Réunion"
   description="Rejoignez Azéo Conseil à Saint-Leu : offres d’emploi en gestion des temps, paramétrage eTemptation et support, et candidatures spontanées."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(filAriane([['Accueil', '/'], ['Nous rejoindre', '/nous-rejoindre/']]))} />
   <section class="rj-hero">
     <div class="container">
       <nav class="crumbs" aria-label="Fil d’Ariane">

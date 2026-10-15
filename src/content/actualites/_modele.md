@@ -9,6 +9,8 @@
 
 titre: "Titre de l'actualité"
 date: 2026-10-15
+# Facultatif : date de mise à jour, si vous modifiez la news après sa publication
+# maj: 2026-10-20
 resume: "Une ou deux phrases qui résument la news (affichées dans la liste et dans Google)."
 # Facultatif : une image déposée dans ce même dossier
 # image: ./mon-image.jpg

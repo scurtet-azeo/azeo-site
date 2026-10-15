@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Contact from '../components/sections/Contact.astro';
 import { site } from '../data/site';
+import { filAriane, organisationId, service } from '../lib/seo';
 import etsmile from '../assets/etsmile.jpg';
 import pulsi from '../assets/pulsi.jpg';
 
@@ -34,20 +35,33 @@ const services = [
   { icon: 'sync', title: 'Supervision et support', text: 'Suivi de vos badgeuses à distance avec le Reader Manager, et un support qui répond sur votre fuseau horaire.' },
 ];
 
-const breadcrumb = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: site.url + '/' },
-    { '@type': 'ListItem', position: 2, name: 'Badgeuses', item: site.url + '/badgeuses/' },
-  ],
-};
+const donnees = [
+  filAriane([['Accueil', '/'], ['Badgeuses', '/badgeuses/']]),
+  service({
+    nom: 'Badgeuses eTSmile et Pulsi',
+    type: 'Badgeuses de gestion des temps',
+    description:
+      'Conseil et choix des badgeuses eTSmile et Pulsi, paramétrage dans eTemptation, formation des utilisateurs, supervision et support local depuis Saint-Leu.',
+    chemin: '/badgeuses/',
+  }),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Badgy by Azéo',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Android',
+    description:
+      'Application de badgeage sur tablette et smartphone, compatible eTemptation : mêmes badges que les badgeuses, multi-sites, fonctionnement sans réseau, géolocalisation et identification du lieu par badge NFC.',
+    url: new URL('/badgeuses/#badgy', site.url).href,
+    publisher: { '@id': organisationId },
+  },
+];
 ---
 <Base
   title="Badgeuse et pointeuse à La Réunion (974) et Mayotte : eTSmile, Pulsi, Badgy"
   description="Badgeuses et pointeuses à La Réunion (974) et Mayotte (976) : eTSmile, Pulsi et Badgy sur tablette ou smartphone. Conseil, paramétrage eTemptation et support local par Azéo Conseil, à Saint-Leu."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  {donnees.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
 
   <section class="bd-hero">
     <div class="container">

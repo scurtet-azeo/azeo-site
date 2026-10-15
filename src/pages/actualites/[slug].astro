@@ -1,10 +1,11 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../data/site';
 import { getActualites, formatDate } from '../../lib/actualites';
+import { filAriane, organisationId } from '../../lib/seo';
 
 export async function getStaticPaths() {
   const actualites = await getActualites();
@@ -13,7 +14,18 @@ export async function getStaticPaths() {
 
 const { actu } = Astro.props;
 const { Content } = await render(actu);
-const { titre, date, resume, image, imageAlt, linkedin } = actu.data;
+const { titre, date, maj, resume, image, imageAlt, linkedin } = actu.data;
+const modifie = maj ?? date;
+const url = new URL(`/actualites/${actu.id}/`, Astro.site).href;
+
+// Image de partage (réseaux sociaux, Google) : 1200 px de large, en JPEG.
+const partage = image ? await getImage({ src: image, width: 1200, format: 'jpg' }) : undefined;
+const partageImage = partage && {
+  url: new URL(partage.src, Astro.site).href,
+  width: 1200,
+  height: Math.round((1200 * image!.height) / image!.width),
+  alt: imageAlt ?? titre,
+};
 
 const article = {
   '@context': 'https://schema.org',
@@ -21,13 +33,18 @@ const article = {
   headline: titre,
   description: resume,
   datePublished: date.toISOString(),
-  author: { '@type': 'Organization', name: site.name, url: site.url },
-  publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: `${site.url}/images/logo-azeo.png` } },
-  mainEntityOfPage: new URL(`/actualites/${actu.id}/`, Astro.site).href,
+  dateModified: modifie.toISOString(),
+  ...(partageImage && { image: [partageImage.url] }),
+  author: { '@type': 'Organization', '@id': organisationId, name: site.name, url: site.url },
+  publisher: { '@type': 'Organization', '@id': organisationId, name: site.name, logo: { '@type': 'ImageObject', url: `${site.url}/images/logo-azeo.png` } },
+  mainEntityOfPage: url,
+  inLanguage: 'fr-FR',
 };
+const ariane = filAriane([['Accueil', '/'], ['Actualités', '/actualites/'], [titre, `/actualites/${actu.id}/`]]);
 ---
-<Base title={titre} description={resume}>
+<Base title={titre} description={resume} article={{ publie: date, modifie }} image={partageImage}>
   <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  <script type="application/ld+json" set:html={JSON.stringify(ariane)} />
   <article class="section">
     <div class="container article">
       <nav class="crumbs" aria-label="Fil d’Ariane">
@@ -37,7 +54,10 @@ const article = {
       </nav>
 
       <header class="stack article__head">
-        <p class="eyebrow"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
+        <p class="eyebrow">
+          <time datetime={date.toISOString()}>{formatDate(date)}</time>
+          {maj && <> · Mis à jour le <time datetime={maj.toISOString()}>{formatDate(maj)}</time></>}
+        </p>
         <h1>{titre}</h1>
         <p class="lead">{resume}</p>
       </header>

@@ -24,8 +24,12 @@ export function filAriane(etapes: [nom: string, chemin: string][]) {
   };
 }
 
+// Éditeur des solutions intégrées par Azéo Conseil.
+export const horoquartz = { '@type': 'Organization', name: 'Horoquartz', url: site.partners.horoquartz };
+
 // Service proposé par Azéo Conseil, à La Réunion et à Mayotte.
-export function service(s: { nom: string; type: string; description: string; chemin: string }) {
+// `marque` : l'éditeur du produit concerné (Horoquartz pour eTemptation et les badgeuses).
+export function service(s: { nom: string; type: string; description: string; chemin: string; marque?: object }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -35,5 +39,6 @@ export function service(s: { nom: string; type: string; description: string; che
     url: new URL(s.chemin, site.url).href,
     provider: { '@id': organisationId },
     areaServed: zones,
+    ...(s.marque && { brand: s.marque }),
   };
 }

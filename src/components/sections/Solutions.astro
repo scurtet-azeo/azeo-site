@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
 import etsmile from '../../assets/etsmile.jpg';
 import etemptationEcran from '../../assets/etemptation-ecran.jpg';
-import badgy from '../../assets/badgy-scene.jpg';
+import temly from '../../assets/temly-scene.jpg';
 import { site } from '../../data/site';
 ---
 <section id="solutions" class="section">
@@ -43,22 +43,22 @@ import { site } from '../../data/site';
         <a href="/etemptation/" class="link-arrow sol__link">Découvrir eTemptation <Icon name="arrow" size={18} /></a>
       </article>
 
-      <article class="card sol__badgy">
+      <article class="card sol__temly">
         <Image
-          src={badgy}
-          alt="Badgy sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
+          src={temly}
+          alt="Temly sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
           widths={[400, 700]}
           sizes="(max-width: 1024px) 640px, 400px"
           class="sol__media sol__photo"
           loading="lazy"
         />
         <p class="sol__kind">Nouveau</p>
-        <h3 class="sol__name">Badgy by Azéo</h3>
+        <h3 class="sol__name">Temly by Azéo</h3>
         <p>
           Application de badgeage sur tablette et smartphone, 100 % compatible eTemptation. Les
           mêmes badges que vos badgeuses Horoquartz, sans matériel dédié.
         </p>
-        <a href="#badgy" class="link-arrow sol__link">Découvrir Badgy <Icon name="arrow" size={18} /></a>
+        <a href="#temly" class="link-arrow sol__link">Découvrir Temly <Icon name="arrow" size={18} /></a>
       </article>
 
       <article class="card" id="badgeuses">
@@ -128,18 +128,18 @@ import { site } from '../../data/site';
   .sol__link {
     margin-top: auto;
   }
-  .sol__badgy {
+  .sol__temly {
     background: var(--ink);
     border-color: var(--ink);
     color: #fff;
   }
-  .sol__badgy p {
+  .sol__temly p {
     color: var(--on-dark);
   }
-  .card.sol__badgy .sol__kind {
+  .card.sol__temly .sol__kind {
     color: var(--orange);
   }
-  .sol__badgy .sol__link {
+  .sol__temly .sol__link {
     color: var(--lime);
   }
   @media (max-width: 1024px) {

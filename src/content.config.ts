@@ -4,8 +4,8 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 // Actualités : un fichier .md par news dans src/content/actualites/.
-// Le nom du fichier devient l'adresse de la page : 2026-10-02-lancement-badgy.md
-// -> /actualites/2026-10-02-lancement-badgy/
+// Le nom du fichier devient l'adresse de la page : 2026-10-02-lancement-temly.md
+// -> /actualites/2026-10-02-lancement-temly/
 const actualites = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/actualites' }),
   schema: ({ image }) =>

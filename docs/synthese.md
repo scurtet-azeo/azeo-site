@@ -2,6 +2,8 @@
 
 *Document de reprise, à jour au 2 octobre 2026. Il permet de reprendre le travail sans l'historique de la conversation.*
 
+> **Octobre 2026 : Badgy a été renommé Temly** (le nom Badgy était déjà pris par une autre structure). Dans ce document, « Badgy » désigne donc Temly. L’ancienne adresse de la news `/actualites/2026-10-05-badgy/` redirige vers `/actualites/2026-10-05-temly/`.
+
 ---
 
 ## 1. Objectif et contexte

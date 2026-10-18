@@ -4,7 +4,7 @@ export const site = {
   name: 'Azéo Conseil',
   url: 'https://azeoconseil.fr',
   description:
-    "Intégrateur Horoquartz à La Réunion (974) et à Mayotte (976) : logiciel de gestion des temps, planification, badgeuses et Badgy. Accompagnement de proximité et cloud privé à La Réunion.",
+    "Intégrateur Horoquartz à La Réunion (974) et à Mayotte (976) : logiciel de gestion des temps, planification, badgeuses et Temly. Accompagnement de proximité et cloud privé à La Réunion.",
   address: {
     street: '69 chemin Dubuisson',
     postalCode: '97436',
@@ -28,7 +28,7 @@ export const site = {
 export const nav = [
   { href: '/#proximite', label: 'Notre proximité' },
   { href: '/#solutions', label: 'Solutions' },
-  { href: '/#badgy', label: 'Badgy' },
+  { href: '/#temly', label: 'Temly' },
   { href: '/#cloud', label: 'Cloud privé' },
   { href: '/#accompagnement', label: 'Accompagnement' },
   { href: '/actualites/', label: 'Actualités' },

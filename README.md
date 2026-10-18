@@ -72,9 +72,9 @@ Réglages Cloudflare Pages : commande de build `npm run build`, dossier de sorti
 - [x] Logo haute définition, favicon et image de partage (`public/images/partage.jpg`)
 - [x] Téléphone et e-mail dans `src/data/site.ts`
 - [x] Nouvelle gamme de badgeuses : page /badgeuses/ (eTSmile, Pulsi)
-- [x] Visuels eTemptation et Badgy
+- [x] Visuels eTemptation et Temly (ex-Badgy)
 - [x] Page eTemptation
-- [ ] Pages détaillées : Badgy, gestion des temps et des absences
+- [ ] Pages détaillées : Temly, gestion des temps et des absences
 - [x] Mentions légales et politique de confidentialité
 - [x] Redirections des anciennes adresses du .com dans `public/_redirects`
 - [ ] Logos clients (remplacer les emplacements « Client 1… » dans `src/data/clients.ts`) et témoignages

@@ -1,8 +1,8 @@
 
 ---
-titre: "Nouveau client : Carrefour Market Kanopée, une ouverture de magasin pilotée avec eTemptation et Badgy"
+titre: "Nouveau client : Carrefour Market Kanopée, une ouverture de magasin pilotée avec eTemptation et Temly"
 date: 2026-09-29
-resume: "Au cœur de ville de La Possession, le nouveau Carrefour Market Kanopée gère les plannings et les temps de ses équipes avec eTemptation, l’application mobile et Badgy, notre badgeuse sur tablette."
+resume: "Au cœur de ville de La Possession, le nouveau Carrefour Market Kanopée gère les plannings et les temps de ses équipes avec eTemptation, l’application mobile et Temly, notre badgeuse sur tablette."
 image: ./carrefour-market-kanopee.png
 imageAlt: "Nouveau client, carrefour Kanopee"
 ---
@@ -17,7 +17,7 @@ Une ouverture de magasin ne laisse pas de place à l’approximation : recruteme
 
 - **les plannings et les temps** de l’ensemble des collaborateurs sont construits et suivis dans **eTemptation** ;
 - **chaque collaborateur consulte son planning et pose ses demandes d’absence depuis son smartphone**, avec l’application mobile eTemptation ;
-- **le badgeage se fait sur tablette avec Badgy**, notre application, sans investir dans une badgeuse dédiée.
+- **le badgeage se fait sur tablette avec Temly**, notre application, sans investir dans une badgeuse dédiée.
 
 Résultat : des managers qui gagnent du temps sur l’organisation, des équipes autonomes au quotidien, et des données fiables pour la paie.
 

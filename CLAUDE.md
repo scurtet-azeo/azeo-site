@@ -1,6 +1,6 @@
 # CLAUDE.md : site Azéo Conseil
 
-Site vitrine d'Azéo Conseil (Saint-Leu, La Réunion), intégrateur des solutions de gestion des temps Horoquartz (eTemptation, mTemptation, badgeuses eTSmile et Pulsi) et éditeur de Badgy by Azéo. En ligne sur https://azeoconseil.fr depuis le 29 septembre 2026.
+Site vitrine d'Azéo Conseil (Saint-Leu, La Réunion), intégrateur des solutions de gestion des temps Horoquartz (eTemptation, mTemptation, badgeuses eTSmile et Pulsi) et éditeur de Temly by Azéo (nommée Badgy jusqu’en octobre 2026). En ligne sur https://azeoconseil.fr depuis le 29 septembre 2026.
 
 Le contexte complet (historique, décisions, points en suspens) est dans `docs/synthese.md`. Lis-le en début de session si la tâche dépasse une petite retouche.
 

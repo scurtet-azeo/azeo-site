@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
-import badgy from '../../assets/badgy-scene.jpg';
+import temly from '../../assets/temly-scene.jpg';
 
 const features = [
   { icon: 'badge', title: 'Une vraie badgeuse', text: 'Vos collaborateurs utilisent exactement les mêmes badges que sur vos badgeuses Horoquartz. Zéro changement d’habitude.' },
@@ -12,28 +12,28 @@ const features = [
   { icon: 'pin', title: 'Géolocalisation intégrée', text: 'Chaque badgeage est géolocalisé et rattaché au bon lieu, pour un suivi fiable des présences.' },
 ] as const;
 ---
-<section id="badgy" class="section section--dark" aria-labelledby="badgy-titre">
+<section id="temly" class="section section--dark" aria-labelledby="temly-titre">
   <div class="container">
-    <div class="badgy__top">
-      <div class="badgy__intro">
-        <span class="badgy__new">Nouveau</span>
-        <h2 id="badgy-titre" class="badgy__title">Badgy <span>by Azéo</span></h2>
-        <p class="badgy__tagline">La badgeuse connectée qui s’adapte à tous vos sites</p>
+    <div class="temly__top">
+      <div class="temly__intro">
+        <span class="temly__new">Nouveau</span>
+        <h2 id="temly-titre" class="temly__title">Temly <span>by Azéo</span></h2>
+        <p class="temly__tagline">La badgeuse connectée qui s’adapte à tous vos sites</p>
         <p class="lead">
           Notre application de badgeage sur tablette et smartphone, 100 % compatible avec
           eTemptation d’Horoquartz. Une simple tablette Android devient une badgeuse
           professionnelle.
         </p>
-        <div class="badgy__cta">
+        <div class="temly__cta">
           <a href="#contact" class="btn btn--lime">Demander une démo</a>
           <p>Vous utilisez déjà eTemptation ?<br />Parlons-en.</p>
         </div>
       </div>
 
-      <div class="badgy__visual">
+      <div class="temly__visual">
         <Image
-          src={badgy}
-          alt="L’application Badgy sur une tablette et un smartphone équipés d’un lecteur de badge, avec une carte collaborateur Azéo"
+          src={temly}
+          alt="L’application Temly sur une tablette et un smartphone équipés d’un lecteur de badge, avec une carte collaborateur Azéo"
           widths={[480, 800, 1200]}
           sizes="(max-width: 1024px) 90vw, 560px"
           loading="lazy"
@@ -41,7 +41,7 @@ const features = [
       </div>
     </div>
 
-    <ul class="badgy__features">
+    <ul class="temly__features">
       {features.map((f) => (
         <li>
           <Icon name={f.icon} size={28} color="var(--lime)" />
@@ -54,18 +54,18 @@ const features = [
 </section>
 
 <style>
-  .badgy__top {
+  .temly__top {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(40px, 6vw, 72px);
     align-items: center;
   }
-  .badgy__intro {
+  .temly__intro {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  .badgy__new {
+  .temly__new {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
@@ -77,43 +77,43 @@ const features = [
     font-size: 0.875rem;
     font-weight: 700;
   }
-  .badgy__title {
+  .temly__title {
     font-size: clamp(2.5rem, 5.5vw, 4rem);
     font-weight: 700;
     line-height: 1.02;
     letter-spacing: -0.02em;
   }
-  .badgy__title span {
+  .temly__title span {
     color: var(--lime);
   }
-  .badgy__tagline {
+  .temly__tagline {
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 2.2vw, 1.75rem);
     font-weight: 500;
     line-height: 1.25;
   }
-  .badgy__cta {
+  .temly__cta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 16px;
     padding-top: 4px;
   }
-  .badgy__cta p {
+  .temly__cta p {
     font-size: 0.9375rem;
     color: var(--on-dark);
   }
-  .badgy__visual {
+  .temly__visual {
     justify-self: center;
     width: min(100%, 580px);
   }
-  .badgy__visual :global(img) {
+  .temly__visual :global(img) {
     width: 100%;
     height: auto;
     border-radius: 28px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   }
-  .badgy__features {
+  .temly__features {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
@@ -121,7 +121,7 @@ const features = [
     padding: 0;
     list-style: none;
   }
-  .badgy__features li {
+  .temly__features li {
     background: var(--petrol-card);
     border-radius: var(--radius-m);
     padding: 28px;
@@ -129,26 +129,26 @@ const features = [
     flex-direction: column;
     gap: 10px;
   }
-  .badgy__features h3 {
+  .temly__features h3 {
     font-size: 1.1875rem;
   }
-  .badgy__features p {
+  .temly__features p {
     font-size: 0.9375rem;
     color: var(--on-dark);
   }
   @media (max-width: 1024px) {
-    .badgy__top {
+    .temly__top {
       grid-template-columns: 1fr;
     }
-    .badgy__features {
+    .temly__features {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (max-width: 600px) {
-    .badgy__features {
+    .temly__features {
       grid-template-columns: 1fr;
     }
-    .badgy__features li {
+    .temly__features li {
       padding: 20px;
     }
   }

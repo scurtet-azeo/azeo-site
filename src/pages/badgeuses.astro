@@ -9,7 +9,7 @@ import etsmile from '../assets/etsmile.jpg';
 import pulsi from '../assets/pulsi.jpg';
 
 const chooser = [
-  { href: '#badgy', name: 'Badgy', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
+  { href: '#temly', name: 'Temly', for: 'Badger sur tablette ou smartphone : sites éphémères, chantiers, équipes mobiles.' },
   { href: '#etsmile', name: 'eTSmile', for: 'Badger simplement et en toute sécurité, en intérieur comme en milieu exposé.' },
   { href: '#pulsi', name: 'Pulsi', for: 'Badger et donner accès aux services RH aux équipes sans ordinateur.' },
 ];
@@ -29,7 +29,7 @@ const pulsiServices = [
 ];
 
 const services = [
-  { icon: 'badge', title: 'Conseil et choix du matériel', text: 'Nous vous aidons à choisir les modèles adaptés à chaque site et à chaque usage : eTSmile, Pulsi ou Badgy.' },
+  { icon: 'badge', title: 'Conseil et choix du matériel', text: 'Nous vous aidons à choisir les modèles adaptés à chaque site et à chaque usage : eTSmile, Pulsi ou Temly.' },
   { icon: 'calendar', title: 'Paramétrage dans eTemptation', text: 'Motifs de badgeage, services RH, droits d’accès : tout est configuré selon vos règles.' },
   { icon: 'team', title: 'Formation des utilisateurs', text: 'Gestionnaires et collaborateurs prennent en main les badgeuses et les services en libre-service.' },
   { icon: 'sync', title: 'Supervision et support', text: 'Suivi de vos badgeuses à distance avec le Reader Manager, et un support qui répond sur votre fuseau horaire.' },
@@ -48,19 +48,19 @@ const donnees = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Badgy by Azéo',
+    name: 'Temly by Azéo',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Android',
     description:
       'Application de badgeage sur tablette et smartphone, compatible eTemptation : mêmes badges que les badgeuses, multi-sites, fonctionnement sans réseau, géolocalisation et identification du lieu par badge NFC.',
-    url: new URL('/badgeuses/#badgy', site.url).href,
+    url: new URL('/badgeuses/#temly', site.url).href,
     publisher: { '@id': organisationId },
   },
 ];
 ---
 <Base
-  title="Badgeuse et pointeuse à La Réunion (974) et Mayotte : eTSmile, Pulsi, Badgy"
-  description="Badgeuses et pointeuses à La Réunion (974) et Mayotte (976) : eTSmile, Pulsi et Badgy sur tablette ou smartphone. Conseil, paramétrage eTemptation et support local par Azéo Conseil, à Saint-Leu."
+  title="Badgeuse et pointeuse à La Réunion (974) et Mayotte : eTSmile, Pulsi, Temly"
+  description="Badgeuses et pointeuses à La Réunion (974) et Mayotte (976) : eTSmile, Pulsi et Temly sur tablette ou smartphone. Conseil, paramétrage eTemptation et support local par Azéo Conseil, à Saint-Leu."
 >
   {donnees.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
 
@@ -74,7 +74,7 @@ const donnees = [
           <p class="eyebrow">Matériel</p>
           <h1>Badgeuses à La Réunion et à Mayotte, pour chaque site et chaque équipe</h1>
           <p class="lead">
-            Badgy transforme tablettes et smartphones en badgeuses, et les badgeuses eTSmile et Pulsi
+            Temly transforme tablettes et smartphones en badgeuses, et les badgeuses eTSmile et Pulsi
             équipent vos sites fixes. Tous sont connectés à eTemptation.
           </p>
           <p class="lead">
@@ -98,18 +98,18 @@ const donnees = [
     </div>
   </section>
 
-  <section id="badgy" class="section section--dark">
-    <div class="container badgy-band">
+  <section id="temly" class="section section--dark">
+    <div class="container temly-band">
       <div class="stack">
-        <span class="badgy-band__new">Nouveau</span>
-        <h2>Badgy <span>by Azéo</span> : la badgeuse sur tablette et smartphone</h2>
+        <span class="temly-band__new">Nouveau</span>
+        <h2>Temly <span>by Azéo</span> : la badgeuse sur tablette et smartphone</h2>
         <p class="lead">
           Une tablette Android devient une badgeuse, et le smartphone d’un chef d’équipe devient la
           badgeuse de toute son équipe, avec les mêmes badges que vos badgeuses Horoquartz. Idéal pour les chantiers, les sites éphémères et
           les zones sans réseau.
         </p>
       </div>
-      <a href="/#badgy" class="btn btn--lime">Découvrir Badgy</a>
+      <a href="/#temly" class="btn btn--lime">Découvrir Temly</a>
     </div>
   </section>
 
@@ -352,22 +352,22 @@ const donnees = [
     color: var(--text);
   }
 
-  /* Bandeau Badgy */
-  .badgy-band {
+  /* Bandeau Temly */
+  .temly-band {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px 64px;
     flex-wrap: wrap;
   }
-  .badgy-band .stack {
+  .temly-band .stack {
     flex: 1 1 520px;
     max-width: 760px;
   }
-  .badgy-band h2 span {
+  .temly-band h2 span {
     color: var(--lime);
   }
-  .badgy-band__new {
+  .temly-band__new {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;

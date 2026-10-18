@@ -25,3 +25,7 @@
 /wp-admin/*                 /                   301
 /wp-login.php               /                   301
 /feed/                      /                   301
+
+# Badgy renommé Temly (octobre 2026) : l’ancienne adresse de la news, partagée sur LinkedIn.
+/actualites/2026-10-05-badgy/   /actualites/2026-10-05-temly/   301
+/actualites/2026-10-05-badgy    /actualites/2026-10-05-temly/   301

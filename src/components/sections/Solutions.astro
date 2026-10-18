@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
 import etsmile from '../../assets/etsmile.jpg';
 import etemptationEcran from '../../assets/etemptation-ecran.jpg';
-import temly from '../../assets/temly-scene.jpg';
+import temly from '../../assets/temly-bureau.jpg';
 import { site } from '../../data/site';
 ---
 <section id="solutions" class="section">
@@ -46,7 +46,7 @@ import { site } from '../../data/site';
       <article class="card sol__temly">
         <Image
           src={temly}
-          alt="Temly sur tablette et smartphone équipés d’un lecteur de badge, à côté d’une carte collaborateur"
+          alt="La tablette Temly by Azéo posée sur un bureau, équipée d’un lecteur de badge, prête pour le badgeage"
           widths={[400, 700]}
           sizes="(max-width: 1024px) 640px, 400px"
           class="sol__media sol__photo"
@@ -114,6 +114,10 @@ import { site } from '../../data/site';
   .sol__photo {
     width: 100%;
     object-fit: cover;
+  }
+  /* Photo Temly : recadrage centré sur l'écran de la tablette. */
+  .sol__temly .sol__photo {
+    object-position: 40% 58%;
   }
   .card .sol__kind {
     font-size: 0.8125rem;

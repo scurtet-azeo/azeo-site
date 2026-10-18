@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from '../Icon.astro';
-import temly from '../../assets/temly-scene.jpg';
+import temly from '../../assets/temly-bureau.jpg';
 
 const features = [
   { icon: 'badge', title: 'Une vraie badgeuse', text: 'Vos collaborateurs utilisent exactement les mêmes badges que sur vos badgeuses Horoquartz. Zéro changement d’habitude.' },
@@ -33,7 +33,7 @@ const features = [
       <div class="temly__visual">
         <Image
           src={temly}
-          alt="L’application Temly sur une tablette et un smartphone équipés d’un lecteur de badge, avec une carte collaborateur Azéo"
+          alt="La tablette Temly by Azéo posée sur un bureau, équipée d’un lecteur de badge, prête pour le badgeage"
           widths={[480, 800, 1200]}
           sizes="(max-width: 1024px) 90vw, 560px"
           loading="lazy"

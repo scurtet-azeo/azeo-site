@@ -2,7 +2,7 @@
 
 *Document de reprise, à jour au 2 octobre 2026. Il permet de reprendre le travail sans l'historique de la conversation.*
 
-> **Octobre 2026 : Badgy a été renommé Temly** (le nom Badgy était déjà pris par une autre structure). Dans ce document, « Badgy » désigne donc Temly. L’ancienne adresse de la news `/actualites/2026-10-05-badgy/` redirige vers `/actualites/2026-10-05-temly/`.
+> **Octobre 2026 : Badgy a été renommé Temly** (le nom Badgy était déjà pris par une autre structure). Ce document a été mis à jour avec le nouveau nom ; les anciens noms de branche et de fichier (`badgy-visuel`, `badgy-mise-en-situation-v2.jpg`) sont conservés tels quels. L’ancienne adresse de la news `/actualites/2026-10-05-badgy/` redirige vers `/actualites/2026-10-05-temly/`.
 
 ---
 
@@ -14,7 +14,7 @@
 - **Métier** : conseil et intégration en **gestion des temps et planification**.
   - Intégrateur des solutions **Horoquartz** : logiciel **eTemptation** et application mobile **mTemptation**.
   - Badgeuses Horoquartz **eTSmile** et **Pulsi**.
-  - **Badgy by Azéo** : leur propre application de badgeage sur tablette et smartphone, 100 % compatible eTemptation.
+  - **Temly by Azéo** : leur propre application de badgeage sur tablette et smartphone, 100 % compatible eTemptation.
   - **Cloud privé** sur l'île de La Réunion : datacenter certifié HDS, infogéré par le partenaire **Exodata** (ISO 27001 et ISO 9001).
 - **Clients** à La Réunion et à Mayotte (Maurice est citée dans l'offre d'emploi, mais pas ailleurs sur le site).
 - **Coordonnées** :
@@ -60,7 +60,7 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 - **Le sous-dossier en trop** : en copiant le dossier lui-même, on obtient `azeo-site/azeo-site/…`, et rien ne change sur le site. Le contrôle : `git show --stat HEAD`.
 - **Un fichier non copié** : on envoie un commit vide. Le contrôle : `git status` avant chaque commit.
 - **`src/data/site.ts` contient la clé Turnstile de l'utilisateur**, que l'assistant n'a pas. Il ne faut **jamais écraser ce fichier** : modifier la ligne voulue à la main, sur GitHub avec le crayon, ou en local après un `git pull`.
-- **Le dépôt GitHub de l'utilisateur fait foi.** La copie de référence de l'assistant peut en différer, par exemple pour le visuel Badgy (voir la section 5).
+- **Le dépôt GitHub de l'utilisateur fait foi.** La copie de référence de l'assistant peut en différer, par exemple pour le visuel Temly (voir la section 5).
 
 **Recommandation pour la suite** : utiliser **Claude Code** directement dans le dépôt, ce qui évite les copies d'archives. Lui donner le `README.md` du projet comme point de départ.
 
@@ -86,9 +86,9 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 
 | Page | Contenu |
 |---|---|
-| `/` (accueil) | Haut de page « Votre gestion des temps, pilotée d'ici » avec le sur-titre « depuis 2009 » ; bandeau clients ; proximité ; bénéfices ; accompagnement en 5 étapes ; solutions (eTemptation, Badgy, badgeuses) ; section Badgy ; cloud privé ; contact |
+| `/` (accueil) | Haut de page « Votre gestion des temps, pilotée d'ici » avec le sur-titre « depuis 2009 » ; bandeau clients ; proximité ; bénéfices ; accompagnement en 5 étapes ; solutions (eTemptation, Temly, badgeuses) ; section Temly ; cloud privé ; contact |
 | `/etemptation/` | Schéma des modules recréé en code, 8 cartes de modules (sans badges HQ), 5 avantages, mTemptation, options de déploiement |
-| `/badgeuses/` | Sélecteur (Badgy, eTSmile, Pulsi), bandeau Badgy en premier, eTSmile (version IP65), Pulsi (libre-service RH par licence), engagements de service |
+| `/badgeuses/` | Sélecteur (Temly, eTSmile, Pulsi), bandeau Temly en premier, eTSmile (version IP65), Pulsi (libre-service RH par licence), engagements de service |
 | `/actualites/` et `/actualites/<slug>/` | Liste et articles. Première news : « Nouveau client : Carrefour Market Kanopée… », datée du 29/09/2026 |
 | `/nous-rejoindre/` et `/nous-rejoindre/<slug>/` | Offres d'emploi (une ouverte : Consultant(e) en gestion des temps, CDI, Saint-Leu) et message automatique quand aucun poste n'est ouvert |
 | `/mentions-legales/`, `/confidentialite/` | Textes fournis par le client, corrigés |
@@ -202,7 +202,7 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 
 - Plus de 40 clients ; plus de 15 000 collaborateurs et agents gérés.
 - Horoquartz : leader du marché, plus de 5 000 clients et 4 millions de salariés gérés (chiffres de l'éditeur, cités dans l'offre d'emploi) ; eTemptation interfacé avec plus de 150 logiciels de paie.
-- Badgy : mêmes badges que les badgeuses Horoquartz, tablette Android, multi-sites et sites éphémères, fonctionnement hors réseau avec synchronisation au retour, smartphone des chefs d'équipe, géolocalisation, identification NFC du lieu.
+- Temly : mêmes badges que les badgeuses Horoquartz, tablette Android, multi-sites et sites éphémères, fonctionnement hors réseau avec synchronisation au retour, smartphone des chefs d'équipe, géolocalisation, identification NFC du lieu.
 
 ### Règles d'infrastructure
 
@@ -244,13 +244,13 @@ Remplacer l'ancien site WordPress de 2017, hébergé chez o2switch sur azeoconse
 ### Contenu et site
 
 - [ ] **Offre d'emploi** : la relancer (`ouverte: true` et nouvelle date `publiee` dans `src/data/offres.ts`) et publier le post LinkedIn de relance (deux versions préparées).
-- [ ] **News Kanopée** : remplacer l'image (`src/content/actualites/carrefour-market-kanopee.jpg`, aujourd'hui une composition Badgy) par une photo prise sur place, avec accord. Confirmer les faits de l'article (aucune date d'ouverture n'est indiquée).
-- [ ] **Visuel Badgy** : la mise en situation avec la main a été refusée (branche `badgy-visuel` non fusionnée). Une version **sans main, avec un fond de bureau dessiné** a été produite (`badgy-mise-en-situation-v2.jpg`), ainsi qu'un PNG détouré sans la main. Le client doit valider avant intégration. Une photo réelle de leurs bureaux reste l'option préférée.
+- [ ] **News Kanopée** : remplacer l'image (`src/content/actualites/carrefour-market-kanopee.jpg`, aujourd'hui une composition Temly) par une photo prise sur place, avec accord. Confirmer les faits de l'article (aucune date d'ouverture n'est indiquée).
+- [ ] **Visuel Temly** : la mise en situation avec la main a été refusée (branche `badgy-visuel` non fusionnée). Une version **sans main, avec un fond de bureau dessiné** a été produite (`badgy-mise-en-situation-v2.jpg`), ainsi qu'un PNG détouré sans la main. Le client doit valider avant intégration. Une photo réelle de leurs bureaux reste l'option préférée.
 - [ ] **Logos en basse définition** : Doulux, Run Market et Keepway. À remplacer si de meilleures versions sont disponibles.
 - [ ] **À valider par le client** :
   - les 4 arguments « Pourquoi nous rejoindre » ;
   - le directeur de la publication (Stéphane Curtet, alors que c'est en principe l'entrepreneur pour une EI) ;
   - la mention de Maurice ailleurs que dans l'offre d'emploi ;
   - la reformulation de la phrase répétitive de la page Badgeuses (« …en badgeuses, et les badgeuses eTSmile… »).
-- [ ] **Pages à créer plus tard** : une page dédiée à **Badgy** (bon levier de référencement), et une page sur la **gestion des temps et des absences** (contenu promis par le client).
+- [ ] **Pages à créer plus tard** : une page dédiée à **Temly** (bon levier de référencement), et une page sur la **gestion des temps et des absences** (contenu promis par le client).
 - [ ] **Contrôle de cohérence** : comparer le dépôt GitHub avec la copie de référence de l'assistant, qui peut différer. Le dépôt GitHub fait foi.

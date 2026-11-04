@@ -29,3 +29,8 @@
 # Badgy renommé Temly (octobre 2026) : l’ancienne adresse de la news, partagée sur LinkedIn.
 /actualites/2026-10-05-badgy/   /actualites/2026-10-05-temly/   301
 /actualites/2026-10-05-badgy    /actualites/2026-10-05-temly/   301
+
+# Offre d’emploi fermée (novembre 2026) : le lien partagé renvoie vers « Nous rejoindre ».
+# Redirection temporaire (302) : à retirer si l’offre est rouverte (voir src/data/offres.ts).
+/nous-rejoindre/consultant-gestion-des-temps/   /nous-rejoindre/   302
+/nous-rejoindre/consultant-gestion-des-temps    /nous-rejoindre/   302

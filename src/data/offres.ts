@@ -32,7 +32,9 @@ export const offres: Offre[] = [
     contrat: 'CDI',
     lieu: 'Saint-Leu, La Réunion',
     publiee: '2026-09-29',
-    ouverte: true,
+    // Fermée le 2026-11-04. Pour la rouvrir : `ouverte: true`, nouvelle date `publiee`,
+    // et retirer la redirection de cette offre dans public/_redirects.
+    ouverte: false,
     resume:
       'Tu paramètres eTemptation, accompagnes nos clients de la mise en place à la prise en main, et assures le support au quotidien, avec l’équipe.',
     intro: [
